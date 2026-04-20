@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirjautuminen</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 85vh;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            width: 380px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 8px;
+            color: #1f2a44;
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .login-form label {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .login-form input {
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        .login-form button {
+            margin-top: 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background: #2563eb;
+        }
+
+        .extra-links {
+            margin-top: 18px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .extra-links a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">ApneApp</div>
+    <ul>
+        <li><a href="home_page.html">Koti</a></li>
+        <li><a href="about_page.html">Uniapneasta</a></li>
+        <li><a href="sleep_tracking.html">Unenseuranta</a></li>
+        <li><a class="active" href="login_page.html">Kirjautuminen</a></li>
+        <li><a class="btn" href="register_page.html">Rekisteröityminen</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="card">
+        <h2>Kirjaudu sisään</h2>
+        <p>Syötä tunnuksesi kirjautuaksesi sovellukseen</p>
+
+        <form class="login-form">
+            <label>Sähköposti</label>
+            <input type="email" placeholder="esimerkki@email.com" required>
+
+            <label>Salasana</label>
+            <input type="password" placeholder="********" required>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="remember">
+                <label for="remember">Muista minut</label>
+            </div>
+
+            <button type="submit">Kirjaudu sisään</button>
+        </form>
+
+        <div class="extra-links">
+            <p><a href="#">Unohditko salasanan?</a></p>
+            <p>Eikö sinulla ole tiliä? <a href="register_page.html">Rekisteröidy</a></p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
