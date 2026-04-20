@@ -1,0 +1,19 @@
+/* Circles for home cards */
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.blue { background: #cfe0ff; }
+.green { background: #c9f0d6; }
+.purple { background: #e6d6ff; }
+
+/* Info section */
+.info {
+    background: white;
+    margin: 20px 40px;
+    padding: 20px;
+    border-radius: 10px;
+}
