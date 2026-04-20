@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apneapp - Luo tili</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- LEFT PANEL -->
+  <div class="side-panel">
+    <div class="side-content">
+      <div class="side-logo">
+        <i class="fas fa-lungs"></i>
+        <span>Apneapp</span>
+      </div>
+      <p class="side-tagline">Uniapnean älykäs seuranta</p>
+
+      <ul class="feature-list">
+        <li>
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <strong>Riskianalyysi</strong>
+            <span>Tekoälyn avulla laskettu uniapneariski</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-icon"><i class="fas fa-moon"></i></div>
+          <div>
+            <strong>Uniseuranta</strong>
+            <span>Yöllinen unenvaihe-analyysi</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <strong>Tietosuoja</strong>
+            <span>Tietosi ovat turvassa ja salattuja</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+          <div>
+            <strong>Lääkäriraportti</strong>
+            <span>Jaa tulokset suoraan lääkärillesi</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="login-wrapper">
+    <div class="login-container">
+
+      <div class="login-header">
+        <h2>Luo uusi tili</h2>
+        <p class="subtitle">Rekisteröidy ilmaiseksi</p>
+      </div>
+
+      <form id="registerForm" novalidate>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="firstName">Etunimi</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user input-icon"></i>
+              <input type="text" id="firstName" placeholder="Etunimi" autocomplete="given-name">
+            </div>
+            <span class="field-error" id="firstNameError"></span>
+          </div>
+          <div class="input-group">
+            <label for="lastName">Sukunimi</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user input-icon"></i>
+              <input type="text" id="lastName" placeholder="Sukunimi" autocomplete="family-name">
+            </div>
+            <span class="field-error" id="lastNameError"></span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Sähköposti</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="email" placeholder="esimerkki@email.fi" autocomplete="email">
+          </div>
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Salasana</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="password" placeholder="Vähintään 8 merkkiä" autocomplete="new-password">
+            <button type="button" class="toggle-password" id="togglePassword" aria-label="Näytä salasana">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+          <div class="password-strength" id="strengthBar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <span class="strength-label" id="strengthLabel"></span>
+          <span class="field-error" id="passwordError"></span>
+        </div>
+
+        <div class="input-group">
+          <label for="confirmPassword">Vahvista salasana</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="confirmPassword" placeholder="Toista salasana" autocomplete="new-password">
+          </div>
+          <span class="field-error" id="confirmPasswordError"></span>
+        </div>
+
+        <label class="terms-label">
+          <input type="checkbox" id="agreeTerms">
+          <span>Hyväksyn <a href="#">käyttöehdot</a> ja <a href="#">tietosuojaselosteen</a></span>
+        </label>
+        <span class="field-error" id="termsError"></span>
+
+        <button type="submit" class="btn-login" id="submitBtn" style="margin-top:18px;">
+          <span id="btnText">Luo tili</span>
+          <span class="spinner" id="spinner" hidden></span>
+        </button>
+
+      </form>
+
+      <div id="message" class="message-box" hidden></div>
+
+      <p class="register-link" style="margin-top:18px;">
+        Onko sinulla jo tili? <a href="index.html">Kirjaudu sisään</a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const form            = document.getElementById("registerForm");
+  const firstNameInput  = document.getElementById("firstName");
+  const lastNameInput   = document.getElementById("lastName");
+  const emailInput      = document.getElementById("email");
+  const passwordInput   = document.getElementById("password");
+  const confirmInput    = document.getElementById("confirmPassword");
+  const agreeTerms      = document.getElementById("agreeTerms");
+  const toggleBtn       = document.getElementById("togglePassword");
+  const eyeIcon         = document.getElementById("eyeIcon");
+  const submitBtn       = document.getElementById("submitBtn");
+  const btnText         = document.getElementById("btnText");
+  const spinner         = document.getElementById("spinner");
+  const messageBox      = document.getElementById("message");
+  const strengthFill    = document.getElementById("strengthFill");
+  const strengthLabel   = document.getElementById("strengthLabel");
+
+  toggleBtn.addEventListener("click", () => {
+    const show = passwordInput.type === "password";
+    passwordInput.type = show ? "text" : "password";
+    eyeIcon.className  = show ? "fas fa-eye-slash" : "fas fa-eye";
+  });
+
+  passwordInput.addEventListener("input", () => {
+    const val = passwordInput.value;
+    let score = 0;
+    if (val.length >= 8)          score++;
+    if (/[A-Z]/.test(val))        score++;
+    if (/[0-9]/.test(val))        score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+
+    const colors = ["", "#ef4444", "#f59e0b", "#84cc16", "#22c55e"];
+    const labels = ["", "Heikko", "Kohtalainen", "Hyvä", "Vahva"];
+    strengthFill.style.width  = (score * 25) + "%";
+    strengthFill.style.background = colors[score] || "#e5e7eb";
+    strengthLabel.textContent = score > 0 ? labels[score] : "";
+    strengthLabel.style.color = colors[score] || "";
+    document.getElementById("passwordError").textContent = "";
+    passwordInput.classList.remove("error");
+  });
+
+  ["firstName","lastName","email","confirmPassword"].forEach(id => {
+    document.getElementById(id).addEventListener("input", () => {
+      document.getElementById(id + "Error").textContent = "";
+      document.getElementById(id).classList.remove("error");
+    });
+  });
+
+  function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+  function showMessage(text, type) {
+    messageBox.textContent = text;
+    messageBox.className   = "message-box " + type;
+    messageBox.hidden      = false;
+  }
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    messageBox.hidden = true;
+    let valid = true;
+
+    if (!firstNameInput.value.trim()) {
+      document.getElementById("firstNameError").textContent = "Etunimi on pakollinen";
+      firstNameInput.classList.add("error"); valid = false;
+    }
+    if (!lastNameInput.value.trim()) {
+      document.getElementById("lastNameError").textContent = "Sukunimi on pakollinen";
+      lastNameInput.classList.add("error"); valid = false;
+    }
+    if (!emailInput.value.trim() || !isValidEmail(emailInput.value.trim())) {
+      document.getElementById("emailError").textContent = "Virheellinen sähköpostiosoite";
+      emailInput.classList.add("error"); valid = false;
+    }
+    if (passwordInput.value.length < 8) {
+      document.getElementById("passwordError").textContent = "Salasanan on oltava vähintään 8 merkkiä";
+      passwordInput.classList.add("error"); valid = false;
+    }
+    if (confirmInput.value !== passwordInput.value) {
+      document.getElementById("confirmPasswordError").textContent = "Salasanat eivät täsmää";
+      confirmInput.classList.add("error"); valid = false;
+    }
+    if (!agreeTerms.checked) {
+      document.getElementById("termsError").textContent = "Hyväksy käyttöehdot jatkaaksesi";
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    submitBtn.disabled = true;
+    btnText.hidden     = true;
+    spinner.hidden     = false;
+
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      btnText.hidden     = false;
+      spinner.hidden     = true;
+      showMessage("Tili luotu onnistuneesti! Ohjataan kirjautumiseen...", "success");
+      setTimeout(() => { window.location.href = "index.html"; }, 1500);
+    }, 1500);
+  });
+</script>
+
+</body>
+</html>

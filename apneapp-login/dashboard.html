@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apneapp - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="db-body">
+
+  <!-- SIDEBAR -->
+  <aside class="db-sidebar">
+    <div class="db-sidebar-logo">
+      <i class="fas fa-lungs"></i>
+      <span>Apneapp</span>
+    </div>
+    <nav class="db-nav">
+      <a href="#" class="db-nav-item active">
+        <i class="fas fa-th-large"></i>
+        <span>Yleiskatsaus</span>
+      </a>
+      <a href="#" class="db-nav-item">
+        <i class="fas fa-heartbeat"></i>
+        <span>Sykemittaus</span>
+      </a>
+      <a href="#" class="db-nav-item">
+        <i class="fas fa-chart-bar"></i>
+        <span>Tilastot</span>
+      </a>
+      <a href="#" class="db-nav-item">
+        <i class="fas fa-moon"></i>
+        <span>Unijaksot</span>
+      </a>
+      <a href="#" class="db-nav-item">
+        <i class="fas fa-file-medical"></i>
+        <span>Raportit</span>
+      </a>
+      <a href="#" class="db-nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Asetukset</span>
+      </a>
+    </nav>
+    <button class="db-logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Kirjaudu ulos</span>
+    </button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="db-main">
+
+    <!-- Top bar -->
+    <header class="db-topbar">
+      <div>
+        <h1 class="db-title">Yleiskatsaus</h1>
+        <p class="db-date" id="dbDate"></p>
+      </div>
+      <div class="db-user">
+        <div class="db-avatar"><i class="fas fa-user"></i></div>
+        <span>Käyttäjä</span>
+      </div>
+    </header>
+
+    <!-- Risk banner -->
+    <div class="db-risk-banner">
+      <div class="db-risk-left">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Uniapneariski: Kohonnut</strong>
+          <span>Viimeisin analyysi tänä yönä klo 03:14</span>
+        </div>
+      </div>
+      <button class="db-risk-btn">Katso raportti</button>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="db-cards">
+      <div class="db-card">
+        <div class="db-card-icon" style="background:#f1f5f9;">
+          <i class="fas fa-heartbeat" style="color:#64748b;"></i>
+        </div>
+        <div class="db-card-info">
+          <span class="db-card-label">RMSSD</span>
+          <span class="db-card-value">35 <small>ms</small></span>
+          <span class="db-card-sub db-sub-warn">Alle viitearvon</span>
+        </div>
+      </div>
+      <div class="db-card">
+        <div class="db-card-icon" style="background:#f1f5f9;">
+          <i class="fas fa-wave-square" style="color:#64748b;"></i>
+        </div>
+        <div class="db-card-info">
+          <span class="db-card-label">SDNN</span>
+          <span class="db-card-value">120 <small>ms</small></span>
+          <span class="db-card-sub db-sub-ok">Normaali</span>
+        </div>
+      </div>
+      <div class="db-card">
+        <div class="db-card-icon" style="background:#f1f5f9;">
+          <i class="fas fa-moon" style="color:#64748b;"></i>
+        </div>
+        <div class="db-card-info">
+          <span class="db-card-label">Unen kesto</span>
+          <span class="db-card-value">6h <small>22min</small></span>
+          <span class="db-card-sub db-sub-warn">Alle suosituksen</span>
+        </div>
+      </div>
+      <div class="db-card">
+        <div class="db-card-icon" style="background:#f1f5f9;">
+          <i class="fas fa-lungs" style="color:#64748b;"></i>
+        </div>
+        <div class="db-card-info">
+          <span class="db-card-label">Apnea-tapahtumat</span>
+          <span class="db-card-value">12 <small>/h</small></span>
+          <span class="db-card-sub db-sub-bad">Korkea</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Last session -->
+    <section class="db-section">
+      <h2 class="db-section-title">Viimeisin yö</h2>
+      <div class="db-session">
+        <div class="db-session-row">
+          <span><i class="fas fa-clock"></i> Nukkumisaika</span>
+          <strong>23:40 – 06:02</strong>
+        </div>
+        <div class="db-session-row">
+          <span><i class="fas fa-bed"></i> Syvä uni</span>
+          <strong>1h 48min</strong>
+        </div>
+        <div class="db-session-row">
+          <span><i class="fas fa-eye"></i> REM-uni</span>
+          <strong>1h 12min</strong>
+        </div>
+        <div class="db-session-row">
+          <span><i class="fas fa-exclamation-circle"></i> Häiriöt</span>
+          <strong class="db-sub-bad">8 kertaa</strong>
+        </div>
+        <div class="db-session-row">
+          <span><i class="fas fa-thermometer-half"></i> Kehon lämpötila</span>
+          <strong>36.6 °C</strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<script>
+  // Set today's date
+  const d = new Date();
+  document.getElementById("dbDate").textContent =
+    d.toLocaleDateString("fi-FI", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+
+  // Sidebar active nav
+  document.querySelectorAll(".db-nav-item").forEach(item => {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      document.querySelectorAll(".db-nav-item").forEach(i => i.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+
+  function logout() {
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
