@@ -11,6 +11,8 @@ const spinner          = document.getElementById("spinner");
 const messageBox       = document.getElementById("message");
 const rememberMe       = document.getElementById("rememberMe");
 
+const API_URL = "http://localhost:3000/api/kubios/login";
+
 // Restore remembered email
 const savedEmail = localStorage.getItem("rememberedEmail");
 if (savedEmail) {
@@ -52,12 +54,13 @@ function setLoading(loading) {
   spinner.hidden = !loading;
 }
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
   messageBox.hidden = true;
 
   const email    = emailInput.value.trim();
   const password = passwordInput.value;
+
   let valid = true;
 
   // Validate email
@@ -84,7 +87,7 @@ form.addEventListener("submit", function (e) {
 
   if (!valid) return;
 
-  // Remember me
+  // Remember email
   if (rememberMe.checked) {
     localStorage.setItem("rememberedEmail", email);
   } else {
@@ -93,12 +96,47 @@ form.addEventListener("submit", function (e) {
 
   setLoading(true);
 
-  // Simulate login request (replace with real API call)
-  setTimeout(() => {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: email,
+        password: password
+      })
+    });
+
     setLoading(false);
+
+    if (!res.ok) {
+      const errText = await res.text();
+      showMessage("Kirjautuminen epäonnistui: " + errText, "error");
+      return;
+    }
+
+    const data = await res.json();
+
+    // support different backend responses
+    const token = data.token || data.access_token || data.jwt;
+
+    if (!token) {
+      showMessage("Tokenia ei saatu backendistä", "error");
+      return;
+    }
+
+    localStorage.setItem("token", token);
+
     showMessage("Kirjautuminen onnistui! Ohjataan...", "success");
+
     setTimeout(() => {
       window.location.href = "dashboard.html";
-    }, 1000);
-  }, 1500);
+    }, 800);
+
+  } catch (err) {
+    setLoading(false);
+    console.error(err);
+    showMessage("Palvelinvirhe", "error");
+  }
 });

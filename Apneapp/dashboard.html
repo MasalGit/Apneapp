@@ -16,29 +16,13 @@
       <span>Apneapp</span>
     </div>
     <nav class="db-nav">
-      <a href="#" class="db-nav-item active">
+      <a href="dashboard.html" class="db-nav-item active">
         <i class="fas fa-th-large"></i>
         <span>Yleiskatsaus</span>
       </a>
-      <a href="#" class="db-nav-item">
-        <i class="fas fa-heartbeat"></i>
-        <span>Sykemittaus</span>
-      </a>
-      <a href="#" class="db-nav-item">
-        <i class="fas fa-chart-bar"></i>
-        <span>Tilastot</span>
-      </a>
-      <a href="#" class="db-nav-item">
-        <i class="fas fa-moon"></i>
-        <span>Unijaksot</span>
-      </a>
-      <a href="#" class="db-nav-item">
-        <i class="fas fa-file-medical"></i>
-        <span>Raportit</span>
-      </a>
-      <a href="#" class="db-nav-item">
-        <i class="fas fa-cog"></i>
-        <span>Asetukset</span>
+      <a href="graph.html" class="db-nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Kaavio</span>
       </a>
     </nav>
     <button class="db-logout" onclick="logout()">
@@ -58,7 +42,10 @@
       </div>
       <div class="db-user">
         <div class="db-avatar"><i class="fas fa-user"></i></div>
-        <span>Käyttäjä</span>
+        <div>
+          <p style="margin: 0; font-weight: 500; color: #1e293b;">Käyttäjä</p>
+          <p style="margin: 0; font-size: 12px; color: #94a3b8;">Aktiivinen</p>
+        </div>
       </div>
     </header>
 
@@ -148,21 +135,74 @@
   </main>
 
 <script>
+  // API configuration
+  const API_BASE_URL = 'http://127.0.0.1:3000'; // Your backend server URL
+
   // Set today's date
   const d = new Date();
   document.getElementById("dbDate").textContent =
     d.toLocaleDateString("fi-FI", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 
+  // Fetch sleep hours data
+  async function fetchSleepHours() {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Token present:', !!token);
+      console.log('API URL:', `${API_BASE_URL}/sleep/hours`);
+      
+      const response = await fetch(`${API_BASE_URL}/sleep/hours`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('HTTP Error:', response.status, errorText);
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+      const data = await response.json();
+      console.log('Sleep data received:', data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching sleep hours:', error);
+      return [];
+    }
+  }
+
+  // Update sleep duration card with latest data
+  async function updateSleepDuration() {
+    const hoursData = await fetchSleepHours();
+    if (hoursData.length > 0) {
+      // Get the latest sleep session
+      const latest = hoursData[hoursData.length - 1];
+      const hours = Math.floor(latest.hours);
+      const minutes = Math.round((latest.hours - hours) * 60);
+      
+      // Update the card
+      const sleepCard = document.querySelector('.db-card:nth-child(3) .db-card-value');
+      if (sleepCard) {
+        sleepCard.innerHTML = `${hours}h <small>${minutes}min</small>`;
+      }
+    }
+  }
+
+  // Initialize dashboard
+  updateSleepDuration();
+
   // Sidebar active nav
   document.querySelectorAll(".db-nav-item").forEach(item => {
     item.addEventListener("click", function(e) {
-      e.preventDefault();
       document.querySelectorAll(".db-nav-item").forEach(i => i.classList.remove("active"));
       this.classList.add("active");
     });
   });
 
   function logout() {
+    localStorage.removeItem('token');
     window.location.href = "index.html";
   }
 </script>
