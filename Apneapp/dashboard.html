@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apneapp - Dashboard</title>
+  <title>Apneapp - Yleiskatsaus</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body class="db-body">
 
-  <!-- SIDEBAR -->
   <aside class="db-sidebar">
     <div class="db-sidebar-logo">
       <i class="fas fa-lungs"></i>
       <span>Apneapp</span>
     </div>
+
     <nav class="db-nav">
       <a href="dashboard.html" class="db-nav-item active">
         <i class="fas fa-th-large"></i>
@@ -24,17 +24,24 @@
         <i class="fas fa-chart-line"></i>
         <span>Kaavio</span>
       </a>
+      <a href="raportit.html" class="db-nav-item">
+        <i class="fas fa-file-medical"></i>
+        <span>Raportit</span>
+      </a>
+      <a href="asetukset.html" class="db-nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Asetukset</span>
+      </a>
     </nav>
+
     <button class="db-logout" onclick="logout()">
       <i class="fas fa-sign-out-alt"></i>
       <span>Kirjaudu ulos</span>
     </button>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="db-main">
 
-    <!-- Top bar -->
     <header class="db-topbar">
       <div>
         <h1 class="db-title">Yleiskatsaus</h1>
@@ -42,14 +49,10 @@
       </div>
       <div class="db-user">
         <div class="db-avatar"><i class="fas fa-user"></i></div>
-        <div>
-          <p style="margin: 0; font-weight: 500; color: #1e293b;">Käyttäjä</p>
-          <p style="margin: 0; font-size: 12px; color: #94a3b8;">Aktiivinen</p>
-        </div>
+        <span>Käyttäjä</span>
       </div>
     </header>
 
-    <!-- Risk banner -->
     <div class="db-risk-banner">
       <div class="db-risk-left">
         <i class="fas fa-exclamation-triangle"></i>
@@ -58,10 +61,9 @@
           <span>Viimeisin analyysi tänä yönä klo 03:14</span>
         </div>
       </div>
-      <button class="db-risk-btn">Katso raportti</button>
+      <button class="db-risk-btn" onclick="window.location.href='raportit.html'">Katso raportti</button>
     </div>
 
-    <!-- Metric cards -->
     <div class="db-cards">
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
@@ -73,6 +75,7 @@
           <span class="db-card-sub db-sub-warn">Alle viitearvon</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-wave-square" style="color:#64748b;"></i>
@@ -83,6 +86,7 @@
           <span class="db-card-sub db-sub-ok">Normaali</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-moon" style="color:#64748b;"></i>
@@ -93,6 +97,7 @@
           <span class="db-card-sub db-sub-warn">Alle suosituksen</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-lungs" style="color:#64748b;"></i>
@@ -105,7 +110,6 @@
       </div>
     </div>
 
-    <!-- Last session -->
     <section class="db-section">
       <h2 class="db-section-title">Viimeisin yö</h2>
       <div class="db-session">
@@ -132,79 +136,60 @@
       </div>
     </section>
 
+    <section class="db-section" style="margin-top: 24px;">
+      <h2 class="db-section-title">Nopeat toiminnot</h2>
+      <div class="db-cards">
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='graph.html'">
+          <div class="db-card-icon" style="background:#eff6ff;">
+            <i class="fas fa-chart-line" style="color:#2563eb;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label">Kaavio</span>
+            <span class="db-card-value" style="font-size:18px;">Avaa näkymä</span>
+            <span class="db-card-sub db-sub-ok">Tarkastele visualisointia</span>
+          </div>
+        </div>
+
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='raportit.html'">
+          <div class="db-card-icon" style="background:#fef3c7;">
+            <i class="fas fa-file-medical" style="color:#d97706;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label">Raportit</span>
+            <span class="db-card-value" style="font-size:18px;">Avaa raportit</span>
+            <span class="db-card-sub db-sub-warn">Katso yhteenveto</span>
+          </div>
+        </div>
+
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='asetukset.html'">
+          <div class="db-card-icon" style="background:#eef2ff;">
+            <i class="fas fa-cog" style="color:#4f46e5;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label">Asetukset</span>
+            <span class="db-card-value" style="font-size:18px;">Muokkaa asetuksia</span>
+            <span class="db-card-sub db-sub-ok">Hallitse sovellusta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-<script>
-  // API configuration
-  const API_BASE_URL = 'http://127.0.0.1:3000'; // Your backend server URL
-
-  // Set today's date
-  const d = new Date();
-  document.getElementById("dbDate").textContent =
-    d.toLocaleDateString("fi-FI", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-
-  // Fetch sleep hours data
-  async function fetchSleepHours() {
-    try {
-      const token = localStorage.getItem('token');
-      console.log('Token present:', !!token);
-      console.log('API URL:', `${API_BASE_URL}/sleep/hours`);
-      
-      const response = await fetch(`${API_BASE_URL}/sleep/hours`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
+  <script>
+    const d = new Date();
+    document.getElementById("dbDate").textContent =
+      d.toLocaleDateString("fi-FI", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
       });
-      
-      console.log('Response status:', response.status);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('HTTP Error:', response.status, errorText);
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
-      const data = await response.json();
-      console.log('Sleep data received:', data);
-      return data;
-    } catch (error) {
-      console.error('Error fetching sleep hours:', error);
-      return [];
+
+    function logout() {
+      window.location.href = "index.html";
     }
-  }
+  </script>
 
-  // Update sleep duration card with latest data
-  async function updateSleepDuration() {
-    const hoursData = await fetchSleepHours();
-    if (hoursData.length > 0) {
-      // Get the latest sleep session
-      const latest = hoursData[hoursData.length - 1];
-      const hours = Math.floor(latest.hours);
-      const minutes = Math.round((latest.hours - hours) * 60);
-      
-      // Update the card
-      const sleepCard = document.querySelector('.db-card:nth-child(3) .db-card-value');
-      if (sleepCard) {
-        sleepCard.innerHTML = `${hours}h <small>${minutes}min</small>`;
-      }
-    }
-  }
-
-  // Initialize dashboard
-  updateSleepDuration();
-
-  // Sidebar active nav
-  document.querySelectorAll(".db-nav-item").forEach(item => {
-    item.addEventListener("click", function(e) {
-      document.querySelectorAll(".db-nav-item").forEach(i => i.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
-
-  function logout() {
-    localStorage.removeItem('token');
-    window.location.href = "index.html";
-  }
-</script>
 </body>
 </html>

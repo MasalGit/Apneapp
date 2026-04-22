@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apneapp - Raportit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <style>
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .report-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    }
+
+    .report-card i {
+      font-size: 24px;
+      color: #3b82f6;
+      margin-bottom: 12px;
+    }
+
+    .report-card h3 {
+      margin-bottom: 10px;
+      color: #1f2937;
+      font-size: 18px;
+    }
+
+    .report-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .report-btn {
+      border: none;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .report-btn:hover {
+      background: #2563eb;
+    }
+
+    .report-note {
+      margin-top: 28px;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 18px;
+      border-radius: 10px;
+      color: #1e3a8a;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body class="db-body">
+
+  <aside class="db-sidebar">
+    <div class="db-sidebar-logo">
+      <i class="fas fa-lungs"></i>
+      <span>Apneapp</span>
+    </div>
+
+    <nav class="db-nav">
+      <a href="dashboard.html" class="db-nav-item">
+        <i class="fas fa-th-large"></i>
+        <span>Yleiskatsaus</span>
+      </a>
+      <a href="sykemittaus.html" class="db-nav-item">
+        <i class="fas fa-heartbeat"></i>
+        <span>Sykemittaus</span>
+      </a>
+      <a href="tilastot.html" class="db-nav-item">
+        <i class="fas fa-chart-bar"></i>
+        <span>Tilastot</span>
+      </a>
+      <a href="unijaksot.html" class="db-nav-item">
+        <i class="fas fa-moon"></i>
+        <span>Unijaksot</span>
+      </a>
+      <a href="raportit.html" class="db-nav-item active">
+        <i class="fas fa-file-medical"></i>
+        <span>Raportit</span>
+      </a>
+      <a href="asetukset.html" class="db-nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Asetukset</span>
+      </a>
+    </nav>
+
+    <button class="db-logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Kirjaudu ulos</span>
+    </button>
+  </aside>
+
+  <main class="db-main">
+    <header class="db-topbar">
+      <div>
+        <h1 class="db-title">Raportit</h1>
+        <p class="db-date">Lataa ja tarkastele tärkeimpiä analyysiyhteenvetoja.</p>
+      </div>
+      <div class="db-user">
+        <div class="db-avatar"><i class="fas fa-user"></i></div>
+        <span>Käyttäjä</span>
+      </div>
+    </header>
+
+    <section class="db-section">
+      <h2 class="db-section-title">Saatavilla olevat raportit</h2>
+
+      <div class="report-grid">
+        <div class="report-card">
+          <i class="fas fa-file-waveform"></i>
+          <h3>Uniyhteenveto</h3>
+          <p>Kooste viimeisimmän yön unidatasta, unen kestosta ja palautumisesta.</p>
+          <button class="report-btn">Avaa raportti</button>
+        </div>
+
+        <div class="report-card">
+          <i class="fas fa-heart-pulse"></i>
+          <h3>HRV-analyysi</h3>
+          <p>Sykevälivaihteluun perustuva analyysi, joka tukee uniapneariskin arviointia.</p>
+          <button class="report-btn">Avaa raportti</button>
+        </div>
+
+        <div class="report-card">
+          <i class="fas fa-user-doctor"></i>
+          <h3>Lääkäriraportti</h3>
+          <p>Tulevaisuudessa jaettava yhteenveto, jonka voi näyttää terveydenhuollon ammattilaiselle.</p>
+          <button class="report-btn">Avaa raportti</button>
+        </div>
+      </div>
+
+      <div class="report-note">
+        Raporttien sisältö on vielä osittain kehitysvaiheessa. Tähän näkymään voidaan myöhemmin lisätä
+        ladattavat PDF-raportit, tarkemmat mittaustulokset ja analyysikaaviot.
+      </div>
+    </section>
+  </main>
+
+<script>
+  function logout() {
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
