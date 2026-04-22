@@ -1,100 +1,90 @@
-# Apneapp – Testausdokumentti
+﻿# Apneapp – Testausdokumentti
 
-## Projektin tiedot
-- **Projekti:** Apneapp – kirjautumis- ja rekisteröintisivut
-- **Testaaja:** Yamama
-- **Päivämäärä:** 22.4.2026
-
----
-
-## 1. Kirjautumislomake (`index.html`)
-
-### 1.1 Sähköpostin validointi
-
-| Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|---|---|---|
-| Oikea sähköposti | `kayttaja@esimerkki.fi` | Hyväksytään | ✅ |
-| Tyhjä kenttä | *(tyhjä)* | Virhe: "Sähköposti on pakollinen" | ✅ |
-| Puuttuu @-merkki | `kayttajaesimerkki.fi` | Virhe: "Virheellinen sähköpostiosoite" | ✅ |
-| Puuttuu piste | `kayttaja@esimerkki` | Virhe: "Virheellinen sähköpostiosoite" | ✅ |
-| Välilyönti osoitteessa | `kayttaja @esimerkki.fi` | Virhe: "Virheellinen sähköpostiosoite" | ✅ |
-
-### 1.2 Salasanan validointi
-
-| Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|---|---|---|
-| Tyhjä kenttä | *(tyhjä)* | Virhe: "Salasana on pakollinen" | ✅ |
-| Alle 6 merkkiä | `abc1` | Virhe: "Salasanan on oltava vähintään 6 merkkiä" | ✅ |
-| Täsmälleen 6 merkkiä | `abc123` | Hyväksytään | ✅ |
-| Yli 6 merkkiä | `turvallinen123` | Hyväksytään | ✅ |
-
-### 1.3 Salasanan näyttö/piilotus
-
-| Testitapaus | Toiminto | Odotettu tulos | Tulos |
-|---|---|---|---|
-| Paina silmäikoni | Klikkaus | Salasana näkyy tekstinä | ✅ |
-| Paina silmäikoni uudelleen | Klikkaus | Salasana piilotetaan | ✅ |
-
-### 1.4 Muista minut -toiminto
-
-| Testitapaus | Toiminto | Odotettu tulos | Tulos |
-|---|---|---|---|
-| Rasti ruutuun + kirjaudu | Kirjautuminen | Sähköposti tallentuu localStorageen | ✅ |
-| Ei rastia + kirjaudu | Kirjautuminen | Sähköpostia ei tallenneta | ✅ |
-| Avaa sivu uudelleen | Sivun lataus | Tallennettu sähköposti täytetään automaattisesti | ✅ |
-
-### 1.5 Kirjautumisen kulku
-
-| Testitapaus | Toiminto | Odotettu tulos | Tulos |
-|---|---|---|---|
-| Oikeat tiedot | Kirjaudu-nappi | Spinner näkyy → "Kirjautuminen onnistui!" → ohjaus dashboard.html | ✅ |
+**Testaaja:** Yamama  
+**Päivämäärä:** 22.4.2026  
+**Branch:** `Yamama-FE`
 
 ---
 
-## 2. Rekisteröintilomake (`register.html`)
+## Tehtävä 1 – isValidEmail() – Sähköpostin validointi
 
-### 2.1 Kenttien validointi
+[Katso testit selaimessa](tests/tests.html)
 
-| Testitapaus | Syöte | Odotettu tulos | Tulos |
+| # | Testitapaus | Syöte | Odotettu tulos |
 |---|---|---|---|
-| Tyhjä etunimi | *(tyhjä)* | Virhe näytetään | ✅ |
-| Tyhjä sähköposti | *(tyhjä)* | Virhe näytetään | ✅ |
-| Väärä sähköpostimuoto | `teksti` | Virhe näytetään | ✅ |
-| Salasana alle 8 merkkiä | `abc123` | Virhe näytetään | ✅ |
-| Salasanat eivät täsmää | `abc12345` / `xyz99999` | Virhe: "Salasanat eivät täsmää" | ✅ |
-| Käyttöehtoja ei hyväksytty | *(rasti puuttuu)* | Virhe näytetään | ✅ |
+| 1 | Oikea sähköposti | `kayttaja@esimerkki.fi` | `true` |
+| 2 | Gmail-osoite | `testi@gmail.com` | `true` |
+| 3 | Tyhjä merkkijono | *(tyhjä)* | `false` |
+| 4 | Puuttuu @-merkki | `kayttajaesimerkki.fi` | `false` |
+| 5 | Puuttuu piste | `kayttaja@esimerkki` | `false` |
+| 6 | Puuttuu käyttäjätunnus | `@esimerkki.fi` | `false` |
+| 7 | Välilyönti osoitteessa | `kayttaja @esimerkki.fi` | `false` |
 
 ---
 
-## 3. Unohdettu salasana (`forgot-password.html`)
+## Tehtävä 2 – Salasanan validointi (kirjautuminen, min 6 merkkiä)
 
-| Testitapaus | Syöte | Odotettu tulos | Tulos |
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
 |---|---|---|---|
-| Tyhjä sähköposti | *(tyhjä)* | Virhe näytetään | ✅ |
-| Virheellinen sähköposti | `teksti` | Virhe näytetään | ✅ |
-| Oikea sähköposti | `kayttaja@esimerkki.fi` | Vahvistusviesti näytetään | ✅ |
+| 1 | Täsmälleen 6 merkkiä | `abc123` | `true` |
+| 2 | Pitkä salasana | `turvallinen123!` | `true` |
+| 3 | 5 merkkiä | `abc12` | `false` |
+| 4 | Tyhjä | *(tyhjä)* | `false` |
 
 ---
 
-## 4. Dashboard (`dashboard.html`)
+## Tehtävä 3 – Salasanan validointi (rekisteröinti, min 8 merkkiä)
 
-| Testitapaus | Toiminto | Odotettu tulos | Tulos |
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
 |---|---|---|---|
-| Sivun avaus | Lataus | Kaikki kortit ja data näkyvät | ✅ |
-| Kirjaudu ulos -nappi | Klikkaus | Ohjaus index.html | ✅ |
-| Päivämäärä | Lataus | Tämän päivän päivämäärä näytetään | ✅ |
+| 1 | Täsmälleen 8 merkkiä | `abc12345` | `true` |
+| 2 | Pitkä salasana | `turvallinen123!` | `true` |
+| 3 | 7 merkkiä | `abc1234` | `false` |
+| 4 | Tyhjä | *(tyhjä)* | `false` |
 
 ---
 
-## 5. Yleiset UI-testit
+## Tehtävä 4 – passwordsMatch() – Salasanojen täsmäys
 
-| Testitapaus | Odotettu tulos | Tulos |
-|---|---|---|
-| Mobiili 375px | Sivut skaalautuvat oikein | ✅ |
-| Tabletti 768px | Sivut skaalautuvat oikein | ✅ |
-| Työpöytä 1440px | Sivut skaalautuvat oikein | ✅ |
-| Chrome-selain | Kaikki toimii | ✅ |
-| Firefox-selain | Kaikki toimii | ✅ |
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Samat salasanat | `abc12345` / `abc12345` | `true` |
+| 2 | Erilaiset salasanat | `abc12345` / `xyz99999` | `false` |
+| 3 | Molemmat tyhjiä | *(tyhjä)* / *(tyhjä)* | `true` |
+| 4 | Iso/pieni kirjain | `Salasana1` / `salasana1` | `false` |
+
+---
+
+## Tehtävä 5 – isEmpty() – Tyhjyystarkistus
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Tyhjä merkkijono | ```  | `true` |
+| 2 | Pelkät välilyönnit | `   ` | `true` |
+| 3 | Normaali teksti | `Yamama` | `false` |
+| 4 | Numero | `0` | `false` |
+
+---
+
+## Tehtävä 6 – isValidName() – Nimen validointi
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Normaali nimi | `Yamama` | `true` |
+| 2 | Tyhjä nimi | *(tyhjä)* | `false` |
+| 3 | Pelkät välilyönnit | `   ` | `false` |
+| 4 | 50 merkin nimi | `aaa...` (50) | `true` |
+| 5 | 51 merkin nimi | `aaa...` (51) | `false` |
 
 ---
 
@@ -102,8 +92,10 @@
 
 | | Määrä |
 |---|---|
-| Testattu yhteensä | 28 |
-| Läpäissyt | 28 |
+| Tehtäviä | 6 |
+| Testejä yhteensä | 24 |
+| Läpäissyt | 24 |
 | Epäonnistuneet | 0 |
 
-> Kaikki testit läpäistiin hyväksytysti. ✅
+> Kaikki testit läpäistiin hyväksytysti.  
+> [Avaa testit selaimessa](tests/tests.html)
