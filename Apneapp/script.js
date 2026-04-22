@@ -52,7 +52,7 @@ function setLoading(loading) {
   spinner.hidden = !loading;
 }
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
   messageBox.hidden = true;
 
@@ -93,12 +93,24 @@ form.addEventListener("submit", function (e) {
 
   setLoading(true);
 
-  // Simulate login request (replace with real API call)
-  setTimeout(() => {
+  try {
+    const res = await fetch('http://localhost:3000/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: email, password }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem('token', data.token);
+      showMessage("Kirjautuminen onnistui! Ohjataan...", "success");
+      setTimeout(() => { window.location.href = "dashboard.html"; }, 1000);
+    } else {
+      showMessage(data.error || "Kirjautuminen epäonnistui", "error");
+    }
+  } catch (err) {
+    showMessage("Palvelimeen ei saada yhteyttä", "error");
+  } finally {
     setLoading(false);
-    showMessage("Kirjautuminen onnistui! Ohjataan...", "success");
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 1000);
-  }, 1500);
+  }
 });

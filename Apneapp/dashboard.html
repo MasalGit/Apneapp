@@ -163,8 +163,32 @@
   });
 
   function logout() {
+    localStorage.removeItem('token');
     window.location.href = "index.html";
   }
+
+  async function loadSleepData() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    try {
+      const headers = { Authorization: `Bearer ${token}` };
+      const [hoursRes, qualityRes] = await Promise.all([
+        fetch('http://localhost:3000/api/sleep/hours', { headers }),
+        fetch('http://localhost:3000/api/sleep/quality', { headers }),
+      ]);
+
+      const sleepHours = await hoursRes.json();
+      const sleepQuality = await qualityRes.json();
+
+      console.log('Unitunnit:', sleepHours);
+      console.log('Unen laatu:', sleepQuality);
+    } catch (err) {
+      console.error('Virhe:', err);
+    }
+  }
+
+  loadSleepData();
 </script>
 </body>
 </html>

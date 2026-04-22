@@ -1,4 +1,5 @@
 import './style.css'
+import { login, getSleepHours, getSleepQuality } from './api.js'
 import javascriptLogo from './assets/javascript.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -58,3 +59,9 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+
+await login();
+const sleepHours = await getSleepHours();
+const sleepQuality = await getSleepQuality();
+console.log('Unitunnit:', sleepHours);
+console.log('Unen laatu:', sleepQuality);
