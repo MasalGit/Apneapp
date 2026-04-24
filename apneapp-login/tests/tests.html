@@ -132,6 +132,70 @@
     test("Hylkää 51 merkin nimen",                () => expect(isValidName("a".repeat(51))).toBeFalse());
   });
 
+  // ── Dashboard & Login -funktiot ─────────────────────────────────────────
+
+  // Apnea-riskin taso tapahtumamäärän perusteella
+  function getApneaRiskLevel(eventsPerHour) {
+    if (eventsPerHour < 5)  return "Normaali";
+    if (eventsPerHour < 15) return "Lievä";
+    if (eventsPerHour < 30) return "Kohtalainen";
+    return "Vaikea";
+  }
+
+  // Univaiheen prosenttiosuus kokonaisunesta
+  function getSleepPhasePercent(phaseMinutes, totalMinutes) {
+    if (totalMinutes <= 0) return 0;
+    return Math.round((phaseMinutes / totalMinutes) * 100);
+  }
+
+  // Unen keston muotoilu minuuteista tunteiksi
+  function formatSleepDuration(minutes) {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    return h + "h " + m + "min";
+  }
+
+  // Lomakkeen kokonaisvalidointi (kirjautuminen)
+  function validateLoginForm(email, password) {
+    return isValidEmail(email) && isValidLoginPassword(password);
+  }
+
+  // Tehtävä 7 – Apnea-riskin taso (dashboard)
+  suite("Tehtävä 7 – getApneaRiskLevel()", () => {
+    test("0 tapahtumaa/h → Normaali",    () => expect(getApneaRiskLevel(0)).toBe("Normaali"));
+    test("4 tapahtumaa/h → Normaali",    () => expect(getApneaRiskLevel(4)).toBe("Normaali"));
+    test("5 tapahtumaa/h → Lievä",       () => expect(getApneaRiskLevel(5)).toBe("Lievä"));
+    test("12 tapahtumaa/h → Lievä",      () => expect(getApneaRiskLevel(12)).toBe("Lievä"));
+    test("15 tapahtumaa/h → Kohtalainen",() => expect(getApneaRiskLevel(15)).toBe("Kohtalainen"));
+    test("30 tapahtumaa/h → Vaikea",     () => expect(getApneaRiskLevel(30)).toBe("Vaikea"));
+  });
+
+  // Tehtävä 8 – Univaiheen prosentti (dashboard)
+  suite("Tehtävä 8 – getSleepPhasePercent()", () => {
+    test("108min / 382min → 28%",        () => expect(getSleepPhasePercent(108, 382)).toBe(28));
+    test("72min / 382min → 19%",         () => expect(getSleepPhasePercent(72, 382)).toBe(19));
+    test("0min → 0%",                    () => expect(getSleepPhasePercent(0, 382)).toBe(0));
+    test("Kokonaisaika 0 → 0%",          () => expect(getSleepPhasePercent(60, 0)).toBe(0));
+    test("Sama arvo → 100%",             () => expect(getSleepPhasePercent(60, 60)).toBe(100));
+  });
+
+  // Tehtävä 9 – Unen keston muotoilu (dashboard)
+  suite("Tehtävä 9 – formatSleepDuration()", () => {
+    test("382min → '6h 22min'",          () => expect(formatSleepDuration(382)).toBe("6h 22min"));
+    test("60min → '1h 0min'",            () => expect(formatSleepDuration(60)).toBe("1h 0min"));
+    test("90min → '1h 30min'",           () => expect(formatSleepDuration(90)).toBe("1h 30min"));
+    test("0min → '0h 0min'",             () => expect(formatSleepDuration(0)).toBe("0h 0min"));
+  });
+
+  // Tehtävä 10 – Kirjautumislomakkeen kokonaisvalidointi
+  suite("Tehtävä 10 – validateLoginForm()", () => {
+    test("Oikea sähköposti + vahva salasana hyväksytään", () => expect(validateLoginForm("kayttaja@email.fi", "salasana1")).toBeTrue());
+    test("Väärä sähköposti hylätään",                    () => expect(validateLoginForm("eiole", "salasana1")).toBeFalse());
+    test("Liian lyhyt salasana hylätään",                () => expect(validateLoginForm("kayttaja@email.fi", "abc")).toBeFalse());
+    test("Molemmat väärät hylätään",                     () => expect(validateLoginForm("", "")).toBeFalse());
+    test("Tyhjä sähköposti hylätään",                    () => expect(validateLoginForm("", "salasana1")).toBeFalse());
+  });
+
   // ── Render ───────────────────────────────────────────────────────────────
   const out = document.getElementById("output");
   let totalPass = 0, totalFail = 0;

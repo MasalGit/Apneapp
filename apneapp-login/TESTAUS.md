@@ -88,13 +88,69 @@
 
 ---
 
+## Tehtävä 7 – getApneaRiskLevel() – Apnea-riskin taso (dashboard)
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | 0 tapahtumaa/h | `0` | `"Normaali"` |
+| 2 | 4 tapahtumaa/h | `4` | `"Normaali"` |
+| 3 | 5 tapahtumaa/h | `5` | `"Lievä"` |
+| 4 | 12 tapahtumaa/h | `12` | `"Lievä"` |
+| 5 | 15 tapahtumaa/h | `15` | `"Kohtalainen"` |
+| 6 | 30 tapahtumaa/h | `30` | `"Vaikea"` |
+
+---
+
+## Tehtävä 8 – getSleepPhasePercent() – Univaiheen prosentti (dashboard)
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | 108min / 382min | `108, 382` | `28` |
+| 2 | 72min / 382min | `72, 382` | `19` |
+| 3 | 0 minuuttia | `0, 382` | `0` |
+| 4 | Kokonaisaika 0 | `60, 0` | `0` |
+| 5 | Sama arvo | `60, 60` | `100` |
+
+---
+
+## Tehtävä 9 – formatSleepDuration() – Unen keston muotoilu (dashboard)
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | 382 minuuttia | `382` | `"6h 22min"` |
+| 2 | 60 minuuttia | `60` | `"1h 0min"` |
+| 3 | 90 minuuttia | `90` | `"1h 30min"` |
+| 4 | 0 minuuttia | `0` | `"0h 0min"` |
+
+---
+
+## Tehtävä 10 – validateLoginForm() – Kirjautumislomakkeen validointi
+
+[Katso testit selaimessa](tests/tests.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Oikea email + vahva salasana | `kayttaja@email.fi / salasana1` | `true` |
+| 2 | Väärä sähköposti | `eiole / salasana1` | `false` |
+| 3 | Liian lyhyt salasana | `kayttaja@email.fi / abc` | `false` |
+| 4 | Molemmat väärät | *(tyhjät)* | `false` |
+| 5 | Tyhjä sähköposti | `"" / salasana1` | `false` |
+
+---
+
 ## Yhteenveto
 
 | | Määrä |
 |---|---|
-| Tehtäviä | 6 |
-| Testejä yhteensä | 24 |
-| Läpäissyt | 24 |
+| Tehtäviä | 10 |
+| Testejä yhteensä | 48 |
+| Läpäissyt | 48 |
 | Epäonnistuneet | 0 |
 
 > Kaikki testit läpäistiin hyväksytysti.  
