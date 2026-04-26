@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Apneapp – Testit (Henri_FE)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f1f5f9; padding: 2rem; color: #1e293b; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .meta { color: #64748b; font-size: 0.85rem; margin-bottom: 2rem; }
+    .suite { background: white; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .suite h2 { font-size: 1rem; color: #475569; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .test { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0; font-size: 0.88rem; border-bottom: 1px solid #f8fafc; }
+    .test:last-child { border-bottom: none; }
+    .badge { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; min-width: 48px; text-align: center; }
+    .pass .badge { background: #dcfce7; color: #166534; }
+    .fail .badge { background: #fee2e2; color: #991b1b; }
+    .err-msg { color: #dc2626; font-size: 0.78rem; margin-left: auto; }
+    .summary { margin-top: 2rem; padding: 1rem 1.5rem; border-radius: 10px; font-size: 1rem; font-weight: 600; text-align: center; }
+    .summary.ok  { background: #dcfce7; color: #166534; }
+    .summary.err { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+  <h1>Apneapp – Yksikkötestit (Henri_FE)</h1>
+  <p class="meta">Testaaja: Yamama &nbsp;|&nbsp; Branch: Henri_FE &nbsp;|&nbsp; Päivämäärä: <span id="dateSpan"></span></p>
+  <div id="output"></div>
+  <div id="summary" class="summary"></div>
+
+<script>
+  document.getElementById("dateSpan").textContent = new Date().toLocaleDateString("fi-FI");
+
+  // ── Mini test runner ─────────────────────────────────────────────────────
+  let currentSuite = null;
+  const allResults = [];
+
+  function suite(name, fn) {
+    currentSuite = { name, tests: [] };
+    fn();
+    allResults.push(currentSuite);
+  }
+
+  function test(name, fn) {
+    try {
+      fn();
+      currentSuite.tests.push({ name, ok: true });
+    } catch (e) {
+      currentSuite.tests.push({ name, ok: false, msg: e.message });
+    }
+  }
+
+  function expect(val) {
+    return {
+      toBe(exp)      { if (val !== exp)    throw new Error(`Odotettiin "${exp}", saatiin "${val}"`); },
+      toBeTrue()     { if (val !== true)   throw new Error(`Odotettiin true, saatiin ${val}`); },
+      toBeFalse()    { if (val !== false)  throw new Error(`Odotettiin false, saatiin ${val}`); },
+    };
+  }
+
+  // ── Testattavat funktiot (kopio Henri_FE: script.js / register.html) ────
+
+  // 1. Sähköpostin validointi
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // 2. Salasanan pituus (login: min 6, register: min 8)
+  function isValidLoginPassword(pw)    { return pw.length >= 6; }
+  function isValidRegisterPassword(pw) { return pw.length >= 8; }
+
+  // 3. Salasanojen täsmäys (confirmPassword)
+  function passwordsMatch(pw1, pw2) { return pw1 === pw2; }
+
+  // 4. Tyhjyystarkistus (nimi-kentät)
+  function isEmpty(val) { return val.trim() === ""; }
+
+  // 5. Kirjautumislomakkeen kokonaisvalidointi
+  function validateLoginForm(email, password) {
+    return isValidEmail(email) && isValidLoginPassword(password);
+  }
+
+  // ── TESTIT ───────────────────────────────────────────────────────────────
+
+  // Tehtävä 1 – Sähköpostin validointi
+  suite("Tehtävä 1 – isValidEmail()", () => {
+    test("Hyväksyy oikean sähköpostin",        () => expect(isValidEmail("kayttaja@esimerkki.fi")).toBeTrue());
+    test("Hyväksyy gmail-osoitteen",            () => expect(isValidEmail("testi@gmail.com")).toBeTrue());
+    test("Hylkää tyhjän merkkijonon",           () => expect(isValidEmail("")).toBeFalse());
+    test("Hylkää osoitteen ilman @",            () => expect(isValidEmail("kayttajaesimerkki.fi")).toBeFalse());
+    test("Hylkää osoitteen ilman pistettä",     () => expect(isValidEmail("kayttaja@esimerkki")).toBeFalse());
+    test("Hylkää osoitteen ilman käyttäjää",   () => expect(isValidEmail("@esimerkki.fi")).toBeFalse());
+    test("Hylkää välilyönnin sisältävän",       () => expect(isValidEmail("kayttaja @esimerkki.fi")).toBeFalse());
+  });
+
+  // Tehtävä 2 – Salasanan pituusvalidointi (kirjautuminen, min 6)
+  suite("Tehtävä 2 – Salasanan validointi (kirjautuminen, min 6)", () => {
+    test("Hyväksyy 6 merkin salasanan",  () => expect(isValidLoginPassword("abc123")).toBeTrue());
+    test("Hyväksyy pitkän salasanan",    () => expect(isValidLoginPassword("turvallinen123!")).toBeTrue());
+    test("Hylkää 5 merkin salasanan",    () => expect(isValidLoginPassword("abc12")).toBeFalse());
+    test("Hylkää tyhjän salasanan",      () => expect(isValidLoginPassword("")).toBeFalse());
+  });
+
+  // Tehtävä 3 – Salasanan pituusvalidointi (rekisteröinti, min 8)
+  suite("Tehtävä 3 – Salasanan validointi (rekisteröinti, min 8)", () => {
+    test("Hyväksyy 8 merkin salasanan",  () => expect(isValidRegisterPassword("abc12345")).toBeTrue());
+    test("Hyväksyy pitkän salasanan",    () => expect(isValidRegisterPassword("turvallinen123!")).toBeTrue());
+    test("Hylkää 7 merkin salasanan",    () => expect(isValidRegisterPassword("abc1234")).toBeFalse());
+    test("Hylkää tyhjän salasanan",      () => expect(isValidRegisterPassword("")).toBeFalse());
+  });
+
+  // Tehtävä 4 – Salasanojen täsmäys (confirmPassword)
+  suite("Tehtävä 4 – passwordsMatch()", () => {
+    test("Täsmäävät salasanat hyväksytään",      () => expect(passwordsMatch("abc12345", "abc12345")).toBeTrue());
+    test("Erilaiset salasanat hylätään",          () => expect(passwordsMatch("abc12345", "xyz99999")).toBeFalse());
+    test("Tyhjä vs tyhjä täsmää",                () => expect(passwordsMatch("", "")).toBeTrue());
+    test("Iso/pieni kirjain ei täsmää",           () => expect(passwordsMatch("Salasana1", "salasana1")).toBeFalse());
+  });
+
+  // Tehtävä 5 – Nimen tyhjyystarkistus
+  suite("Tehtävä 5 – isEmpty()", () => {
+    test("Tunnistaa tyhjän merkkijonon",          () => expect(isEmpty("")).toBeTrue());
+    test("Tunnistaa välilyönneistä koostuvan",    () => expect(isEmpty("   ")).toBeTrue());
+    test("Hyväksyy ei-tyhjän syötteen",           () => expect(isEmpty("Henri")).toBeFalse());
+    test("Hyväksyy numeron",                      () => expect(isEmpty("0")).toBeFalse());
+  });
+
+  // Tehtävä 6 – Kirjautumislomakkeen kokonaisvalidointi
+  suite("Tehtävä 6 – validateLoginForm()", () => {
+    test("Oikea sähköposti + vahva salasana hyväksytään", () => expect(validateLoginForm("kayttaja@email.fi", "salasana1")).toBeTrue());
+    test("Väärä sähköposti hylätään",                    () => expect(validateLoginForm("eiole", "salasana1")).toBeFalse());
+    test("Liian lyhyt salasana hylätään",                () => expect(validateLoginForm("kayttaja@email.fi", "abc")).toBeFalse());
+    test("Molemmat väärät hylätään",                     () => expect(validateLoginForm("", "")).toBeFalse());
+    test("Tyhjä sähköposti hylätään",                    () => expect(validateLoginForm("", "salasana1")).toBeFalse());
+  });
+
+  // ── Render ───────────────────────────────────────────────────────────────
+  const out = document.getElementById("output");
+  let totalPass = 0, totalFail = 0;
+
+  allResults.forEach(s => {
+    const div = document.createElement("div");
+    div.className = "suite";
+    div.innerHTML = `<h2>${s.name}</h2>`;
+    s.tests.forEach(t => {
+      const row = document.createElement("div");
+      row.className = "test " + (t.ok ? "pass" : "fail");
+      row.innerHTML = `<span class="badge">${t.ok ? "PASS" : "FAIL"}</span><span>${t.name}</span>`
+        + (t.msg ? `<span class="err-msg">${t.msg}</span>` : "");
+      div.appendChild(row);
+      t.ok ? totalPass++ : totalFail++;
+    });
+    out.appendChild(div);
+  });
+
+  const total = totalPass + totalFail;
+  const sumEl = document.getElementById("summary");
+  sumEl.className = "summary " + (totalFail === 0 ? "ok" : "err");
+  sumEl.textContent = `Tulokset: ${totalPass}/${total} testiä läpäisty`
+    + (totalFail ? ` — ${totalFail} epäonnistui` : " ✓ Kaikki testit OK!");
+</script>
+</body>
+</html>
