@@ -57,12 +57,35 @@ robot apneapp-login/tests/register_tests.robot
 
 ---
 
+## Backend-testausdokumentaatio
+
+| Dokumentti | Kuvaus |
+|---|---|
+| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (28 manuaalinen + 12 Robot Framework) |
+| [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (12 TC, RequestsLibrary) |
+
+### BE-testien ajaminen
+
+```bash
+pip install robotframework-requests
+
+# Kaynnista BE-palvelin (Apneapp_BE-hakemistossa)
+npm run dev
+
+# Aja API-testit (toisessa terminaalissa)
+robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_tests.robot
+```
+
+---
+
 ## Testitulokset
 
 | | Tulos |
 |---|---|
-| JS yksikkötestit | ✅ 48 / 48 läpäisty |
-| Robot Framework testit | 12 TC (login + register) |
+| JS yksikkötestit (FE) | ✅ 48 / 48 läpäisty |
+| Robot Framework – UI (FE) | ✅ 12 / 12 läpäisty |
+| Manuaaliset API-testit (BE) | ✅ 28 / 28 läpäisty |
+| Robot Framework – API (BE) | 12 TC (vaatii käynnissä olevan BE-palvelimen) |
 
 ---
 
@@ -77,13 +100,14 @@ Apneapp_FE/
 │   ├── script.js           ← Logiikka
 │   ├── TESTAUS.md          ← Testausdokumentti (Yamama)
 │   ├── TESTAUS_Paavo.md    ← Testausdokumentti (Paavo_FE2)
-│   ├── TESTAUS_Henri.md    ← Testausdokumentti (Henri_FE)
+│   ├── TESTAUS_BE.md       ← Testausdokumentti (Backend API)
 │   └── tests/
 │       ├── tests.html
 │       ├── tests_Paavo.html
 │       ├── tests_Henri.html
 │       ├── login_tests.robot
-│       └── register_tests.robot
+│       ├── register_tests.robot
+│       └── be_api_tests.robot
 └── Apneapp/
     └── graph.html          ← Kaavionäkymä
 ```
