@@ -1,0 +1,85 @@
+# Apneapp – Frontend
+
+**Projekti:** Terveyssovelluksen kehitys  
+**Kurssi:** Ohjelmistotestaus – Ryhmätehtävät  
+**Koulu:** Metropolia AMK  
+**Branch:** `Yamama-FE`  
+**Testaaja:** Yamama
+
+---
+
+## Projektin kuvaus
+
+Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjautumis-, rekisteröinti- ja dashboard-sivut sekä kaavionäkymän.
+
+---
+
+## Testausdokumentaatio
+
+| Dokumentti | Kuvaus |
+|---|---|
+| [TESTAUS.md](apneapp-login/TESTAUS.md) | Yamama-FE – yksikkö- ja automaatiotestit (48 JS + 12 Robot Framework) |
+| [TESTAUS_Paavo.md](apneapp-login/TESTAUS_Paavo.md) | Paavo_FE2 – validointitestit |
+| [TESTAUS_Henri.md](apneapp-login/TESTAUS_Henri.md) | Henri_FE – validointitestit |
+
+---
+
+## HTML-testiraportit
+
+| Raportti | Avaa selaimessa |
+|---|---|
+| JS-yksikkötestit (Yamama) | [tests/tests.html](apneapp-login/tests/tests.html) |
+| JS-yksikkötestit (Paavo) | [tests/tests_Paavo.html](apneapp-login/tests/tests_Paavo.html) |
+| JS-yksikkötestit (Henri) | [tests/tests_Henri.html](apneapp-login/tests/tests_Henri.html) |
+
+---
+
+## Robot Framework – Automaatiotestit
+
+| Testitiedosto | Kuvaus |
+|---|---|
+| [tests/login_tests.robot](apneapp-login/tests/login_tests.robot) | Kirjautumislomakkeen automaatiotestit (6 TC) |
+| [tests/register_tests.robot](apneapp-login/tests/register_tests.robot) | Rekisteröintilomakkeen automaatiotestit (6 TC) |
+
+### Testien ajaminen
+
+```bash
+pip install robotframework robotframework-browser
+rfbrowser init
+
+robot apneapp-login/tests/login_tests.robot
+robot apneapp-login/tests/register_tests.robot
+```
+
+---
+
+## Testitulokset
+
+| | Tulos |
+|---|---|
+| JS yksikkötestit | ✅ 48 / 48 läpäisty |
+| Robot Framework testit | 12 TC (login + register) |
+
+---
+
+## Projektin rakenne
+
+```
+Apneapp_FE/
+├── apneapp-login/
+│   ├── index.html          ← Kirjautuminen
+│   ├── register.html       ← Rekisteröinti
+│   ├── dashboard.html      ← Dashboard
+│   ├── script.js           ← Logiikka
+│   ├── TESTAUS.md          ← Testausdokumentti (Yamama)
+│   ├── TESTAUS_Paavo.md    ← Testausdokumentti (Paavo_FE2)
+│   ├── TESTAUS_Henri.md    ← Testausdokumentti (Henri_FE)
+│   └── tests/
+│       ├── tests.html
+│       ├── tests_Paavo.html
+│       ├── tests_Henri.html
+│       ├── login_tests.robot
+│       └── register_tests.robot
+└── Apneapp/
+    └── graph.html          ← Kaavionäkymä
+```
