@@ -31,6 +31,10 @@ Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjau
 | JS-yksikkötestit (Yamama) | [tests/tests.html](apneapp-login/tests/tests.html) |
 | JS-yksikkötestit (Paavo) | [tests/tests_Paavo.html](apneapp-login/tests/tests_Paavo.html) |
 | JS-yksikkötestit (Henri) | [tests/tests_Henri.html](apneapp-login/tests/tests_Henri.html) |
+| RF – Kirjautuminen (report) | [tests/reports/report.html](apneapp-login/tests/reports/report.html) |
+| RF – Kirjautuminen (log) | [tests/reports/log.html](apneapp-login/tests/reports/log.html) |
+| RF – Rekisteröinti (report) | [tests/reports/register_report.html](apneapp-login/tests/reports/register_report.html) |
+| RF – Rekisteröinti (log) | [tests/reports/register_log.html](apneapp-login/tests/reports/register_log.html) |
 
 ---
 
