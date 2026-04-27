@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-04-27T10:41:40.438974" rpa="false" schemaversion="5">
+<suite id="s1" name="Register Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\register_tests.robot">
+<kw name="New Browser" owner="Browser" type="SETUP">
+<msg time="2026-04-27T10:41:40.978980" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\97584fea-1254-4b1e-9650-e9fa86550903"}</msg>
+<msg time="2026-04-27T10:41:41.039873" level="INFO">Starting Browser process C:\Users\yamam\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:56074</msg>
+<msg time="2026-04-27T10:41:43.377767" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\97584fea-1254-4b1e-9650-e9fa86550903"}</msg>
+<arg>chromium</arg>
+<arg>headless=True</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-04-27T10:41:40.977082" elapsed="2.401224"/>
+</kw>
+<test id="s1-t1" name="TC1: Tyhjä lomake – kaikki kentät pakollisia" line="13">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:43.748809" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:43.748904" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:43.388443" elapsed="0.360665"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:43.750073" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:43.749320" elapsed="0.445168"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.244472" level="INFO">Text: 'Etunimi on pakollinen'</msg>
+<msg time="2026-04-27T10:41:44.244681" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
+<var>${fn_err}</var>
+<arg>id=firstNameError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.194752" elapsed="0.049960"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${fn_err}</arg>
+<arg>pakollinen</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.244901" elapsed="0.000888"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.274056" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
+<msg time="2026-04-27T10:41:44.274246" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
+<var>${ln_err}</var>
+<arg>id=lastNameError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.245975" elapsed="0.028300"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${ln_err}</arg>
+<arg>pakollinen</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.274461" elapsed="0.001094"/>
+</kw>
+<msg time="2026-04-27T10:41:44.297025" level="INFO">Switching context to context=1ba25ae1-1582-43ff-aec9-0c2e1d5f183d in CURRENT</msg>
+<msg time="2026-04-27T10:41:44.307029" level="INFO">Successfully changed active context: context=1ba25ae1-1582-43ff-aec9-0c2e1d5f183d</msg>
+<msg time="2026-04-27T10:41:44.321737" level="INFO">Successfully closed Context</msg>
+<doc>Tyhjällä lomakkeella rekisteröityminen näyttää pakollisuusvirheet</doc>
+<status status="PASS" start="2026-04-27T10:41:43.378816" elapsed="0.897005"/>
+</test>
+<test id="s1-t2" name="TC2: Virheellinen sähköposti hylätään" line="22">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:44.657271" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:44.657544" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.327609" elapsed="0.330316"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.659742" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<arg>id=firstName</arg>
+<arg>Testi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.658311" elapsed="0.061337"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.720876" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<arg>id=lastName</arg>
+<arg>Kayttaja</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.719887" elapsed="0.018584"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.739874" level="INFO">Fills the text 'eiole' in the given field.</msg>
+<arg>id=email</arg>
+<arg>eiole</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.738724" elapsed="0.018576"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.758999" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=password</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.757624" elapsed="0.027571"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:44.786353" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=confirmPassword</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.785457" elapsed="0.020862"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:44.807754" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:44.806563" elapsed="0.272203"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.119751" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
+<msg time="2026-04-27T10:41:45.119998" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
+<var>${email_err}</var>
+<arg>id=emailError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.079093" elapsed="0.040968"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${email_err}</arg>
+<arg>Virheellinen</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.120757" elapsed="0.001122"/>
+</kw>
+<msg time="2026-04-27T10:41:45.140492" level="INFO">Switching context to context=842a4e20-876e-4463-b8aa-2d4825ec8952 in CURRENT</msg>
+<msg time="2026-04-27T10:41:45.151354" level="INFO">Successfully changed active context: context=842a4e20-876e-4463-b8aa-2d4825ec8952</msg>
+<msg time="2026-04-27T10:41:45.161578" level="INFO">Successfully closed Context</msg>
+<doc>Virheellinen sähköpostiosoite näyttää virheilmoituksen</doc>
+<status status="PASS" start="2026-04-27T10:41:44.322607" elapsed="0.799463"/>
+</test>
+<test id="s1-t3" name="TC3: Liian lyhyt salasana hylätään (alle 8 merkkiä)" line="34">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:45.434141" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:45.434236" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.166765" elapsed="0.267639"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.435571" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<arg>id=firstName</arg>
+<arg>Testi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.434624" elapsed="0.047136"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.482924" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<arg>id=lastName</arg>
+<arg>Kayttaja</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.482098" elapsed="0.016359"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.499639" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<arg>id=email</arg>
+<arg>kayttaja@email.fi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.498744" elapsed="0.018833"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.518628" level="INFO">Fills the text 'abc1234' in the given field.</msg>
+<arg>id=password</arg>
+<arg>abc1234</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.517817" elapsed="0.019920"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.539342" level="INFO">Fills the text 'abc1234' in the given field.</msg>
+<arg>id=confirmPassword</arg>
+<arg>abc1234</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.538005" elapsed="0.020383"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:45.560011" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.558807" elapsed="0.396012"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:45.994135" level="INFO">Text: 'Salasanan on oltava vähintään 8 merkkiä'</msg>
+<msg time="2026-04-27T10:41:45.994307" level="INFO">${pw_err} = Salasanan on oltava vähintään 8 merkkiä</msg>
+<var>${pw_err}</var>
+<arg>id=passwordError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.955060" elapsed="0.039274"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${pw_err}</arg>
+<arg>8 merkkiä</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:45.994523" elapsed="0.000644"/>
+</kw>
+<msg time="2026-04-27T10:41:46.013948" level="INFO">Switching context to context=a6fa8e55-6ac8-47c7-90e0-b657d4381177 in CURRENT</msg>
+<msg time="2026-04-27T10:41:46.022498" level="INFO">Successfully changed active context: context=a6fa8e55-6ac8-47c7-90e0-b657d4381177</msg>
+<msg time="2026-04-27T10:41:46.030881" level="INFO">Successfully closed Context</msg>
+<doc>Alle 8 merkin salasana rekisteröinnissä hylätään</doc>
+<status status="PASS" start="2026-04-27T10:41:45.162789" elapsed="0.832508"/>
+</test>
+<test id="s1-t4" name="TC4: Erilaiset salasanat hylätään" line="46">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:46.299392" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:46.299484" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.035709" elapsed="0.263930"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.300673" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<arg>id=firstName</arg>
+<arg>Testi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.299849" elapsed="0.039623"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.340546" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<arg>id=lastName</arg>
+<arg>Kayttaja</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.339699" elapsed="0.014338"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.355687" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<arg>id=email</arg>
+<arg>kayttaja@email.fi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.354414" elapsed="0.017767"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.373707" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=password</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.372426" elapsed="0.016930"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.391067" level="INFO">Fills the text 'erilainen1' in the given field.</msg>
+<arg>id=confirmPassword</arg>
+<arg>erilainen1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.389689" elapsed="0.018636"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:46.410549" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.409023" elapsed="0.377206"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:46.832067" level="INFO">Text: 'Salasanat eivät täsmää'</msg>
+<msg time="2026-04-27T10:41:46.832250" level="INFO">${confirm_err} = Salasanat eivät täsmää</msg>
+<var>${confirm_err}</var>
+<arg>id=confirmPasswordError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.786860" elapsed="0.045419"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${confirm_err}</arg>
+<arg>täsmää</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.832486" elapsed="0.000828"/>
+</kw>
+<msg time="2026-04-27T10:41:46.855466" level="INFO">Switching context to context=413b65b8-c7fa-40c8-a0af-46d56d1edbff in CURRENT</msg>
+<msg time="2026-04-27T10:41:46.867363" level="INFO">Successfully changed active context: context=413b65b8-c7fa-40c8-a0af-46d56d1edbff</msg>
+<msg time="2026-04-27T10:41:46.878532" level="INFO">Successfully closed Context</msg>
+<doc>Jos salasanat eivät täsmää, näytetään virheilmoitus</doc>
+<status status="PASS" start="2026-04-27T10:41:46.031642" elapsed="0.801836"/>
+</test>
+<test id="s1-t5" name="TC5: Puuttuva etunimi hylätään" line="58">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:47.167040" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:47.167135" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:46.884147" elapsed="0.283168"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:47.168322" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<arg>id=lastName</arg>
+<arg>Kayttaja</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.167515" elapsed="0.044423"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:47.213337" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<arg>id=email</arg>
+<arg>kayttaja@email.fi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.212259" elapsed="0.014890"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:47.228488" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=password</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.227377" elapsed="0.016458"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:47.245875" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=confirmPassword</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.244191" elapsed="0.021884"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:47.267315" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.266430" elapsed="0.402216"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:47.703552" level="INFO">Text: 'Etunimi on pakollinen'</msg>
+<msg time="2026-04-27T10:41:47.703742" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
+<var>${fn_err}</var>
+<arg>id=firstNameError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.668887" elapsed="0.034886"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${fn_err}</arg>
+<arg>pakollinen</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.704032" elapsed="0.000983"/>
+</kw>
+<msg time="2026-04-27T10:41:47.722142" level="INFO">Switching context to context=f54b8c6b-3cc4-4b5e-8099-8976707c281d in CURRENT</msg>
+<msg time="2026-04-27T10:41:47.731167" level="INFO">Successfully changed active context: context=f54b8c6b-3cc4-4b5e-8099-8976707c281d</msg>
+<msg time="2026-04-27T10:41:47.740223" level="INFO">Successfully closed Context</msg>
+<doc>Tyhjä etunimikenttä näyttää pakollisuusvirheen</doc>
+<status status="PASS" start="2026-04-27T10:41:46.879177" elapsed="0.826002"/>
+</test>
+<test id="s1-t6" name="TC6: Puuttuva sukunimi hylätään" line="69">
+<kw name="New Page" owner="Browser">
+<msg time="2026-04-27T10:41:47.999863" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-04-27T10:41:47.999953" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${REGISTER_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-04-27T10:41:47.747019" elapsed="0.253091"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:48.001137" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<arg>id=firstName</arg>
+<arg>Testi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.000301" elapsed="0.038539"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:48.040151" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<arg>id=email</arg>
+<arg>kayttaja@email.fi</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.039146" elapsed="0.018869"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:48.059760" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=password</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.058390" elapsed="0.019850"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-04-27T10:41:48.079661" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<arg>id=confirmPassword</arg>
+<arg>salasana1</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.078613" elapsed="0.017900"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-04-27T10:41:48.097931" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<arg>id=submitBtn</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.096773" elapsed="0.387637"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-04-27T10:41:48.522251" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
+<msg time="2026-04-27T10:41:48.522541" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
+<var>${ln_err}</var>
+<arg>id=lastNameError</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.484632" elapsed="0.037942"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${ln_err}</arg>
+<arg>pakollinen</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.522775" elapsed="0.000846"/>
+</kw>
+<msg time="2026-04-27T10:41:48.541284" level="INFO">Switching context to context=d4ef5458-4192-4869-9de9-9a29a3811b49 in CURRENT</msg>
+<msg time="2026-04-27T10:41:48.549710" level="INFO">Successfully changed active context: context=d4ef5458-4192-4869-9de9-9a29a3811b49</msg>
+<msg time="2026-04-27T10:41:48.558243" level="INFO">Successfully closed Context</msg>
+<doc>Tyhjä sukunimikenttä näyttää pakollisuusvirheen</doc>
+<status status="PASS" start="2026-04-27T10:41:47.741090" elapsed="0.782682"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-04-27T10:41:48.622989" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-27T10:41:48.559724" elapsed="0.063542"/>
+</kw>
+<doc>Apneapp – Rekisteröintilomakkeen automaatiotestit
+Testaaja: Yamama | Branch: Yamama-FE</doc>
+<status status="PASS" start="2026-04-27T10:41:40.441913" elapsed="8.181456"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Register Tests" id="s1" pass="6" fail="0" skip="0">Register Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
