@@ -111,3 +111,53 @@
 | 1 | 1 päivä, 1 merkintä | hours: `[{date, hours:7}]`, quality: `[{date, quality:2.0}]`, days: `1` | sleepHours: `[7]`, riskScores: `[50]` |
 | 2 | Tyhjät taulukot | `[]` / `[]`, days: `7` | labels: `[]`, sleepHours: `[]`, riskScores: `[]` |
 | 3 | days > saatavilla oleva data | 2 merkintää, days: `10` | palauttaa molemmat merkinnät |
+
+---
+
+## Robot Framework – Automaatiotestit
+
+Sovelluksen lomakkeet on testattu myös **Browser-kirjastolla** automaattisesti selaimessa.
+
+### Kirjautumislomake – [login_tests.robot](tests/login_tests.robot)
+
+| # | Testitapaus | Odotettu tulos |
+|---|---|---|
+| TC1 | Tyhjä lomake – sähköposti ja salasana pakollisia | Virheilmoitukset näkyvät |
+| TC2 | Virheellinen sähköposti hylätään | `"Virheellinen sähköpostiosoite"` |
+| TC3 | Sähköposti ilman pistettä hylätään | `"Virheellinen sähköpostiosoite"` |
+| TC4 | Liian lyhyt salasana hylätään | `"vähintään 6 merkkiä"` |
+| TC5 | Tyhjä salasana hylätään | `"Salasana on pakollinen"` |
+| TC6 | Oikeilla arvoilla ei validointivirheitä | Ei virheilmoituksia |
+
+### Rekisteröintilomake – [register_tests.robot](tests/register_tests.robot)
+
+| # | Testitapaus | Odotettu tulos |
+|---|---|---|
+| TC1 | Tyhjä lomake – kaikki kentät pakollisia | Virheilmoitukset näkyvät |
+| TC2 | Virheellinen sähköposti hylätään | `"Virheellinen sähköpostiosoite"` |
+| TC3 | Liian lyhyt salasana hylätään (alle 8) | `"vähintään 8 merkkiä"` |
+| TC4 | Erilaiset salasanat hylätään | `"Salasanat eivät täsmää"` |
+| TC5 | Puuttuva etunimi hylätään | `"Etunimi on pakollinen"` |
+| TC6 | Puuttuva sukunimi hylätään | `"Sukunimi on pakollinen"` |
+
+### HTML-raportit
+
+| Raportti | Linkki |
+|---|---|
+| RF – Kirjautuminen | [reports/report.html](tests/reports/report.html) |
+| RF – Rekisteröinti | [reports/register_report.html](tests/reports/register_report.html) |
+
+---
+
+## Yhteenveto
+
+| | Määrä |
+|---|---|
+| Tehtäviä (JS yksikkötestit) | 8 |
+| JS testejä yhteensä | 32 |
+| Robot Framework testejä | 12 |
+| Läpäissyt | 32 / 32 |
+| Epäonnistuneet | 0 |
+
+> Kaikki testit läpäistiin hyväksytysti.  
+> [Avaa JS testit selaimessa](tests/tests_Paavo.html)
