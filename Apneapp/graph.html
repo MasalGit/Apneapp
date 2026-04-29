@@ -25,13 +25,6 @@
       margin-bottom: 20px;
     }
 
-    .graph-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #1e293b;
-    }
-
-    /* OLD BUTTON STYLE RESTORED */
     .graph-period {
       display: flex;
       gap: 10px;
@@ -44,12 +37,7 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      transition: all 0.3s;
-      color: #1e293b;
-    }
-
-    .graph-period button:hover {
-      border-color: #0f172a;
+      transition: all 0.2s;
     }
 
     .graph-period button.active {
@@ -66,60 +54,51 @@
 
 <body class="db-body">
 
-  <aside class="db-sidebar">
-    <div class="db-sidebar-logo">
-      <i class="fas fa-lungs"></i>
-      <span>Apneapp</span>
+<aside class="db-sidebar">
+  <div class="db-sidebar-logo">
+    <i class="fas fa-lungs"></i>
+    <span>Apneapp</span>
+  </div>
+
+  <nav class="db-nav">
+    <a href="dashboard.html" class="db-nav-item">Yleiskatsaus</a>
+    <a href="graph.html" class="db-nav-item active">Kaavio</a>
+  </nav>
+
+  <button class="db-logout" onclick="logout()">Kirjaudu ulos</button>
+</aside>
+
+<main class="db-main">
+
+  <header class="db-topbar">
+    <div>
+      <h1>Kaavio</h1>
+      <p id="dbDate"></p>
+    </div>
+  </header>
+
+  <div class="graph-container">
+    <div class="graph-header">
+      <h2>Unen kesto ja LF/HF</h2>
+
+      <div class="graph-period">
+        <button class="active" data-period="7d">7 pv</button>
+        <button data-period="30d">30 pv</button>
+        <button data-period="90d">90 pv</button>
+        <button data-period="365d">365 pv</button>
+      </div>
     </div>
 
-    <nav class="db-nav">
-      <a href="dashboard.html" class="db-nav-item">
-        <i class="fas fa-th-large"></i>
-        <span>Yleiskatsaus</span>
-      </a>
-      <a href="graph.html" class="db-nav-item active">
-        <i class="fas fa-chart-line"></i>
-        <span>Kaavio</span>
-      </a>
-    </nav>
+    <canvas id="sleepRiskChart"></canvas>
+  </div>
 
-    <button class="db-logout" onclick="logout()">
-      <i class="fas fa-sign-out-alt"></i>
-      <span>Kirjaudu ulos</span>
-    </button>
-  </aside>
-
-  <main class="db-main">
-
-    <header class="db-topbar">
-      <div>
-        <h1 class="db-title">Kaavio</h1>
-        <p id="dbDate"></p>
-      </div>
-    </header>
-
-    <div class="graph-container">
-      <div class="graph-header">
-        <h2>Unen kesto ja LF/HF</h2>
-
-        <div class="graph-period">
-          <button class="active" data-period="7d">7 pv</button>
-          <button data-period="30d">30 pv</button>
-          <button data-period="90d">90 pv</button>
-        </div>
-      </div>
-
-      <canvas id="sleepRiskChart"></canvas>
-    </div>
-
-  </main>
+</main>
 
 <script>
 const API_BASE_URL = 'http://127.0.0.1:3000/api';
 
-const d = new Date();
 document.getElementById("dbDate").textContent =
-  d.toLocaleDateString("fi-FI", {
+  new Date().toLocaleDateString("fi-FI", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -127,21 +106,20 @@ document.getElementById("dbDate").textContent =
   });
 
 async function fetchMeasurements(days = 7) {
-  try {
-    const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
-    const res = await fetch(`${API_BASE_URL}/measurements?days=${days}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+  const res = await fetch(`${API_BASE_URL}/measurements?days=${days}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  if (!res.ok) return [];
+  return await res.json();
+}
 
-    return await res.json();
-
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
+function getColor(v) {
+  if (v < 0.6) return "#22c55e";
+  if (v < 1.2) return "#facc15";
+  return "#ef4444";
 }
 
 function processData(data, days) {
@@ -150,47 +128,33 @@ function processData(data, days) {
 
   const filtered = data
     .filter(d => new Date(d.date) >= cutoff)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .sort((a,b) => new Date(a.date) - new Date(b.date));
 
   return {
     labels: filtered.map(d =>
-      new Date(d.date).toLocaleDateString("fi-FI", {
-        month: "short",
-        day: "numeric"
-      })
+      new Date(d.date).toLocaleDateString("fi-FI", { month:"short", day:"numeric" })
     ),
     sleep: filtered.map(d => d.hours),
     lfhf: filtered.map(d => d.lfhf)
   };
 }
 
-let measurementsData = [];
+let chart;
+let dataCache = [];
 
 async function init() {
-  measurementsData = await fetchMeasurements(90);
+  dataCache = await fetchMeasurements(365);
   updateChart(7);
 }
 
-function getColor(value) {
-  if (value < 0.6) return "#22c55e";
-  if (value < 1.2) return "#facc15";
-  return "#ef4444";
-}
-
 function updateChart(days) {
-  const { labels, sleep, lfhf } = processData(measurementsData, days);
+  const { labels, sleep, lfhf } = processData(dataCache, days);
 
-  if (window.chart) {
-    window.chart.data.labels = labels;
-    window.chart.data.datasets[0].data = sleep;
-    window.chart.data.datasets[1].data = lfhf;
-    window.chart.update();
-    return;
-  }
+  if (chart) chart.destroy();
 
-  const ctx = document.getElementById("sleepRiskChart").getContext("2d");
+  const ctx = document.getElementById("sleepRiskChart");
 
-  window.chart = new Chart(ctx, {
+  chart = new Chart(ctx, {
     type: "bar",
     data: {
       labels,
@@ -211,36 +175,30 @@ function updateChart(days) {
           tension: 0.4,
           fill: true,
           yAxisID: "y1",
+
           segment: {
             borderColor: ctx => getColor(ctx.p0.parsed.y)
           },
+
           backgroundColor: (context) => {
             const chart = context.chart;
             const { ctx, chartArea } = chart;
-
             if (!chartArea) return null;
 
-            const value = context.dataset.data[context.dataset.data.length - 1];
+            const value = context.dataset.data[context.dataIndex];
             const color = getColor(value);
 
             const rgb = hexToRgb(color);
 
-            const gradient = ctx.createLinearGradient(
-              0,
-              chartArea.top,
-              0,
-              chartArea.bottom
-            );
+            const grad = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+            grad.addColorStop(0, `rgba(${rgb},0.35)`);
+            grad.addColorStop(1, `rgba(${rgb},0)`);
 
-            gradient.addColorStop(0, `rgba(${rgb},0.35)`);
-            gradient.addColorStop(1, `rgba(${rgb},0)`);
-
-            return gradient;
+            return grad;
           },
-          pointRadius: 4,
-          pointBackgroundColor: "#3b82f6",
-          pointBorderColor: "#fff",
-          pointBorderWidth: 2
+
+          pointRadius: 3,
+          pointBackgroundColor: "#3b82f6"
         }
       ]
     },
@@ -249,17 +207,15 @@ function updateChart(days) {
       interaction: { mode: "index", intersect: false },
       scales: {
         y: {
-          position: "left",
           min: 0,
           max: 12,
-          title: { display: true, text: "Unen kesto (tuntia)" }
+          title: { display: true, text: "Unen kesto" }
         },
         y1: {
           position: "right",
           grid: { display: false },
           suggestedMin: 0,
-          suggestedMax: 2,
-          title: { display: true, text: "LF/HF Avg" }
+          suggestedMax: 2
         }
       }
     }
@@ -267,9 +223,9 @@ function updateChart(days) {
 }
 
 function hexToRgb(hex) {
-  const c = hex.replace("#", "");
-  const bigint = parseInt(c, 16);
-  return `${(bigint >> 16) & 255},${(bigint >> 8) & 255},${bigint & 255}`;
+  const c = hex.replace("#","");
+  const i = parseInt(c,16);
+  return `${(i>>16)&255},${(i>>8)&255},${i&255}`;
 }
 
 document.querySelectorAll(".graph-period button").forEach(btn => {
@@ -281,14 +237,15 @@ document.querySelectorAll(".graph-period button").forEach(btn => {
 
     const days =
       btn.dataset.period === "30d" ? 30 :
-      btn.dataset.period === "90d" ? 90 : 7;
+      btn.dataset.period === "90d" ? 90 :
+      btn.dataset.period === "365d" ? 365 : 7;
 
     updateChart(days);
   };
 });
 
 function logout() {
-  localStorage.removeItem('token');
+  localStorage.removeItem("token");
   location.href = "index.html";
 }
 
