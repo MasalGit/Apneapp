@@ -1,7 +1,7 @@
 ﻿# Apneapp – Testausdokumentti
 
 **Testaaja:** Yamama  
-**Päivämäärä:** 22.4.2026  
+**Päivämäärä:** 30.4.2026  
 **Branch:** `Yamama-FE`
 
 ---

@@ -19,7 +19,7 @@ Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjau
 | Dokumentti | Kuvaus |
 |---|---|
 | [TESTAUS.md](apneapp-login/TESTAUS.md) | Yamama-FE – yksikkö- ja automaatiotestit (48 JS + 12 Robot Framework) |
-| [TESTAUS_Paavo.md](apneapp-login/TESTAUS_Paavo.md) | Paavo_FE2 – validointitestit |
+| [TESTAUS_Paavo.md](apneapp-login/TESTAUS_Paavo.md) | Paavo_FE2 – validointi- ja graph-testit (43 JS + 12 Robot Framework) |
 | [TESTAUS_Ali.md](apneapp-login/TESTAUS_Ali.md) | ali-fe2-work – validointi, teema, kielenkääntö, UI (33 JS + 41 manuaalinen) |
 
 ---
@@ -83,6 +83,7 @@ robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_test
 | | Tulos |
 |---|---|
 | JS yksikkötestit (Yamama-FE) | ✅ 48 / 48 läpäisty |
+| JS yksikkötestit (Paavo) | ✅ 43 / 43 läpäisty |
 | JS yksikkötestit (Ali) | ✅ 33 / 33 läpäisty |
 | Robot Framework – UI (FE) | ✅ 12 / 12 läpäisty |
 | Manuaaliset API-testit (BE) | ✅ 22 / 22 läpäisty |
@@ -101,11 +102,12 @@ Apneapp_FE/
 │   ├── script.js           ← Logiikka
 │   ├── TESTAUS.md          ← Testausdokumentti (Yamama)
 │   ├── TESTAUS_Paavo.md    ← Testausdokumentti (Paavo_FE2)
+│   ├── TESTAUS_Ali.md      ← Testausdokumentti (ali-fe2-work)
 │   ├── TESTAUS_BE.md       ← Testausdokumentti (Backend API)
 │   └── tests/
 │       ├── tests.html
 │       ├── tests_Paavo.html
-│       ├── tests_Henri.html
+│       ├── tests_Ali.html
 │       ├── login_tests.robot
 │       ├── register_tests.robot
 │       └── be_api_tests.robot
