@@ -20,7 +20,7 @@ Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjau
 |---|---|
 | [TESTAUS.md](apneapp-login/TESTAUS.md) | Yamama-FE – yksikkö- ja automaatiotestit (48 JS + 12 Robot Framework) |
 | [TESTAUS_Paavo.md](apneapp-login/TESTAUS_Paavo.md) | Paavo_FE2 – validointitestit |
-| [TESTAUS_Henri.md](apneapp-login/TESTAUS_Henri.md) | Henri_FE – validointitestit |
+| [TESTAUS_Ali.md](apneapp-login/TESTAUS_Ali.md) | ali-fe2-work – validointi, teema, kielenkääntö, UI (33 JS + 41 manuaalinen) |
 
 ---
 
@@ -30,7 +30,7 @@ Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjau
 |---|---|
 | JS-yksikkötestit (Yamama) | [tests/tests.html](apneapp-login/tests/tests.html) |
 | JS-yksikkötestit (Paavo) | [tests/tests_Paavo.html](apneapp-login/tests/tests_Paavo.html) |
-| JS-yksikkötestit (Henri) | [tests/tests_Henri.html](apneapp-login/tests/tests_Henri.html) |
+| JS-yksikkötestit (Ali) | [tests/tests_Ali.html](apneapp-login/tests/tests_Ali.html) |
 | RF – Kirjautuminen (report) | [tests/reports/report.html](apneapp-login/tests/reports/report.html) |
 | RF – Kirjautuminen (log) | [tests/reports/log.html](apneapp-login/tests/reports/log.html) |
 | RF – Rekisteröinti (report) | [tests/reports/register_report.html](apneapp-login/tests/reports/register_report.html) |
@@ -61,7 +61,7 @@ robot apneapp-login/tests/register_tests.robot
 
 | Dokumentti | Kuvaus |
 |---|---|
-| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (28 manuaalinen + 12 Robot Framework) |
+| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (22 manuaalinen + 12 Robot Framework) |
 | [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (12 TC, RequestsLibrary) |
 
 ### BE-testien ajaminen
@@ -82,9 +82,10 @@ robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_test
 
 | | Tulos |
 |---|---|
-| JS yksikkötestit (FE) | ✅ 48 / 48 läpäisty |
+| JS yksikkötestit (Yamama-FE) | ✅ 48 / 48 läpäisty |
+| JS yksikkötestit (Ali) | ✅ 33 / 33 läpäisty |
 | Robot Framework – UI (FE) | ✅ 12 / 12 läpäisty |
-| Manuaaliset API-testit (BE) | ✅ 28 / 28 läpäisty |
+| Manuaaliset API-testit (BE) | ✅ 22 / 22 läpäisty |
 | Robot Framework – API (BE) | 12 TC (vaatii käynnissä olevan BE-palvelimen) |
 
 ---
