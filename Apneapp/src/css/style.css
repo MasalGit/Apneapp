@@ -889,3 +889,119 @@ body {
     padding: 32px 24px;
   }
 }
+
+/* ===== GLOBAL DARK MODE ===== */
+:root {
+  --app-bg: #f3f4f6;
+  --app-card: #ffffff;
+  --app-text: #111827;
+  --app-muted: #6b7280;
+  --app-border: #e5e7eb;
+  --app-blue: #3b82f6;
+  --app-blue-dark: #2563eb;
+  --app-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+}
+
+body.dark-mode {
+  --app-bg: #111827;
+  --app-card: #1f2937;
+  --app-text: #f9fafb;
+  --app-muted: #d1d5db;
+  --app-border: #374151;
+  --app-blue: #60a5fa;
+  --app-blue-dark: #3b82f6;
+  --app-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Apply dark mode to dashboard layout */
+body.dark-mode .db-main {
+  background: var(--app-bg);
+}
+
+body.dark-mode .db-title,
+body.dark-mode .db-section-title {
+  color: var(--app-text);
+}
+
+body.dark-mode .db-date,
+body.dark-mode .db-user {
+  color: var(--app-muted);
+}
+
+/* Cards */
+body.dark-mode .db-card,
+body.dark-mode .db-session,
+body.dark-mode .settings-card,
+body.dark-mode .settings-panel {
+  background: var(--app-card);
+  border-color: var(--app-border);
+  color: var(--app-text);
+}
+
+/* Inputs */
+body.dark-mode input,
+body.dark-mode select {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+/* Avatar */
+body.dark-mode .db-avatar {
+  background: #374151;
+  color: #d1d5db;
+}
+/* ===== FORCE DARK MODE FOR DASHBOARD PAGES ===== */
+body.db-body.dark-mode {
+  background: #111827 !important;
+  color: #f9fafb !important;
+}
+
+body.db-body.dark-mode .db-main {
+  background: #111827 !important;
+}
+
+body.db-body.dark-mode .db-title,
+body.db-body.dark-mode .db-section-title,
+body.db-body.dark-mode .db-card-value,
+body.db-body.dark-mode .db-session-row strong {
+  color: #f9fafb !important;
+}
+
+body.db-body.dark-mode .db-date,
+body.db-body.dark-mode .db-user,
+body.db-body.dark-mode .db-card-label,
+body.db-body.dark-mode .db-card-value small,
+body.db-body.dark-mode .db-session-row span {
+  color: #d1d5db !important;
+}
+
+body.db-body.dark-mode .db-card,
+body.db-body.dark-mode .db-session {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.db-body.dark-mode .db-session-row {
+  border-bottom-color: #374151 !important;
+}
+
+body.db-body.dark-mode .db-avatar {
+  background: #374151 !important;
+  color: #d1d5db !important;
+}
+
+body.db-body.dark-mode .db-risk-banner {
+  background: #422006 !important;
+  border-color: #92400e !important;
+}
+
+body.db-body.dark-mode .db-risk-left strong {
+  color: #fde68a !important;
+}
+
+body.db-body.dark-mode .db-risk-left span {
+  color: #fcd34d !important;
+}

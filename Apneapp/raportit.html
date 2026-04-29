@@ -6,6 +6,7 @@
   <title>Apneapp - Raportit</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="src/css/style.css">
+
   <style>
     .report-grid {
       display: grid;
@@ -19,6 +20,7 @@
       border-radius: 16px;
       padding: 24px;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
     }
 
     .report-card i {
@@ -48,6 +50,7 @@
       border-radius: 10px;
       cursor: pointer;
       font-size: 14px;
+      font-weight: 600;
     }
 
     .report-btn:hover {
@@ -62,10 +65,37 @@
       border-radius: 10px;
       color: #1e3a8a;
       font-size: 14px;
+      line-height: 1.6;
+    }
+
+    body.dark-mode .report-card {
+      background: #1f2937;
+      border-color: #374151;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode .report-card h3 {
+      color: #f9fafb;
+    }
+
+    body.dark-mode .report-card p {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .report-note {
+      background: #172554;
+      border-left-color: #60a5fa;
+      color: #dbeafe;
     }
   </style>
 </head>
+
 <body class="db-body">
+<script>
+  if (localStorage.getItem("apneapp-theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
 
   <aside class="db-sidebar">
     <div class="db-sidebar-logo">
@@ -76,86 +106,81 @@
     <nav class="db-nav">
       <a href="dashboard.html" class="db-nav-item">
         <i class="fas fa-th-large"></i>
-        <span>Yleiskatsaus</span>
+        <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
       </a>
       <a href="sykemittaus.html" class="db-nav-item">
         <i class="fas fa-heartbeat"></i>
-        <span>Sykemittaus</span>
+        <span data-i18n="sidebarHeart">Sykemittaus</span>
       </a>
       <a href="tilastot.html" class="db-nav-item">
         <i class="fas fa-chart-bar"></i>
-        <span>Tilastot</span>
+        <span data-i18n="sidebarStats">Tilastot</span>
       </a>
       <a href="unijaksot.html" class="db-nav-item">
         <i class="fas fa-moon"></i>
-        <span>Unijaksot</span>
+        <span data-i18n="sidebarSleep">Unijaksot</span>
       </a>
       <a href="raportit.html" class="db-nav-item active">
         <i class="fas fa-file-medical"></i>
-        <span>Raportit</span>
+        <span data-i18n="sidebarReports">Raportit</span>
       </a>
       <a href="asetukset.html" class="db-nav-item">
         <i class="fas fa-cog"></i>
-        <span>Asetukset</span>
+        <span data-i18n="sidebarSettings">Asetukset</span>
       </a>
     </nav>
 
     <button class="db-logout" onclick="logout()">
       <i class="fas fa-sign-out-alt"></i>
-      <span>Kirjaudu ulos</span>
+      <span data-i18n="logout">Kirjaudu ulos</span>
     </button>
   </aside>
 
   <main class="db-main">
     <header class="db-topbar">
       <div>
-        <h1 class="db-title">Raportit</h1>
-        <p class="db-date">Lataa ja tarkastele tärkeimpiä analyysiyhteenvetoja.</p>
+        <h1 data-i18n="reports">Raportit</h1>
+        <p data-i18n="downloadView">Lataa ja tarkastele tärkeimpiä analyysiyhteenvetoja.</p>
       </div>
       <div class="db-user">
         <div class="db-avatar"><i class="fas fa-user"></i></div>
-        <span>Käyttäjä</span>
+        <span data-i18n="user">Käyttäjä</span>
       </div>
     </header>
 
     <section class="db-section">
-      <h2 class="db-section-title">Saatavilla olevat raportit</h2>
+      <h2 class="db-section-title" data-i18n="availableReports">Saatavilla olevat raportit</h2>
 
       <div class="report-grid">
         <div class="report-card">
           <i class="fas fa-file-waveform"></i>
-          <h3>Uniyhteenveto</h3>
-          <p>Kooste viimeisimmän yön unidatasta, unen kestosta ja palautumisesta.</p>
-          <button class="report-btn">Avaa raportti</button>
+          <h3 data-i18n="sleepSummary">Uniyhteenveto</h3>
+          <p data-i18n="sleepSummaryDesc">Kooste viimeisimmän yön unidatasta, unen kestosta ja palautumisesta.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
         </div>
 
         <div class="report-card">
           <i class="fas fa-heart-pulse"></i>
-          <h3>HRV-analyysi</h3>
-          <p>Sykevälivaihteluun perustuva analyysi, joka tukee uniapneariskin arviointia.</p>
-          <button class="report-btn">Avaa raportti</button>
+          <h3 data-i18n="hrvAnalysis">HRV-analyysi</h3>
+          <p data-i18n="hrvAnalysisDesc">Sykevälivaihteluun perustuva analyysi, joka tukee uniapneariskin arviointia.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
         </div>
 
         <div class="report-card">
           <i class="fas fa-user-doctor"></i>
-          <h3>Lääkäriraportti</h3>
-          <p>Tulevaisuudessa jaettava yhteenveto, jonka voi näyttää terveydenhuollon ammattilaiselle.</p>
-          <button class="report-btn">Avaa raportti</button>
+          <h3 data-i18n="doctorReport">Lääkäriraportti</h3>
+          <p data-i18n="doctorReportDesc">Tulevaisuudessa jaettava yhteenveto, jonka voi näyttää terveydenhuollon ammattilaiselle.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
         </div>
       </div>
 
       <div class="report-note">
-        Raporttien sisältö on vielä osittain kehitysvaiheessa. Tähän näkymään voidaan myöhemmin lisätä
-        ladattavat PDF-raportit, tarkemmat mittaustulokset ja analyysikaaviot.
+        <p data-i18n="reportNote">Raporttien sisältö on vielä osittain kehitysvaiheessa. Tähän näkymään voidaan myöhemmin lisätä ladattavat PDF-raportit, tarkemmat mittaustulokset ja analyysikaaviot.</p>
       </div>
     </section>
   </main>
 
-<script>
-  function logout() {
-    window.location.href = "index.html";
-  }
-</script>
-
+<script src="script.js"></script>
+<script src="src/js/language.js"></script>
 </body>
 </html>
