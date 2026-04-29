@@ -10,7 +10,6 @@ Suite Teardown    Delete All Sessions
 ${BASE_URL}    http://localhost:3000/api
 ${TOKEN}       ${EMPTY}
 ${USER_ID}     ${EMPTY}
-${ENTRY_ID}    ${EMPTY}
 
 *** Keywords ***
 Alusta Testit
@@ -104,52 +103,40 @@ GET Me Tokenilla Onnistuu
     Should Contain    ${body}    username
 
 # -----------------------------------------------
-# Tehtava 5: Paivakirjamerkinnat (Entries)
+# Tehtava 5: Kubios Cloud API
 # -----------------------------------------------
 
-Uusi Merkinta Ilman Paivamaaran Epaonnistuu
-    [Documentation]    POST /api/entries ilman entry_date → 400 (pakollinen kentta)
-    [Tags]    entries
-    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
-    ${body}=    Create Dictionary    sleep_hours=${7}    mood=hyvä
-    ${response}=    POST On Session    apneapp    /entries    json=${body}    headers=${headers}    expected_status=any
-    Should Be Equal As Integers    ${response.status_code}    400
-
-Uusi Merkinta Paivamaaran Kanssa Onnistuu
-    [Documentation]    POST /api/entries entry_date pakollisena → 201
-    [Tags]    entries
-    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
-    ${body}=    Create Dictionary    entry_date=2026-04-27    sleep_hours=${7}    mood=hyvä    notes=RF-testi
-    ${response}=    POST On Session    apneapp    /entries    json=${body}    headers=${headers}    expected_status=any
-    Should Be Equal As Integers    ${response.status_code}    201
-    ${json}=    Set Variable    ${response.json()}
-    Dictionary Should Contain Key    ${json}    entry_id
-    Set Suite Variable    ${ENTRY_ID}    ${json['entry_id']}
-
-# -----------------------------------------------
-# Tehtava 6: Unidata (Sleep Mock Data)
-# -----------------------------------------------
-
-GET Unitunnit Tokenilla Onnistuu
-    [Documentation]    GET /api/sleep/hours → 200, array unituntidataa
-    [Tags]    sleep
-    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
-    ${response}=    GET On Session    apneapp    /sleep/hours    headers=${headers}
-    Should Be Equal As Integers    ${response.status_code}    200
-    ${body}=    Set Variable    ${response.json()}
-    Should Not Be Empty    ${body}
-
-GET Unilaatu Tokenilla Onnistuu
-    [Documentation]    GET /api/sleep/quality → 200, array unilaatudataa
-    [Tags]    sleep
-    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
-    ${response}=    GET On Session    apneapp    /sleep/quality    headers=${headers}
-    Should Be Equal As Integers    ${response.status_code}    200
-    ${body}=    Set Variable    ${response.json()}
-    Should Not Be Empty    ${body}
-
-Sleep Reitti Ilman Tokenia Epaonnistuu
-    [Documentation]    GET /api/sleep/hours ilman tokenia → 401 tai 403
-    [Tags]    sleep
-    ${response}=    GET On Session    apneapp    /sleep/hours    expected_status=any
+Kubios Reitti Ilman Tokenia Epaonnistuu
+    [Documentation]    GET /api/kubios/me ilman Authorization-headeria → 401 tai 403
+    [Tags]    kubios    auth
+    ${response}=    GET On Session    apneapp    /kubios/me    expected_status=any
     Should Be True    ${response.status_code} == 401 or ${response.status_code} == 403
+
+GET Kubios History Tokenilla Onnistuu
+    [Documentation]    GET /api/kubios/history tokenilla → 200, {results:[...]}
+    [Tags]    kubios
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /kubios/history    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+    ${body}=    Set Variable    ${response.json()}
+    Dictionary Should Contain Key    ${body}    results
+
+GET Kubios Measures Tokenilla Onnistuu
+    [Documentation]    GET /api/kubios/measures tokenilla → 200 (Kubios Cloud data)
+    [Tags]    kubios
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /kubios/measures    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+
+GET Kubios Sync Ilman Tokenia Epaonnistuu
+    [Documentation]    GET /api/kubios/sync ilman tokenia → 401 tai 403
+    [Tags]    kubios    auth
+    ${response}=    GET On Session    apneapp    /kubios/sync    expected_status=any
+    Should Be True    ${response.status_code} == 401 or ${response.status_code} == 403
+
+Kayttajan Poisto Toisen Tunnuksella Epaonnistuu
+    [Documentation]    DELETE /api/users/:id toisen kayttajan ID → 403
+    [Tags]    users    auth
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    DELETE On Session    apneapp    /users/9999999    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    403

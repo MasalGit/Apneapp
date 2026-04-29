@@ -4,7 +4,7 @@
 **Repository:** [https://github.com/MasalGit/Apneapp_BE](https://github.com/MasalGit/Apneapp_BE)  
 **Testaaja:** Yamama  
 **Branch:** Henri_BE  
-**Päivämäärä:** 27.4.2026  
+**Päivämäärä:** 29.4.2026  
 **Teknologia:** Node.js + Express.js + MariaDB, JWT-autentikaatio, Kubios Cloud API
 
 ---
@@ -20,19 +20,12 @@
 | GET | /api/users/:id | Käyttäjä ID:llä | JWT |
 | PUT | /api/users/:id | Päivitä profiili (vain oma) | JWT |
 | DELETE | /api/users/:id | Poista käyttäjä (vain oma) | JWT |
-| GET | /api/entries | Omat päiväkirjamerkinnät | JWT |
-| POST | /api/entries | Uusi merkintä | JWT |
-| GET | /api/entries/:id | Yksittäinen merkintä | JWT |
-| PUT | /api/entries/:id | Päivitä merkintä | JWT |
-| DELETE | /api/entries/:id | Poista merkintä | JWT |
-| GET | /api/sleep/hours | Unituntidataa (mock) | JWT |
-| GET | /api/sleep/quality | Unilaatudataa (mock) | JWT |
 | POST | /api/kubios/login | Kirjautuu Kubios Cloud -palveluun | Ei |
 | GET | /api/kubios/me | Kubios-token tiedot | JWT |
 | GET | /api/kubios/userinfo | Kubios-käyttäjätiedot | JWT |
-| GET | /api/kubios/results | HRV-analyysi + uniapneariski | JWT |
-| GET | /api/kubios/history | HRV-historia + uniapneariski | JWT |
-| GET | /api/kubios/measures | Kubios-mittaukset | JWT |
+| GET | /api/kubios/history | Tallennetut mittaukset tietokannasta | JWT |
+| GET | /api/kubios/measures | Kubios-mittaukset suoraan pilvestä | JWT |
+| GET | /api/kubios/sync | Synkronoi RRI-mittaukset + uniapnea-analyysi | JWT |
 
 ---
 
@@ -90,62 +83,36 @@
 
 ---
 
-## Tehtävä 5 — Päiväkirjamerkinnät (Entries)
-
-**Testataan:** GET/POST/PUT/DELETE /api/entries  
-**Pakolliset kentät:** `entry_date` (muoto YYYY-MM-DD)  
-**Valinnaiset:** `mood` (max 50), `weight` (1–500), `sleep_hours` (0–24), `notes` (max 1000)  
-**Kaikki reitit vaativat JWT-tokenin**
-
-| # | Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|-------------|-------|----------------|-------|
-| TC15 | GET kaikki merkinnät | `Authorization: Bearer <token>` | 200, array | PASS |
-| TC16 | POST uusi merkintä | `{entry_date:"2026-04-27", sleep_hours:7, mood:"hyvä"}` + token | 201, `{message:"New entry added.", entry_id:...}` | PASS |
-| TC17 | POST ilman entry_date | `{sleep_hours:7}` + token | 400, "päivämäärä on pakollinen..." | PASS |
-| TC18 | POST virheellinen päivämäärä | `{entry_date:"ei-paiva"}` + token | 400, validointivirhe | PASS |
-| TC19 | GET yksittäinen merkintä | `/api/entries/:id` + token | 200, merkinnän tiedot | PASS |
-| TC20 | PUT päivitä merkintä | `{sleep_hours:8}` + token | 200, `{message:"Entry updated"}` | PASS |
-| TC21 | DELETE poista merkintä | `/api/entries/:id` + token | 200, `{message:"entry deleted"}` | PASS |
-
----
-
-## Tehtävä 6 — Unidataa (Sleep Mock Data)
-
-**Testataan:** GET /api/sleep/hours, GET /api/sleep/quality  
-**Tarkoitus:** Palauttaa mock-unituntidatan ja unilaatudatan frontendille  
-**Kaikki reitit vaativat JWT-tokenin**
-
-| # | Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|-------------|-------|----------------|-------|
-| TC22 | GET unitunnit | `/api/sleep/hours` + token | 200, array (30 objektia: `{id, date, hours}`) | PASS |
-| TC23 | GET unilaatu | `/api/sleep/quality` + token | 200, array (30 objektia: `{id, date, quality}`) | PASS |
-| TC24 | GET unitunnit ilman tokenia | `/api/sleep/hours` (ei tokenia) | 401 tai 403 | PASS |
-
----
-
-## Tehtävä 7 — Kubios Cloud API -integraatio
+## Tehtävä 5 — Kubios Cloud API -integraatio
 
 **Testataan:** /api/kubios/* reitit  
-**Tarkoitus:** Yhdistää Kubios Cloud -palveluun ja hakee HRV-analyysitulokset sekä laskee uniapneariskin  
+**Tarkoitus:** Yhdistää Kubios Cloud -palveluun, synkronoi RRI-mittaukset ja laskee uniapneariskin  
 **Huom:** Vaatii oikeat Kubios-tunnukset `.env`-tiedostossa (`KUBIOS_API_URI`, `KUBIOS_API_KEY`, `KUBIOS_USER_AGENT`)
 
 | # | Testitapaus | Syöte | Odotettu tulos | Tulos |
 |---|-------------|-------|----------------|-------|
-| TC25 | POST /kubios/login | `{username: kubios_kayttaja, password: kubios_salasana}` | 200, Kubios-token | PASS |
-| TC26 | GET /kubios/me ilman tokenia | Ei Authorization-headeria | 401 tai 403 | PASS |
-| TC27 | GET /kubios/userinfo | App JWT-token headerissa | 200, Kubios-käyttäjätiedot | PASS |
-| TC28 | GET /kubios/results | App JWT-token + query `?from=...&to=...` (valinnainen) | 200, `{message, count, saved, skipped, risk:{risk, label, lfhf_avg}, results:[...]}` | PASS |
-| TC29 | GET /kubios/history | App JWT-token | 200, `{results:[...], risk:{...}}` — HRV-historia tietokannasta | PASS |
-| TC30 | GET /kubios/measures | App JWT-token + query `?from=...&to=...` (valinnainen) | 200, Kubios-mittausdataa | PASS |
+| TC15 | POST /kubios/login | `{username: kubios_kayttaja, password: kubios_salasana}` | 200, Kubios-token | PASS |
+| TC16 | GET /kubios/me ilman tokenia | Ei Authorization-headeria | 401 tai 403 | PASS |
+| TC17 | GET /kubios/me tokenilla | App JWT-token headerissa | 200, Kubios-token tiedot | PASS |
+| TC18 | GET /kubios/userinfo | App JWT-token headerissa | 200, Kubios-käyttäjätiedot | PASS |
+| TC19 | GET /kubios/measures | App JWT-token + query `?from=...&to=...` (valinnainen) | 200, Kubios-mittausdataa pilvestä | PASS |
+| TC20 | GET /kubios/history | App JWT-token | 200, `{results:[...]}` — tallennetut mittaukset tietokannasta | PASS |
+| TC21 | GET /kubios/sync | App JWT-token | 200, `{message:"Synkronointi valmis", synced:N, skipped:N}` — hakee RRI-dataa, analysoi ja tallentaa | PASS |
+| TC22 | GET /kubios/sync ilman tokenia | Ei Authorization-headeria | 401 tai 403 | PASS |
 
-**Uniapneariskialgoritmi (calculateApneaRisk):**
+**Synkronointilogiikka (/api/kubios/sync):**
+- Hakee kaikki finalized RRI-mittaukset Kubios Cloudista
+- Ohittaa mittaukset joiden kesto < 3 tuntia (10800 s)
+- Analysoi RRI-arvot `analyzeRRI`-palvelulla (LF/HF)
+- Tallentaa tulokset tietokantaan
 
-| LF/HF-keskiarvo | Riskitaso | Selitys |
-|-----------------|-----------|---------|
-| > 1.2 | `high` — Korkea | Viittaa häiriytyneeseen uneen |
-| 0.6 – 1.2 | `elevated` — Kohonnut | Seurantaa suositellaan |
-| ≤ 0.6 | `low` — Matala | Normaali |
-| Ei dataa | `unknown` — Ei dataa | Analyysi ei mahdollinen |
+**Uniapneariskialgoritmi (LF/HF-keskiarvo):**
+
+| LF/HF-keskiarvo | Riskitaso |
+|-----------------|-----------|
+| < 0.7 | `normal` — Normaali |
+| 0.7 – 1.2 | `elevated` — Kohonnut |
+| ≥ 1.2 | `high` — Korkea |
 
 ---
 
@@ -178,11 +145,11 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 | RF5 | Kirjautuminen Väärällä Salasanalla Epäonnistuu | POST | /api/users/login | 403 |
 | RF6 | Suojattu Reitti Ilman Tokenia Epäonnistuu | GET | /api/users/me | 401/403 |
 | RF7 | GET Me Tokenilla Onnistuu | GET | /api/users/me | 200 |
-| RF8 | Uusi Merkintä Ilman Päivämäärää Epäonnistuu | POST | /api/entries | 400 |
-| RF9 | Uusi Merkintä Päivämäärällä Onnistuu | POST | /api/entries | 201 |
-| RF10 | GET Unitunnit Tokenilla Onnistuu | GET | /api/sleep/hours | 200 |
-| RF11 | GET Unilaatu Tokenilla Onnistuu | GET | /api/sleep/quality | 200 |
-| RF12 | Sleep Reitti Ilman Tokenia Epäonnistuu | GET | /api/sleep/hours | 401/403 |
+| RF8 | Kubios Reitti Ilman Tokenia Epäonnistuu | GET | /api/kubios/me | 401/403 |
+| RF9 | GET Kubios History Tokenilla Onnistuu | GET | /api/kubios/history | 200 |
+| RF10 | GET Kubios Measures Tokenilla Onnistuu | GET | /api/kubios/measures | 200 |
+| RF11 | GET Kubios Sync Ilman Tokenia Epäonnistuu | GET | /api/kubios/sync | 401/403 |
+| RF12 | Käyttäjän Poisto Toisen Tunnuksella Epäonnistuu | DELETE | /api/users/:id | 403 |
 
 ---
 
@@ -190,18 +157,16 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 
 | Kategoria | Testitapauksia | Läpäissyt | Hylätty |
 |-----------|---------------|-----------|---------|
-| Manuaaliset API-testit | 30 | 30 | 0 |
+| Manuaaliset API-testit | 22 | 22 | 0 |
 | Robot Framework (automaattiset) | 12 | 12 | 0 |
-| **Yhteensä** | **42** | **42** | **0** |
+| **Yhteensä** | **34** | **34** | **0** |
 
-**Testikattavuus (Henri_BE branch):**
+**Testikattavuus (Henri_BE branch — päivitetty 29.4.2026):**
 - API root: ✅ 100%
 - Käyttäjien hallinta (CRUD + auth): ✅ 100%
 - Autentikaatio (JWT): ✅ 100%
-- Päiväkirjamerkinnät (CRUD + validointi): ✅ 100%
-- Unituntidata ja unilaatu (mock): ✅ 100%
 - Kubios Cloud API -integraatio: ✅ 100%
-- Uniapneariskialgoritmi (LF/HF): ✅ 100%
+- RRI-synkronointi ja uniapnea-analyysi: ✅ 100%
 - Virhekäsittely (400, 401, 403, 404): ✅ 100%
 
 **Huomiot:**
