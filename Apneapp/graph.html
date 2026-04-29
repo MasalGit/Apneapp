@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apneapp - Kaavio</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="src/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="src/js/language.js"></script>
-
   <style>
     .graph-container {
       background: white;
@@ -26,12 +25,6 @@
       margin-bottom: 20px;
     }
 
-    .graph-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #1e293b;
-    }
-
     .graph-period {
       display: flex;
       gap: 10px;
@@ -45,16 +38,12 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .graph-period button.active {
       background: #0f172a;
       color: white;
-      border-color: #0f172a;
-    }
-
-    .graph-period button:hover {
       border-color: #0f172a;
     }
 
@@ -101,147 +90,146 @@
   }
 </script>
 
+  <!-- SIDEBAR -->
   <aside class="db-sidebar">
     <div class="db-sidebar-logo">
       <i class="fas fa-lungs"></i>
       <span>Apneapp</span>
     </div>
-
     <nav class="db-nav">
       <a href="dashboard.html" class="db-nav-item">
         <i class="fas fa-th-large"></i>
-        <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
+        <span>Yleiskatsaus</span>
       </a>
       <a href="graph.html" class="db-nav-item active">
         <i class="fas fa-chart-line"></i>
-        <span data-i18n="chart">Kaavio</span>
-      </a>
-      <a href="raportit.html" class="db-nav-item">
-        <i class="fas fa-file-medical"></i>
-        <span data-i18n="reports">Raportit</span>
-      </a>
-      <a href="asetukset.html" class="db-nav-item">
-        <i class="fas fa-cog"></i>
-        <span data-i18n="settings">Asetukset</span>
+        <span>Kaavio</span>
       </a>
     </nav>
-
     <button class="db-logout" onclick="logout()">
       <i class="fas fa-sign-out-alt"></i>
-      <span data-i18n="logout">Kirjaudu ulos</span>
+      <span>Kirjaudu ulos</span>
     </button>
   </aside>
 
+  <!-- MAIN CONTENT -->
   <main class="db-main">
+
+    <!-- Top bar -->
     <header class="db-topbar">
       <div>
-        <h1 data-i18n="chart">Kaavio</h1>
+        <h1 class="db-title">Kaavio</h1>
         <p class="db-date" id="dbDate"></p>
       </div>
-
       <div class="db-user">
         <div class="db-avatar"><i class="fas fa-user"></i></div>
         <div>
-          <p class="graph-user-name" style="margin: 0; font-weight: 500; color: #1e293b;" data-i18n="user">Käyttäjä</p>
-          <p class="graph-user-status" style="margin: 0; font-size: 12px; color: #94a3b8;" data-i18n="active">Aktiivinen</p>
+          <p style="margin: 0; font-weight: 500; color: #1e293b;">Käyttäjä</p>
+          <p style="margin: 0; font-size: 12px; color: #94a3b8;">Aktiivinen</p>
         </div>
       </div>
     </header>
 
+    <!-- Graph Container 1: Sleep & Risk -->
     <div class="graph-container">
       <div class="graph-header">
-        <h2 data-i18n="sleepDurationRisk">Unen kesto ja Riskiarvio</h2>
+        <h2>Unen kesto ja Riskiarvio</h2>
         <div class="graph-period">
-          <button data-i18n="7d">7 pv</button>
-          <button data-i18n="30d">30 pv</button>
-          <button data-i18n="90d">90 pv</button>
+          <button class="active" data-period="7d">7 pv</button>
+          <button data-period="30d">30 pv</button>
+          <button data-period="90d">90 pv</button>
         </div>
       </div>
       <canvas id="sleepRiskChart"></canvas>
     </div>
+
   </main>
 
-  <script src="script.js"></script>
-
   <script>
-    const API_BASE_URL = 'http://127.0.0.1:3000/api';
+    // API configuration
+    const API_BASE_URL = 'http://127.0.0.1:3000/api'; // Your backend server URL
 
-    const isDarkMode = localStorage.getItem("apneapp-theme") === "dark";
-    const chartTextColor = isDarkMode ? "#d1d5db" : "#64748b";
-    const chartGridColor = isDarkMode ? "#374151" : "#e2e8f0";
-
+    // Set today's date
     const d = new Date();
     document.getElementById("dbDate").textContent =
-      d.toLocaleDateString("fi-FI", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
+      d.toLocaleDateString("fi-FI", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 
+    // Fetch sleep hours data
     async function fetchSleepHours() {
       try {
         const token = localStorage.getItem('token');
-
+        console.log('Token:', token ? 'Present' : 'Missing');
+        console.log('API URL:', `${API_BASE_URL}/sleep/hours`);
+        
         const response = await fetch(`${API_BASE_URL}/sleep/hours`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
-
+        
+        console.log('Response status:', response.status);
+        
         if (!response.ok) {
           const errorText = await response.text();
+          console.error('HTTP Error:', response.status, errorText);
           throw new Error(`HTTP ${response.status}: ${errorText}`);
         }
-
-        return await response.json();
+        const data = await response.json();
+        console.log('Sleep hours data received:', data);
+        return data;
       } catch (error) {
         console.error('Error fetching sleep hours:', error);
         return [];
       }
     }
 
+    // Fetch sleep quality data
     async function fetchSleepQuality() {
       try {
         const token = localStorage.getItem('token');
-
         const response = await fetch(`${API_BASE_URL}/sleep/quality`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
-
+        
+        console.log('Response status:', response.status);
+        
         if (!response.ok) {
           const errorText = await response.text();
+          console.error('HTTP Error:', response.status, errorText);
           throw new Error(`HTTP ${response.status}: ${errorText}`);
         }
-
-        return await response.json();
+        const data = await response.json();
+        console.log('Sleep quality data received:', data);
+        return data;
       } catch (error) {
         console.error('Error fetching sleep quality:', error);
         return [];
       }
     }
 
+    // Calculate risk score from sleep quality (higher quality = lower risk)
     function calculateRiskFromQuality(quality) {
+      // Quality: 1.0-2.0, Risk: 0-100 (higher risk = worse)
       return Math.round((3 - quality) * 50);
     }
 
+    // Process data for chart
     function processData(hoursData, qualityData, days) {
+      // Sort data by date descending (newest first)
       hoursData.sort((a, b) => new Date(b.date) - new Date(a.date));
       qualityData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+      // Take last 'days' entries
       const recentHours = hoursData.slice(0, days).reverse();
       const recentQuality = qualityData.slice(0, days).reverse();
 
       const labels = recentHours.map(item => {
         const date = new Date(item.date);
-        return date.toLocaleDateString("fi-FI", {
-          month: "short",
-          day: "numeric"
-        });
+        return date.toLocaleDateString("fi-FI", { month: "short", day: "numeric" });
       });
 
       const sleepHours = recentHours.map(item => item.hours);
@@ -250,12 +238,15 @@
       return { labels, sleepHours, riskScores };
     }
 
+    // Store fetched data globally
     let hoursData = [];
     let qualityData = [];
 
+    // Initialize chart with data
     async function initializeChart() {
       hoursData = await fetchSleepHours();
       qualityData = await fetchSleepQuality();
+
       updateChart(7);
     }
 
@@ -267,111 +258,95 @@
         window.chart.data.datasets[0].data = sleepHours;
         window.chart.data.datasets[1].data = riskScores;
         window.chart.update();
-        return;
-      }
-
-      const ctx = document.getElementById("sleepRiskChart").getContext("2d");
-
-      window.chart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Unen kesto (h)",
-              data: sleepHours,
-              backgroundColor: "rgba(34, 197, 94, 0.7)",
-              borderColor: "#22c55e",
-              borderWidth: 0,
-              borderRadius: 6,
-              yAxisID: "y",
-              order: 2
-            },
-            {
-              label: "Riskiarvio",
-              data: riskScores,
-              type: "line",
-              borderColor: "#ef4444",
-              backgroundColor: "rgba(239, 68, 68, 0.12)",
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 6,
-              pointBackgroundColor: "#ef4444",
-              pointBorderColor: isDarkMode ? "#1f2937" : "#fff",
-              pointBorderWidth: 2,
-              pointHoverRadius: 8,
-              yAxisID: "y1",
-              order: 1
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          interaction: {
-            mode: "index",
-            intersect: false
+      } else {
+        // Create chart if not exists
+        const ctx = document.getElementById("sleepRiskChart").getContext("2d");
+        window.chart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Unen kesto (h)",
+                data: sleepHours,
+                backgroundColor: "rgba(34, 197, 94, 0.7)",
+                borderColor: "#22c55e",
+                borderWidth: 0,
+                borderRadius: 6,
+                yAxisID: "y",
+                order: 2
+              },
+              {
+                label: "Riskiarvio",
+                data: riskScores,
+                type: "line",
+                borderColor: "#ef4444",
+                backgroundColor: "rgba(239, 68, 68, 0.1)",
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 6,
+                pointBackgroundColor: "#ef4444",
+                pointBorderColor: "#fff",
+                pointBorderWidth: 2,
+                pointHoverRadius: 8,
+                yAxisID: "y1",
+                order: 1
+              }
+            ]
           },
-          plugins: {
-            legend: {
-              display: true,
-              labels: {
-                color: chartTextColor,
-                font: { size: 14 },
-                padding: 15
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            interaction: {
+              mode: "index",
+              intersect: false
+            },
+            plugins: {
+              legend: {
+                display: true,
+                labels: {
+                  color: "#64748b",
+                  font: { size: 14 },
+                  padding: 15
+                }
+              }
+            },
+            scales: {
+              y: {
+                type: "linear",
+                display: true,
+                position: "left",
+                title: { display: true, text: "Unen kesto (tuntia)", color: "#64748b" },
+                ticks: { color: "#94a3b8", font: { size: 12 } },
+                grid: { color: "#e2e8f0" },
+                min: 0,
+                max: 12
+              },
+              y1: {
+                type: "linear",
+                display: true,
+                position: "right",
+                title: { display: true, text: "Riskiarvio", color: "#64748b" },
+                ticks: { color: "#94a3b8", font: { size: 12 } },
+                grid: { display: false },
+                min: 0,
+                max: 100
+              },
+              x: {
+                ticks: { color: "#94a3b8", font: { size: 12 } },
+                grid: { display: false }
               }
             }
-          },
-          scales: {
-            y: {
-              type: "linear",
-              display: true,
-              position: "left",
-              title: {
-                display: true,
-                text: "Unen kesto (tuntia)",
-                color: chartTextColor
-              },
-              ticks: {
-                color: chartTextColor,
-                font: { size: 12 }
-              },
-              grid: { color: chartGridColor },
-              min: 0,
-              max: 12
-            },
-            y1: {
-              type: "linear",
-              display: true,
-              position: "right",
-              title: {
-                display: true,
-                text: "Riskiarvio",
-                color: chartTextColor
-              },
-              ticks: {
-                color: chartTextColor,
-                font: { size: 12 }
-              },
-              grid: { display: false },
-              min: 0,
-              max: 100
-            },
-            x: {
-              ticks: {
-                color: chartTextColor,
-                font: { size: 12 }
-              },
-              grid: { display: false }
-            }
           }
-        }
-      });
+        });
+      }
     }
 
+    // Initialize chart on page load
     initializeChart();
 
+    // Period button handlers
     document.querySelectorAll(".graph-period button").forEach(btn => {
       btn.addEventListener("click", function() {
         document.querySelectorAll(".graph-period button").forEach(b => b.classList.remove("active"));
@@ -379,13 +354,25 @@
 
         const period = this.dataset.period;
         let days = 7;
-
         if (period === "30d") days = 30;
         if (period === "90d") days = 90;
 
         updateChart(days);
       });
     });
+
+    // Sidebar active nav
+    document.querySelectorAll(".db-nav-item").forEach(item => {
+      item.addEventListener("click", function(e) {
+        document.querySelectorAll(".db-nav-item").forEach(i => i.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = "index.html";
+    }
   </script>
 </body>
 </html>
