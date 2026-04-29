@@ -236,7 +236,7 @@
     test("Vain iso 'ABCDEFGH' → 2 pistettä",      () => expect(getPasswordStrengthScore("ABCDEFGH")).toBe(2));
     test("Erikoismerkki lyhyt '!@#' → 1 piste",   () => expect(getPasswordStrengthScore("!@#")).toBe(1));
     test("Maksimi 'Abcdef1!' → 4 pistettä",       () => expect(getPasswordStrengthScore("Abcdef1!")).toBe(4));
-    test("Pelkkä välilyönti → 0 pistettä",        () => expect(getPasswordStrengthScore("   ")).toBe(0));
+    test("Pelkkä välilyönti → 1 piste (erikoismerkki)",() => expect(getPasswordStrengthScore("   ")).toBe(1));
   });
 
   // ── Render ───────────────────────────────────────────────────────────────
