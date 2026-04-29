@@ -183,6 +183,71 @@
     });
   });
 
+  // ── graph.html – uudet funktiot (Paavo_FE2: "Graph db" + "Graph fixes") ─
+
+  function getColor(v) {
+    if (v < 0.6) return "#22c55e";
+    if (v < 1.2) return "#facc15";
+    return "#ef4444";
+  }
+
+  function hexToRgb(hex) {
+    const c = hex.replace("#", "");
+    const i = parseInt(c, 16);
+    return `${(i >> 16) & 255},${(i >> 8) & 255},${i & 255}`;
+  }
+
+  function processDataV2(data, days) {
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+    const filtered = data
+      .filter(d => new Date(d.date) >= cutoff)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+    return {
+      labels: filtered.map(d => new Date(d.date).toLocaleDateString("fi-FI", { month: "short", day: "numeric" })),
+      sleep:  filtered.map(d => d.hours),
+      lfhf:   filtered.map(d => d.lfhf)
+    };
+  }
+
+  // Tehtävä 9 – getColor()
+  suite("Tehtävä 9 – getColor() (LF/HF-värikoodit)", () => {
+    test("0.5 → vihreä (#22c55e)",    () => expect(getColor(0.5)).toBe("#22c55e"));
+    test("0.6 → keltainen (#facc15)", () => expect(getColor(0.6)).toBe("#facc15"));
+    test("1.0 → keltainen (#facc15)", () => expect(getColor(1.0)).toBe("#facc15"));
+    test("1.2 → punainen (#ef4444)",  () => expect(getColor(1.2)).toBe("#ef4444"));
+    test("1.5 → punainen (#ef4444)",  () => expect(getColor(1.5)).toBe("#ef4444"));
+  });
+
+  // Tehtävä 10 – hexToRgb()
+  suite("Tehtävä 10 – hexToRgb() (HEX → RGB-muunnos)", () => {
+    test("#22c55e → 34,197,94",  () => expect(hexToRgb("#22c55e")).toBe("34,197,94"));
+    test("#ef4444 → 239,68,68",  () => expect(hexToRgb("#ef4444")).toBe("239,68,68"));
+    test("#facc15 → 250,204,21", () => expect(hexToRgb("#facc15")).toBe("250,204,21"));
+  });
+
+  // Tehtävä 11 – processDataV2() (uusi cutoff-versio)
+  suite("Tehtävä 11 – processData() v2 (cutoff-suodatus)", () => {
+    test("Tämän päivän data (days=7) palautetaan", () => {
+      const today = new Date().toISOString().split("T")[0];
+      const r = processDataV2([{ date: today, hours: 8, lfhf: 0.5 }], 7);
+      expect(r.sleep.length).toBe(1);
+      expect(r.sleep[0]).toBe(8);
+      expect(r.lfhf[0]).toBe(0.5);
+    });
+    test("Tyhjä taulukko → tyhjät tulokset", () => {
+      const r = processDataV2([], 7);
+      expect(r.labels.length).toBe(0);
+      expect(r.sleep.length).toBe(0);
+      expect(r.lfhf.length).toBe(0);
+    });
+    test("100 pv vanha data suodatetaan pois (days=7)", () => {
+      const old = new Date(Date.now() - 100 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+      const r = processDataV2([{ date: old, hours: 7, lfhf: 1.0 }], 7);
+      expect(r.sleep.length).toBe(0);
+    });
+  });
+
   // ── Render ───────────────────────────────────────────────────────────────
   const out = document.getElementById("output");
   let totalPass = 0, totalFail = 0;

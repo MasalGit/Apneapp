@@ -114,6 +114,57 @@
 
 ---
 
+## Tehtävä 9 – getColor() – LF/HF-arvon värikoodi (graph.html)
+
+[Katso testit selaimessa](tests/tests_Paavo.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Arvo alle 0.6 (vihreä) | `0.5` | `"#22c55e"` |
+| 2 | Raja-arvo 0.6 (keltainen) | `0.6` | `"#facc15"` |
+| 3 | Arvo 1.0 (keltainen) | `1.0` | `"#facc15"` |
+| 4 | Raja-arvo 1.2 (punainen) | `1.2` | `"#ef4444"` |
+| 5 | Arvo yli 1.2 (punainen) | `1.5` | `"#ef4444"` |
+
+---
+
+## Tehtävä 10 – hexToRgb() – HEX → RGB-muunnos (graph.html)
+
+[Katso testit selaimessa](tests/tests_Paavo.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Vihreä väri | `"#22c55e"` | `"34,197,94"` |
+| 2 | Punainen väri | `"#ef4444"` | `"239,68,68"` |
+| 3 | Keltainen väri | `"#facc15"` | `"250,204,21"` |
+
+---
+
+## Tehtävä 11 – processData() v2 – Päivitetty datan suodatus (graph.html)
+
+[Katso testit selaimessa](tests/tests_Paavo.html)
+
+Uusi versio käyttää yhdistettyä dataa `{date, hours, lfhf}` ja suodattaa cutoff-päivämäärän mukaan (korvasi vanhan hours+quality-version).
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Tämän päivän data, days=7 | `[{date: tänään, hours:8, lfhf:0.5}]` | `sleep:[8]`, `lfhf:[0.5]` |
+| 2 | Tyhjä taulukko | `[]`, days: `7` | `{labels:[], sleep:[], lfhf:[]}` |
+| 3 | Vanha data (100 pv sitten), days=7 | `[{date: 100 pv sitten, hours:7, lfhf:1.0}]` | `sleep:[]` (suodatettu pois) |
+
+---
+
+## Tehtävä 12 – Manuaalinen testi: Graph-sivun uudet ominaisuudet
+
+| # | Testitapaus | Toiminto | Odotettu tulos |
+|---|---|---|---|
+| 1 | LF/HF-viiva näkyy kaaviossa | Avaa graph.html → katso kaavio | Y-akseli 2 näyttää "LF/HF Avg" eikä "Riskiarvio" |
+| 2 | 365 pv -painike toimii | Klikkaa "365 pv" -painiketta | Kaavio lataa 365 päivän datan |
+| 3 | fetchMeasurements hakee oikein | Kirjaudu sisään, avaa graph.html | Pyyntö menee `/api/measurements?days=7` |
+| 4 | Riskiarvio-riviä ei enää näytetä | Avaa graph.html | `calculateRiskFromQuality` poistettu – ei risk-dataa kaaviossa |
+
+---
+
 ## Robot Framework – Automaatiotestit
 
 Sovelluksen lomakkeet on testattu myös **Browser-kirjastolla** automaattisesti selaimessa.
@@ -153,10 +204,11 @@ Sovelluksen lomakkeet on testattu myös **Browser-kirjastolla** automaattisesti 
 
 | | Määrä |
 |---|---|
-| Tehtäviä (JS yksikkötestit) | 8 |
-| JS testejä yhteensä | 32 |
+| Tehtäviä (JS yksikkötestit) | 11 |
+| Manuaalisia tehtäviä | 1 |
+| JS testejä yhteensä | 43 |
 | Robot Framework testejä | 12 |
-| Läpäissyt | 32 / 32 |
+| Läpäissyt | 43 / 43 |
 | Epäonnistuneet | 0 |
 
 > Kaikki testit läpäistiin hyväksytysti.  
