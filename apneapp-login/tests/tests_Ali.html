@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Apneapp – Testit (Ali)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f1f5f9; padding: 2rem; color: #1e293b; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .meta { color: #64748b; font-size: 0.85rem; margin-bottom: 2rem; }
+    .suite { background: white; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .suite h2 { font-size: 1rem; color: #475569; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .test { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0; font-size: 0.88rem; border-bottom: 1px solid #f8fafc; }
+    .test:last-child { border-bottom: none; }
+    .badge { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; min-width: 48px; text-align: center; }
+    .pass .badge { background: #dcfce7; color: #166534; }
+    .fail .badge { background: #fee2e2; color: #991b1b; }
+    .err-msg { color: #dc2626; font-size: 0.78rem; margin-left: auto; }
+    .summary { margin-top: 2rem; padding: 1rem 1.5rem; border-radius: 10px; font-size: 1rem; font-weight: 600; text-align: center; }
+    .summary.ok  { background: #dcfce7; color: #166534; }
+    .summary.err { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+  <h1>Apneapp – Yksikkötestit (Ali)</h1>
+  <p class="meta">Testaaja: Ali &nbsp;|&nbsp; Päivämäärä: <span id="dateSpan"></span></p>
+  <div id="output"></div>
+  <div id="summary" class="summary"></div>
+
+<script>
+  document.getElementById("dateSpan").textContent = new Date().toLocaleDateString("fi-FI");
+
+  // ── Mini test runner ─────────────────────────────────────────────────────
+  let currentSuite = null;
+  const allResults = [];
+
+  function suite(name, fn) {
+    currentSuite = { name, tests: [] };
+    fn();
+    allResults.push(currentSuite);
+  }
+
+  function test(name, fn) {
+    try {
+      fn();
+      currentSuite.tests.push({ name, ok: true });
+    } catch (e) {
+      currentSuite.tests.push({ name, ok: false, msg: e.message });
+    }
+  }
+
+  function expect(val) {
+    return {
+      toBe(exp)      { if (val !== exp)    throw new Error(`Odotettiin "${exp}", saatiin "${val}"`); },
+      toBeTrue()     { if (val !== true)   throw new Error(`Odotettiin true, saatiin ${val}`); },
+      toBeFalse()    { if (val !== false)  throw new Error(`Odotettiin false, saatiin ${val}`); },
+      toContain(str) { if (!val.includes(str)) throw new Error(`"${val}" ei sisällä "${str}"`); },
+    };
+  }
+
+  // ── Testattavat funktiot (kopio Ali:n script.js / register.html:stä) ────
+
+  // 1. Sähköpostin validointi (index.html / script.js)
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // 2. Salasanan pituus – kirjautuminen (min 6)
+  function isValidLoginPassword(pw) { return pw.length >= 6; }
+
+  // 3. Salasanan pituus – rekisteröinti (min 8)
+  function isValidRegisterPassword(pw) { return pw.length >= 8; }
+
+  // 4. Salasanojen täsmäys (register.html)
+  function passwordsMatch(pw1, pw2) { return pw1 === pw2; }
+
+  // 5. Salasanan vahvuuspisteet (register.html)
+  function getPasswordStrengthScore(val) {
+    let score = 0;
+    if (val.length >= 8)          score++;
+    if (/[A-Z]/.test(val))        score++;
+    if (/[0-9]/.test(val))        score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    return score;
+  }
+
+  // 6. Teeman soveltaminen (script.js – applyGlobalTheme, mock)
+  function applyGlobalThemeMock(savedTheme, bodyClassList) {
+    if (savedTheme === "dark") {
+      bodyClassList.add("dark-mode");
+    } else {
+      bodyClassList.remove("dark-mode");
+    }
+  }
+
+  // Mock classList
+  function makeClassList() {
+    const classes = new Set();
+    return {
+      add(c)    { classes.add(c); },
+      remove(c) { classes.delete(c); },
+      has(c)    { return classes.has(c); }
+    };
+  }
+
+  // 7. Uloskirjautuminen (script.js – logout, mock)
+  function logoutMock(storage) {
+    storage["token"] = undefined;
+    delete storage["token"];
+  }
+
+  // 8. Käännösfunktio (language.js – applyTranslations, yksinkertaistettu)
+  const translations = {
+    fi: {
+      logout: "Kirjaudu ulos",
+      dashboardTitle: "Yleiskatsaus",
+      settingsTitle: "Asetukset",
+      user: "Käyttäjä"
+    },
+    en: {
+      logout: "Log out",
+      dashboardTitle: "Overview",
+      settingsTitle: "Settings",
+      user: "User"
+    }
+  };
+
+  function getTranslation(lang, key) {
+    const selected = translations[lang] || translations["fi"];
+    return selected[key] || null;
+  }
+
+  // ── TESTIT ───────────────────────────────────────────────────────────────
+
+  // Tehtävä 1 – Sähköpostin validointi
+  suite("Tehtävä 1 – isValidEmail()", () => {
+    test("Hyväksyy oikean sähköpostin",        () => expect(isValidEmail("kayttaja@esimerkki.fi")).toBeTrue());
+    test("Hyväksyy gmail-osoitteen",            () => expect(isValidEmail("testi@gmail.com")).toBeTrue());
+    test("Hylkää tyhjän merkkijonon",           () => expect(isValidEmail("")).toBeFalse());
+    test("Hylkää osoitteen ilman @",            () => expect(isValidEmail("kayttajaesimerkki.fi")).toBeFalse());
+    test("Hylkää osoitteen ilman pistettä",     () => expect(isValidEmail("kayttaja@esimerkki")).toBeFalse());
+    test("Hylkää osoitteen ilman käyttäjää",   () => expect(isValidEmail("@esimerkki.fi")).toBeFalse());
+    test("Hylkää välilyönnin sisältävän",       () => expect(isValidEmail("kayttaja @esimerkki.fi")).toBeFalse());
+  });
+
+  // Tehtävä 2 – Salasanan validointi (kirjautuminen, min 6)
+  suite("Tehtävä 2 – Salasanan validointi (kirjautuminen, min 6)", () => {
+    test("Hyväksyy 6 merkin salasanan",  () => expect(isValidLoginPassword("abc123")).toBeTrue());
+    test("Hyväksyy pitkän salasanan",    () => expect(isValidLoginPassword("turvallinen123!")).toBeTrue());
+    test("Hylkää 5 merkin salasanan",    () => expect(isValidLoginPassword("abc12")).toBeFalse());
+    test("Hylkää tyhjän salasanan",      () => expect(isValidLoginPassword("")).toBeFalse());
+  });
+
+  // Tehtävä 3 – Salasanan validointi (rekisteröinti, min 8)
+  suite("Tehtävä 3 – Salasanan validointi (rekisteröinti, min 8)", () => {
+    test("Hyväksyy 8 merkin salasanan",  () => expect(isValidRegisterPassword("abc12345")).toBeTrue());
+    test("Hyväksyy pitkän salasanan",    () => expect(isValidRegisterPassword("turvallinen123!")).toBeTrue());
+    test("Hylkää 7 merkin salasanan",    () => expect(isValidRegisterPassword("abc1234")).toBeFalse());
+    test("Hylkää tyhjän salasanan",      () => expect(isValidRegisterPassword("")).toBeFalse());
+  });
+
+  // Tehtävä 4 – Salasanojen täsmäys
+  suite("Tehtävä 4 – passwordsMatch()", () => {
+    test("Täsmäävät salasanat hyväksytään",      () => expect(passwordsMatch("abc12345", "abc12345")).toBeTrue());
+    test("Erilaiset salasanat hylätään",          () => expect(passwordsMatch("abc12345", "xyz99999")).toBeFalse());
+    test("Tyhjä vs tyhjä täsmää",                () => expect(passwordsMatch("", "")).toBeTrue());
+    test("Iso/pieni kirjain ei täsmää",           () => expect(passwordsMatch("Salasana1", "salasana1")).toBeFalse());
+  });
+
+  // Tehtävä 5 – Salasanan vahvuuslaskin
+  suite("Tehtävä 5 – getPasswordStrengthScore()", () => {
+    test("Tyhjä → 0 pistettä",                    () => expect(getPasswordStrengthScore("")).toBe(0));
+    test("Lyhyt sana 'hello' → 0 pistettä",       () => expect(getPasswordStrengthScore("hello")).toBe(0));
+    test("8 pientä merkkiä → 1 piste",            () => expect(getPasswordStrengthScore("abcdefgh")).toBe(1));
+    test("8 + iso kirjain → 2 pistettä",          () => expect(getPasswordStrengthScore("Abcdefgh")).toBe(2));
+    test("8 + iso + numero → 3 pistettä",         () => expect(getPasswordStrengthScore("Abcdefg1")).toBe(3));
+    test("Kaikki kriteerit 'Abcdef1!' → 4",       () => expect(getPasswordStrengthScore("Abcdef1!")).toBe(4));
+  });
+
+  // Tehtävä 6 – Teeman soveltaminen (applyGlobalTheme mock)
+  suite("Tehtävä 6 – applyGlobalTheme()", () => {
+    test("'dark' lisää dark-mode-luokan", () => {
+      const cl = makeClassList();
+      applyGlobalThemeMock("dark", cl);
+      expect(cl.has("dark-mode")).toBeTrue();
+    });
+    test("'light' ei lisää dark-mode-luokkaa", () => {
+      const cl = makeClassList();
+      applyGlobalThemeMock("light", cl);
+      expect(cl.has("dark-mode")).toBeFalse();
+    });
+    test("Oletuksena (ei arvoa) ei tumma tila", () => {
+      const cl = makeClassList();
+      applyGlobalThemeMock(null || "light", cl);
+      expect(cl.has("dark-mode")).toBeFalse();
+    });
+    test("'dark' → vaihto → 'light' poistaa luokan", () => {
+      const cl = makeClassList();
+      applyGlobalThemeMock("dark", cl);
+      applyGlobalThemeMock("light", cl);
+      expect(cl.has("dark-mode")).toBeFalse();
+    });
+  });
+
+  // Tehtävä 7 – Käännösfunktio (applyTranslations)
+  suite("Tehtävä 7 – getTranslation() / applyTranslations()", () => {
+    test("Suomi: logout → 'Kirjaudu ulos'",       () => expect(getTranslation("fi", "logout")).toBe("Kirjaudu ulos"));
+    test("Englanti: logout → 'Log out'",          () => expect(getTranslation("en", "logout")).toBe("Log out"));
+    test("Oletuskieli fi: dashboardTitle",        () => expect(getTranslation("fi", "dashboardTitle")).toBe("Yleiskatsaus"));
+    test("Englanti: dashboardTitle → 'Overview'", () => expect(getTranslation("en", "dashboardTitle")).toBe("Overview"));
+    test("Tuntematon kieli → suomen oletusarvo",  () => expect(getTranslation("xx", "logout")).toBe("Kirjaudu ulos"));
+  });
+
+  // Tehtävä 8 – Uloskirjautuminen (logout mock)
+  suite("Tehtävä 8 – logout()", () => {
+    test("Token poistetaan localStorage:sta", () => {
+      const storage = { token: "abc123" };
+      logoutMock(storage);
+      expect(storage.hasOwnProperty("token")).toBeFalse();
+    });
+    test("Toimii vaikka tokenia ei ole", () => {
+      const storage = {};
+      logoutMock(storage);
+      expect(storage.hasOwnProperty("token")).toBeFalse();
+    });
+    test("Muut localStorage-arvot säilyvät", () => {
+      const storage = { token: "abc123", "apneapp-theme": "dark" };
+      logoutMock(storage);
+      expect(storage.hasOwnProperty("apneapp-theme")).toBeTrue();
+    });
+  });
+
+  // Tehtävä 9 – Salasanan vahvuus (lisätestit)
+  suite("Tehtävä 9 – getPasswordStrengthScore() (lisätestit)", () => {
+    test("Vain numero '12345678' → 2 pistettä",   () => expect(getPasswordStrengthScore("12345678")).toBe(2));
+    test("Vain iso 'ABCDEFGH' → 2 pistettä",      () => expect(getPasswordStrengthScore("ABCDEFGH")).toBe(2));
+    test("Erikoismerkki lyhyt '!@#' → 1 piste",   () => expect(getPasswordStrengthScore("!@#")).toBe(1));
+    test("Maksimi 'Abcdef1!' → 4 pistettä",       () => expect(getPasswordStrengthScore("Abcdef1!")).toBe(4));
+    test("Pelkkä välilyönti → 0 pistettä",        () => expect(getPasswordStrengthScore("   ")).toBe(0));
+  });
+
+  // ── Render ───────────────────────────────────────────────────────────────
+  const out = document.getElementById("output");
+  let total = 0, passed = 0;
+
+  allResults.forEach(s => {
+    const div = document.createElement("div");
+    div.className = "suite";
+    div.innerHTML = `<h2>${s.name}</h2>`;
+
+    s.tests.forEach(t => {
+      total++;
+      if (t.ok) passed++;
+      const row = document.createElement("div");
+      row.className = "test " + (t.ok ? "pass" : "fail");
+      row.innerHTML = `
+        <span class="badge">${t.ok ? "PASS" : "FAIL"}</span>
+        <span>${t.name}</span>
+        ${t.ok ? "" : `<span class="err-msg">${t.msg}</span>`}
+      `;
+      div.appendChild(row);
+    });
+
+    out.appendChild(div);
+  });
+
+  const sum = document.getElementById("summary");
+  sum.className = "summary " + (passed === total ? "ok" : "err");
+  sum.textContent = `${passed} / ${total} testiä läpäisi`;
+</script>
+</body>
+</html>
