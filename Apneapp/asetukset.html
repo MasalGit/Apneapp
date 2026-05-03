@@ -230,25 +230,21 @@
         <i class="fas fa-th-large"></i>
         <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
       </a>
-      <a href="sykemittaus.html" class="db-nav-item">
-        <i class="fas fa-heartbeat"></i>
-        <span data-i18n="sidebarHeart">Sykemittaus</span>
-      </a>
-      <a href="tilastot.html" class="db-nav-item">
-        <i class="fas fa-chart-bar"></i>
-        <span data-i18n="sidebarStats">Tilastot</span>
-      </a>
-      <a href="unijaksot.html" class="db-nav-item">
-        <i class="fas fa-moon"></i>
-        <span data-i18n="sidebarSleep">Unijaksot</span>
+      <a href="graph.html" class="db-nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span data-i18n="chart">Kaavio</span>
       </a>
       <a href="raportit.html" class="db-nav-item">
         <i class="fas fa-file-medical"></i>
-        <span data-i18n="sidebarReports">Raportit</span>
+        <span data-i18n="reports">Raportit</span>
+      </a>
+      <a href="about.html" class="db-nav-item">
+        <i class="fas fa-circle-info"></i>
+        <span data-i18n="about">Tietoja</span>
       </a>
       <a href="asetukset.html" class="db-nav-item active">
         <i class="fas fa-cog"></i>
-        <span data-i18n="sidebarSettings">Asetukset</span>
+        <span data-i18n="settings">Asetukset</span>
       </a>
     </nav>
 
@@ -285,13 +281,13 @@
 
           <div class="settings-card">
             <i class="fas fa-bell"></i>
-            <h3 id="notifCardTitle">Ilmoitukset</h3>
-            <p id="notifCardText">Valitse, mitä ilmoituksia näytetään yläpalkin kellokuvakkeessa.</p>
+            <h3 data-i18n="notificationsCardTitle">Ilmoitukset</h3>
+            <p data-i18n="notificationsCardText">Valitse, mitä ilmoituksia näytetään yläpalkin kellokuvakkeessa.</p>
 
             <div class="setting-row">
               <div>
-                <strong id="riskNotifTitle">Riskivaroitukset</strong>
-                <span id="riskNotifText">Näytä ilmoitus, jos uniapneariski on kohonnut.</span>
+                <strong data-i18n="riskNotifTitle">Riskivaroitukset</strong>
+                <span data-i18n="riskNotifText">Näytä ilmoitus, jos uniapneariski on kohonnut.</span>
               </div>
               <button class="simple-toggle" id="riskToggle">
                 <span class="simple-toggle-circle"><i class="fas fa-check"></i></span>
@@ -300,8 +296,8 @@
 
             <div class="setting-row">
               <div>
-                <strong id="sleepNotifTitle">Unen kesto</strong>
-                <span id="sleepNotifText">Näytä ilmoitus, jos unen kesto jää alle suosituksen.</span>
+                <strong data-i18n="sleepNotifTitle">Unen kesto</strong>
+                <span data-i18n="sleepNotifText">Näytä ilmoitus, jos unen kesto jää alle suosituksen.</span>
               </div>
               <button class="simple-toggle" id="sleepToggle">
                 <span class="simple-toggle-circle"><i class="fas fa-check"></i></span>
@@ -310,8 +306,8 @@
 
             <div class="setting-row">
               <div>
-                <strong id="hrvNotifTitle">HRV / RMSSD</strong>
-                <span id="hrvNotifText">Näytä ilmoitus, jos palautumisarvo on alle viitearvon.</span>
+                <strong data-i18n="hrvNotifTitle">HRV / RMSSD</strong>
+                <span data-i18n="hrvNotifText">Näytä ilmoitus, jos palautumisarvo on alle viitearvon.</span>
               </div>
               <button class="simple-toggle" id="hrvToggle">
                 <span class="simple-toggle-circle"><i class="fas fa-check"></i></span>
@@ -319,12 +315,6 @@
             </div>
           </div>
 
-          <div class="settings-card">
-            <i class="fas fa-shield-alt"></i>
-            <h3 data-i18n="privacyTitle">Tietosuoja</h3>
-            <p data-i18n="privacyText">Tarkista tietosuoja-asetukset ja hallitse, miten tietojasi käytetään sovelluksessa.</p>
-            <button class="settings-btn" data-i18n="privacyButton">Tietosuoja-asetukset</button>
-          </div>
         </div>
 
         <div class="settings-panel">
