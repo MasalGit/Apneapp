@@ -54,18 +54,32 @@
 
 <body class="db-body">
 
-<aside class="db-sidebar">
-  <div class="db-sidebar-logo">
-    <i class="fas fa-lungs"></i>
-    <span>Apneapp</span>
-  </div>
+<!-- SIDEBAR -->
+  <aside class="db-sidebar">
+    <div class="db-sidebar-logo">
+      <i class="fas fa-lungs"></i>
+      <span>Apneapp</span>
+    </div>
+    <nav class="db-nav">
+      <a href="dashboard.html" class="db-nav-item">
+        <i class="fas fa-th-large"></i>
+        <span>Yleiskatsaus</span>
+      </a>
+      <a href="graph.html" class="db-nav-item active">
+        <i class="fas fa-chart-line"></i>
+        <span>Kaavio</span>
+      </a>
+      <a href="report.html" class="db-nav-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Raportti</span>
+      </a>
+    </nav>
+    <button class="db-logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Kirjaudu ulos</span>
+    </button>
+  </aside>
 
-  <nav class="db-nav">
-    <a href="dashboard.html" class="db-nav-item">Yleiskatsaus</a>
-    <a href="graph.html" class="db-nav-item active">Kaavio</a>
-  </nav>
-
-  <button class="db-logout" onclick="logout()">Kirjaudu ulos</button>
 </aside>
 
 <main class="db-main">

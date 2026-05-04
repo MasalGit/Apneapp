@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Apneapp - Raportti</title>
+
+  <link rel="stylesheet" href="src/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="db-body">
+
+  <aside class="db-sidebar">
+    <div class="db-sidebar-logo">
+      <i class="fas fa-lungs"></i>
+      <span>Apneapp</span>
+    </div>
+
+    <nav class="db-nav">
+      <a href="dashboard.html" class="db-nav-item">
+        <i class="fas fa-th-large"></i>
+        <span>Yleiskatsaus</span>
+      </a>
+
+      <a href="graph.html" class="db-nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Kaavio</span>
+      </a>
+
+      <a href="report.html" class="db-nav-item active">
+        <i class="fas fa-file-alt"></i>
+        <span>Raportti</span>
+      </a>
+    </nav>
+
+    <button class="db-logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Kirjaudu ulos</span>
+    </button>
+  </aside>
+
+  <main class="db-main">
+
+    <div class="db-topbar">
+      <div>
+        <div class="db-title">Uniraportti</div>
+        <div class="db-date">Analyysi</div>
+      </div>
+    </div>
+
+    <div class="db-risk-banner">
+      <div class="db-risk-left">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Riskitaso: <span id="riskLevel">-</span></strong>
+          <span>Autonomisen hermoston analyysi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="db-cards">
+
+      <div class="db-card">
+        <div class="db-card-icon">
+          <i class="fas fa-bed"></i>
+        </div>
+        <div class="db-card-info">
+          <div class="db-card-label">Keskiarvoinen uni</div>
+          <div class="db-card-value">
+            <span id="avgSleep">-</span> h
+          </div>
+        </div>
+      </div>
+
+      <div class="db-card">
+        <div class="db-card-icon">
+          <i class="fas fa-wave-square"></i>
+        </div>
+        <div class="db-card-info">
+          <div class="db-card-label">LF/HF keskiarvo</div>
+          <div class="db-card-value" id="avgLFHF">-</div>
+        </div>
+      </div>
+
+      <div class="db-card">
+        <div class="db-card-icon">
+          <i class="fas fa-database"></i>
+        </div>
+        <div class="db-card-info">
+          <div class="db-card-label">Mittauksia</div>
+          <div class="db-card-value" id="total">-</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="db-session" style="margin-top: 20px;">
+      <div class="db-session-row">
+        <span>
+          <i class="fas fa-info-circle"></i>
+          <span id="reportMessage">Ladataan raporttia...</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="db-session" style="margin-top: 14px;">
+      <div class="db-session-row">
+        <span>
+          Tämä raportti ei ole lääketieteellinen diagnoosi.
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+<script>
+const API_URL = "http://127.0.0.1:3000/api/measurements/report";
+
+async function loadReport(days = 365) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(`${API_URL}?days=${days}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch report");
+
+    const data = await res.json();
+    renderReport(data);
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById("reportMessage").textContent =
+      "Raportin lataus epäonnistui.";
+  }
+}
+
+function interpret(data) {
+  let riskLevel = "Matala";
+
+  if (data.elevatedRatio > 0.5) riskLevel = "Korkea";
+  else if (data.elevatedRatio > 0.2) riskLevel = "Keskitaso";
+
+  let msg = data.avgSleep < 6
+    ? "Unesi määrä on alle suosituksen. "
+    : "Unen määrä on hyvällä tasolla. ";
+
+  msg += data.avgLFHF > 0.6
+    ? "Kohonnut stressi. "
+    : "Autonominen tasapaino normaali. ";
+
+  if (riskLevel === "Korkea") {
+    msg += "Suositellaan terveydenhuoltoon yhteydenottoa.";
+  }
+
+  return { riskLevel, msg };
+}
+
+function renderReport(data) {
+  if (data.message) {
+    document.getElementById("reportMessage").textContent = data.message;
+    return;
+  }
+
+  const result = interpret(data);
+
+  document.getElementById("avgSleep").textContent = data.avgSleep;
+  document.getElementById("avgLFHF").textContent = data.avgLFHF;
+  document.getElementById("total").textContent = data.totalMeasurements;
+
+  document.getElementById("riskLevel").textContent = result.riskLevel;
+  document.getElementById("reportMessage").textContent = result.msg;
+}
+
+loadReport();
+</script>
+
+</body>
+</html>
