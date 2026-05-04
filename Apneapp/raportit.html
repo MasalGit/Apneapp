@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apneapp - Raportit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="src/css/style.css">
+
+  <style>
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .report-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .report-card i {
+      font-size: 24px;
+      color: #3b82f6;
+      margin-bottom: 12px;
+    }
+
+    .report-card h3 {
+      margin-bottom: 10px;
+      color: #1f2937;
+      font-size: 18px;
+    }
+
+    .report-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .report-btn {
+      border: none;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .report-btn:hover {
+      background: #2563eb;
+    }
+
+    .report-note {
+      margin-top: 28px;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 18px;
+      border-radius: 10px;
+      color: #1e3a8a;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    body.dark-mode .report-card {
+      background: #1f2937;
+      border-color: #374151;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode .report-card h3 {
+      color: #f9fafb;
+    }
+
+    body.dark-mode .report-card p {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .report-note {
+      background: #172554;
+      border-left-color: #60a5fa;
+      color: #dbeafe;
+    }
+  </style>
+</head>
+
+<body class="db-body">
+<script>
+  if (localStorage.getItem("apneapp-theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
+  <aside class="db-sidebar">
+    <div class="db-sidebar-logo">
+      <i class="fas fa-lungs"></i>
+      <span>Apneapp</span>
+    </div>
+
+    <nav class="db-nav">
+      <a href="dashboard.html" class="db-nav-item">
+        <i class="fas fa-th-large"></i>
+        <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
+      </a>
+      <a href="graph.html" class="db-nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span data-i18n="chart">Kaavio</span>
+      </a>
+      <a href="raportit.html" class="db-nav-item active">
+        <i class="fas fa-file-medical"></i>
+        <span data-i18n="reports">Raportit</span>
+      </a>
+      <a href="about.html" class="db-nav-item">
+        <i class="fas fa-circle-info"></i>
+        <span data-i18n="about">Tietoja</span>
+      </a>
+      <a href="asetukset.html" class="db-nav-item">
+        <i class="fas fa-cog"></i>
+        <span data-i18n="settings">Asetukset</span>
+      </a>
+    </nav>
+
+    <button class="db-logout" onclick="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span data-i18n="logout">Kirjaudu ulos</span>
+    </button>
+  </aside>
+
+  <main class="db-main">
+    <header class="db-topbar">
+      <div>
+        <h1 data-i18n="reports">Raportit</h1>
+        <p data-i18n="downloadView">Lataa ja tarkastele tärkeimpiä analyysiyhteenvetoja.</p>
+      </div>
+      <div class="db-user">
+        <div class="db-avatar"><i class="fas fa-user"></i></div>
+        <span data-i18n="user">Käyttäjä</span>
+      </div>
+    </header>
+
+    <section class="db-section">
+      <h2 class="db-section-title" data-i18n="availableReports">Saatavilla olevat raportit</h2>
+
+      <div class="report-grid">
+        <div class="report-card">
+          <i class="fas fa-file-waveform"></i>
+          <h3 data-i18n="sleepSummary">Uniyhteenveto</h3>
+          <p data-i18n="sleepSummaryDesc">Kooste viimeisimmän yön unidatasta, unen kestosta ja palautumisesta.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
+        </div>
+
+        <div class="report-card">
+          <i class="fas fa-heart-pulse"></i>
+          <h3 data-i18n="hrvAnalysis">HRV-analyysi</h3>
+          <p data-i18n="hrvAnalysisDesc">Sykevälivaihteluun perustuva analyysi, joka tukee uniapneariskin arviointia.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
+        </div>
+
+        <div class="report-card">
+          <i class="fas fa-user-doctor"></i>
+          <h3 data-i18n="doctorReport">Lääkäriraportti</h3>
+          <p data-i18n="doctorReportDesc">Tulevaisuudessa jaettava yhteenveto, jonka voi näyttää terveydenhuollon ammattilaiselle.</p>
+          <button data-i18n="openReport">Avaa raportti</button>
+        </div>
+      </div>
+
+      <div class="report-note">
+        <p data-i18n="reportNote">Raporttien sisältö on vielä osittain kehitysvaiheessa. Tähän näkymään voidaan myöhemmin lisätä ladattavat PDF-raportit, tarkemmat mittaustulokset ja analyysikaaviot.</p>
+      </div>
+    </section>
+  </main>
+
+<script src="script.js"></script>
+<script src="src/js/language.js"></script>
+</body>
+</html>

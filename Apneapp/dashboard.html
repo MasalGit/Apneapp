@@ -3,208 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apneapp - Dashboard</title>
+  <title>Apneapp - Yleiskatsaus</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="src/css/style.css">
-</head>
-<body class="db-body">
 
-  <!-- SIDEBAR -->
+  <style>
+    .db-top-actions { display: flex; align-items: center; gap: 14px; position: relative; }
+    .notification-wrapper { position: relative; }
+    .notification-btn { width: 38px; height: 38px; border: none; border-radius: 50%; background: #e5e7eb; color: #4b5563; cursor: pointer; position: relative; }
+    .notification-badge { position: absolute; top: -3px; right: -3px; background: #ef4444; color: white; font-size: 10px; font-weight: 700; width: 17px; height: 17px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .notification-badge.hidden { display: none; }
+    .notification-dropdown { position: absolute; top: 48px; right: 0; width: 320px; background: white; border: 1px solid #e5e7eb; border-radius: 14px; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.18); padding: 14px; z-index: 20; display: none; }
+    .notification-dropdown.show { display: block; }
+    .notification-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .notification-header strong { font-size: 15px; color: #111827; }
+    .notification-header span { font-size: 12px; color: #6b7280; }
+    .notification-item { display: flex; gap: 10px; padding: 11px 0; border-top: 1px solid #f3f4f6; }
+    .notification-item i { margin-top: 3px; color: #f59e0b; width: 18px; text-align: center; }
+    .notification-item strong { display: block; font-size: 13.5px; color: #111827; margin-bottom: 2px; }
+    .notification-item p { font-size: 12.5px; color: #6b7280; line-height: 1.4; margin: 0; }
+    .notification-empty { padding: 18px 0; text-align: center; color: #6b7280; font-size: 13px; border-top: 1px solid #f3f4f6; }
+    .notification-link { width: 100%; margin-top: 10px; border: none; background: #f59e0b; color: white; border-radius: 9px; padding: 9px 12px; cursor: pointer; font-weight: 600; }
+
+    body.dark-mode .notification-btn { background: #374151; color: #d1d5db; }
+    body.dark-mode .notification-dropdown { background: #1f2937; border-color: #374151; }
+    body.dark-mode .notification-header strong,
+    body.dark-mode .notification-item strong { color: #f9fafb; }
+    body.dark-mode .notification-header span,
+    body.dark-mode .notification-item p,
+    body.dark-mode .notification-empty { color: #d1d5db; }
+    body.dark-mode .notification-item,
+    body.dark-mode .notification-empty { border-top-color: #374151; }
+  </style>
+</head>
+
+<body class="db-body">
+<script>
+  if (localStorage.getItem("apneapp-theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
   <aside class="db-sidebar">
     <div class="db-sidebar-logo">
       <i class="fas fa-lungs"></i>
       <span>Apneapp</span>
     </div>
+
     <nav class="db-nav">
       <a href="dashboard.html" class="db-nav-item active">
         <i class="fas fa-th-large"></i>
-        <span>Yleiskatsaus</span>
+        <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
       </a>
       <a href="graph.html" class="db-nav-item">
         <i class="fas fa-chart-line"></i>
-        <span>Kaavio</span>
+        <span data-i18n="chart">Kaavio</span>
+      </a>
+      <a href="raportit.html" class="db-nav-item">
+        <i class="fas fa-file-medical"></i>
+        <span data-i18n="reports">Raportit</span>
+      </a>
+      <a href="about.html" class="db-nav-item">
+        <i class="fas fa-circle-info"></i>
+        <span data-i18n="about">Tietoja</span>
+      </a>
+      <a href="asetukset.html" class="db-nav-item">
+        <i class="fas fa-cog"></i>
+        <span data-i18n="settings">Asetukset</span>
       </a>
     </nav>
+
     <button class="db-logout" onclick="logout()">
       <i class="fas fa-sign-out-alt"></i>
-      <span>Kirjaudu ulos</span>
+      <span data-i18n="logout">Kirjaudu ulos</span>
     </button>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="db-main">
-
-    <!-- Top bar -->
     <header class="db-topbar">
       <div>
-        <h1 class="db-title">Yleiskatsaus</h1>
+        <h1 data-i18n="dashboardTitle">Yleiskatsaus</h1>
         <p class="db-date" id="dbDate"></p>
       </div>
-      <div class="db-user">
-        <div class="db-avatar"><i class="fas fa-user"></i></div>
-        <div>
-          <p style="margin: 0; font-weight: 500; color: #1e293b;">Käyttäjä</p>
-          <p style="margin: 0; font-size: 12px; color: #94a3b8;">Aktiivinen</p>
+
+      <div class="db-top-actions">
+        <div class="notification-wrapper">
+          <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">3</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <strong id="notificationTitle">Ilmoitukset</strong>
+              <span id="notificationCount">3 uutta</span>
+            </div>
+            <div id="notificationList"></div>
+            <button class="notification-link" onclick="window.location.href='raportit.html'" id="notificationReportBtn">
+              Katso raportit
+            </button>
+          </div>
+        </div>
+
+        <div class="db-user">
+          <div class="db-avatar"><i class="fas fa-user"></i></div>
+          <span data-i18n="user">Käyttäjä</span>
         </div>
       </div>
     </header>
 
-    <!-- Risk banner -->
     <div class="db-risk-banner">
       <div class="db-risk-left">
         <i class="fas fa-exclamation-triangle"></i>
         <div>
-          <strong>Uniapneariski: Kohonnut</strong>
-          <span>Viimeisin analyysi tänä yönä klo 03:14</span>
+          <strong data-i18n="sleepApneaRisk">Uniapneariski: Kohonnut</strong>
+          <span data-i18n="latestAnalysis">Viimeisin analyysi tänä yönä klo 03:14</span>
         </div>
       </div>
-      <button class="db-risk-btn">Katso raportti</button>
+      <button class="db-risk-btn" onclick="window.location.href='raportit.html'" data-i18n="viewReport">Katso raportti</button>
     </div>
 
-    <!-- Metric cards -->
     <div class="db-cards">
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-heartbeat" style="color:#64748b;"></i>
         </div>
         <div class="db-card-info">
-          <span class="db-card-label">RMSSD</span>
+          <span class="db-card-label" data-i18n="rmssd">RMSSD</span>
           <span class="db-card-value">35 <small>ms</small></span>
-          <span class="db-card-sub db-sub-warn">Alle viitearvon</span>
+          <span class="db-card-sub db-sub-warn" data-i18n="belowReference">Alle viitearvon</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-wave-square" style="color:#64748b;"></i>
         </div>
         <div class="db-card-info">
-          <span class="db-card-label">SDNN</span>
+          <span class="db-card-label" data-i18n="sdnn">SDNN</span>
           <span class="db-card-value">120 <small>ms</small></span>
-          <span class="db-card-sub db-sub-ok">Normaali</span>
+          <span class="db-card-sub db-sub-ok" data-i18n="normal">Normaali</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-moon" style="color:#64748b;"></i>
         </div>
         <div class="db-card-info">
-          <span class="db-card-label">Unen kesto</span>
+          <span class="db-card-label" data-i18n="sleepDuration">Unen kesto</span>
           <span class="db-card-value">6h <small>22min</small></span>
-          <span class="db-card-sub db-sub-warn">Alle suosituksen</span>
+          <span class="db-card-sub db-sub-warn" data-i18n="belowRecommendation">Alle suosituksen</span>
         </div>
       </div>
+
       <div class="db-card">
         <div class="db-card-icon" style="background:#f1f5f9;">
           <i class="fas fa-lungs" style="color:#64748b;"></i>
         </div>
         <div class="db-card-info">
-          <span class="db-card-label">Apnea-tapahtumat</span>
+          <span class="db-card-label" data-i18n="apneaEvents">Apnea-tapahtumat</span>
           <span class="db-card-value">12 <small>/h</small></span>
-          <span class="db-card-sub db-sub-bad">Korkea</span>
+          <span class="db-card-sub db-sub-bad" data-i18n="high">Korkea</span>
         </div>
       </div>
     </div>
 
-    <!-- Last session -->
     <section class="db-section">
-      <h2 class="db-section-title">Viimeisin yö</h2>
+      <h2 class="db-section-title" data-i18n="lastNight">Viimeisin yö</h2>
       <div class="db-session">
         <div class="db-session-row">
-          <span><i class="fas fa-clock"></i> Nukkumisaika</span>
+          <span><i class="fas fa-clock"></i> <span data-i18n="sleepTime">Nukkumisaika</span></span>
           <strong>23:40 – 06:02</strong>
         </div>
         <div class="db-session-row">
-          <span><i class="fas fa-bed"></i> Syvä uni</span>
+          <span><i class="fas fa-bed"></i> <span data-i18n="deepSleep">Syvä uni</span></span>
           <strong>1h 48min</strong>
         </div>
         <div class="db-session-row">
-          <span><i class="fas fa-eye"></i> REM-uni</span>
+          <span><i class="fas fa-eye"></i> <span data-i18n="remSleep">REM-uni</span></span>
           <strong>1h 12min</strong>
         </div>
         <div class="db-session-row">
-          <span><i class="fas fa-exclamation-circle"></i> Häiriöt</span>
+          <span><i class="fas fa-exclamation-circle"></i> <span data-i18n="disturbances">Häiriöt</span></span>
           <strong class="db-sub-bad">8 kertaa</strong>
         </div>
         <div class="db-session-row">
-          <span><i class="fas fa-thermometer-half"></i> Kehon lämpötila</span>
+          <span><i class="fas fa-thermometer-half"></i> <span data-i18n="bodyTemperature">Kehon lämpötila</span></span>
           <strong>36.6 °C</strong>
         </div>
       </div>
     </section>
 
+    <section class="db-section" style="margin-top: 24px;">
+      <h2 class="db-section-title" data-i18n="quickActions">Nopeat toiminnot</h2>
+      <div class="db-cards">
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='graph.html'">
+          <div class="db-card-icon" style="background:#eff6ff;">
+            <i class="fas fa-chart-line" style="color:#2563eb;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label" data-i18n="chart">Kaavio</span>
+            <span class="db-card-value" style="font-size:18px;" data-i18n="openView">Avaa näkymä</span>
+            <span class="db-card-sub db-sub-ok" data-i18n="viewVisualization">Tarkastele visualisointia</span>
+          </div>
+        </div>
+
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='raportit.html'">
+          <div class="db-card-icon" style="background:#fef3c7;">
+            <i class="fas fa-file-medical" style="color:#d97706;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label" data-i18n="reports">Raportit</span>
+            <span class="db-card-value" style="font-size:18px;" data-i18n="openReports">Avaa raportit</span>
+            <span class="db-card-sub db-sub-warn" data-i18n="viewSummary">Katso yhteenveto</span>
+          </div>
+        </div>
+
+        <div class="db-card" style="cursor:pointer;" onclick="window.location.href='asetukset.html'">
+          <div class="db-card-icon" style="background:#eef2ff;">
+            <i class="fas fa-cog" style="color:#4f46e5;"></i>
+          </div>
+          <div class="db-card-info">
+            <span class="db-card-label" data-i18n="settings">Asetukset</span>
+            <span class="db-card-value" style="font-size:18px;" data-i18n="editSettings">Muokkaa asetuksia</span>
+            <span class="db-card-sub db-sub-ok" data-i18n="manageApplication">Hallitse sovellusta</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-<script>
-  // API configuration
-  const API_BASE_URL = 'http://127.0.0.1:3000'; // Your backend server URL
+  <script src="src/js/language.js"></script>
 
-  // Set today's date
-  const d = new Date();
-  document.getElementById("dbDate").textContent =
-    d.toLocaleDateString("fi-FI", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-
-  // Fetch sleep hours data
-  async function fetchSleepHours() {
-    try {
-      const token = localStorage.getItem('token');
-      console.log('Token present:', !!token);
-      console.log('API URL:', `${API_BASE_URL}/sleep/hours`);
-      
-      const response = await fetch(`${API_BASE_URL}/sleep/hours`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
+  <script>
+    const d = new Date();
+    document.getElementById("dbDate").textContent =
+      d.toLocaleDateString("fi-FI", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
       });
-      
-      console.log('Response status:', response.status);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('HTTP Error:', response.status, errorText);
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
-      const data = await response.json();
-      console.log('Sleep data received:', data);
-      return data;
-    } catch (error) {
-      console.error('Error fetching sleep hours:', error);
-      return [];
+
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
     }
-  }
 
-  // Update sleep duration card with latest data
-  async function updateSleepDuration() {
-    const hoursData = await fetchSleepHours();
-    if (hoursData.length > 0) {
-      // Get the latest sleep session
-      const latest = hoursData[hoursData.length - 1];
-      const hours = Math.floor(latest.hours);
-      const minutes = Math.round((latest.hours - hours) * 60);
-      
-      // Update the card
-      const sleepCard = document.querySelector('.db-card:nth-child(3) .db-card-value');
-      if (sleepCard) {
-        sleepCard.innerHTML = `${hours}h <small>${minutes}min</small>`;
-      }
+    const notificationBtn = document.getElementById("notificationBtn");
+    const notificationDropdown = document.getElementById("notificationDropdown");
+    const notificationList = document.getElementById("notificationList");
+    const notificationBadge = document.getElementById("notificationBadge");
+    const notificationReportBtn = document.getElementById("notificationReportBtn");
+
+    function notificationEnabled(key) {
+      const saved = localStorage.getItem(key);
+      return saved === null ? true : saved === "true";
     }
-  }
 
-  // Initialize dashboard
-  updateSleepDuration();
+    function getNotificationText() {
+      const lang = localStorage.getItem("apneapp-language") || "fi";
+      const isEnglish = lang === "en";
 
-  // Sidebar active nav
-  document.querySelectorAll(".db-nav-item").forEach(item => {
-    item.addEventListener("click", function(e) {
-      document.querySelectorAll(".db-nav-item").forEach(i => i.classList.remove("active"));
-      this.classList.add("active");
+      const allItems = [
+        {
+          settingKey: "apneapp-notif-risk",
+          icon: "fa-triangle-exclamation",
+          title: isEnglish ? "Sleep apnea risk is elevated" : "Uniapneariski on kohonnut",
+          text: isEnglish
+            ? "Latest analysis shows elevated risk based on apnea events."
+            : "Viimeisin analyysi näyttää kohonneen riskin apnea-tapahtumien perusteella."
+        },
+        {
+          settingKey: "apneapp-notif-sleep",
+          icon: "fa-moon",
+          title: isEnglish ? "Sleep duration is below recommendation" : "Unen kesto on alle suosituksen",
+          text: isEnglish
+            ? "Last night’s sleep duration was 6h 22min."
+            : "Viime yön unen kesto oli 6h 22min."
+        },
+        {
+          settingKey: "apneapp-notif-hrv",
+          icon: "fa-heart-pulse",
+          title: isEnglish ? "RMSSD is below reference value" : "RMSSD on alle viitearvon",
+          text: isEnglish
+            ? "Recovery value is currently below the reference range."
+            : "Palautumisarvo on tällä hetkellä alle viitearvon."
+        }
+      ];
+
+      const items = allItems.filter(item => notificationEnabled(item.settingKey));
+
+      return {
+        title: isEnglish ? "Notifications" : "Ilmoitukset",
+        count: isEnglish ? `${items.length} new` : `${items.length} uutta`,
+        empty: isEnglish ? "No active notifications." : "Ei aktiivisia ilmoituksia.",
+        reportBtn: isEnglish ? "View reports" : "Katso raportit",
+        items
+      };
+    }
+
+    function renderNotifications() {
+      const data = getNotificationText();
+
+      document.getElementById("notificationTitle").textContent = data.title;
+      document.getElementById("notificationCount").textContent = data.count;
+      notificationReportBtn.textContent = data.reportBtn;
+
+      notificationBadge.textContent = data.items.length;
+      notificationBadge.classList.toggle("hidden", data.items.length === 0);
+      notificationReportBtn.style.display = data.items.length === 0 ? "none" : "block";
+
+      if (data.items.length === 0) {
+        notificationList.innerHTML = `<div class="notification-empty">${data.empty}</div>`;
+        return;
+      }
+
+      notificationList.innerHTML = data.items.map(item => `
+        <div class="notification-item">
+          <i class="fas ${item.icon}"></i>
+          <div>
+            <strong>${item.title}</strong>
+            <p>${item.text}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    notificationBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      renderNotifications();
+      notificationDropdown.classList.toggle("show");
     });
-  });
 
-  function logout() {
-    localStorage.removeItem('token');
-    window.location.href = "index.html";
-  }
-</script>
+    document.addEventListener("click", function () {
+      notificationDropdown.classList.remove("show");
+    });
+
+    notificationDropdown.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    renderNotifications();
+  </script>
+
 </body>
 </html>
