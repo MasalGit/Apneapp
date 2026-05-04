@@ -1,7 +1,7 @@
 # Apneapp – Testausdokumentti
 
 **Testaaja:** Ali  
-**Päivämäärä:** 29.4.2026  
+**Päivämäärä:** 4.5.2026  
 **Branch:** `ali-fe2-work`
 
 ---
@@ -240,13 +240,41 @@ Funktio `logout()` poistaa `token`-avaimen `localStorage`-muistista ja ohjaa kä
 
 ---
 
+## Tehtävä 16 – Tietoja-sivu (about.html) – Manuaaliset testit
+
+**Testataan:** Uusi Tietoja-sivu – sisältö, tyylitys ja navigointi  
+**Huom:** Sivu näyttää tietoa sovelluksesta ja uniapneasta
+
+| # | Testitapaus | Toimenpide | Odotettu tulos |
+|---|---|---|---|
+| TC42 | Sivu latautuu | Avaa `about.html` | Hero-osio, kolme tietokorttia ja huomiolaatikko näkyvissä |
+| TC43 | Navigointi toimii | Klikkaa "Tietoja" sivupalkista | `about.html` avautuu, Tietoja-linkki korostuu |
+| TC44 | Tumma tila | Aktivoi tumma tila, avaa about.html | Kortit ja hero-osio näkyvät tummalla teemalla |
+| TC45 | Kieli vaihto | Vaihda kieli englanniksi | Sivun tekstit (otsikot, kortit) vaihtuvat englanniksi |
+
+---
+
+## Tehtävä 17 – Asetukset-parannukset (asetukset.html) – Manuaaliset testit
+
+**Testataan:** Päivitetyn Asetukset-sivun uudet ominaisuudet  
+**Huom:** Parannettu ulkoasu ja uudet toggle-komponentit
+
+| # | Testitapaus | Toimenpide | Odotettu tulos |
+|---|---|---|---|
+| TC46 | Ilmoitustoggle – riskivaroitus | Klikkaa Riskivaroitukset-toggle | Toggle aktivoituu/deaktivoituu, localStorage tallentuu |
+| TC47 | Ilmoitustoggle – unen kesto | Klikkaa Unen kesto -toggle | Toggle aktivoituu/deaktivoituu, localStorage tallentuu |
+| TC48 | Ilmoitustoggle – HRV | Klikkaa HRV/RMSSD-toggle | Toggle aktivoituu/deaktivoituu, localStorage tallentuu |
+| TC49 | Aikamuoto 12h tallennetaan | Valitse 12h, lataa sivu | `localStorage["apneapp-time-format"]` = `"12h"` |
+
+---
+
 ## Yhteenveto
 
 | Kategoria | Testitapauksia | Läpäissyt | Hylätty |
 |-----------|---------------|-----------|---------|
 | Yksikkötestit (JS-funktiot) | 33 | 33 | 0 |
-| Manuaaliset UI-testit | 41 | 41 | 0 |
-| **Yhteensä** | **74** | **74** | **0** |
+| Manuaaliset UI-testit | 49 | 49 | 0 |
+| **Yhteensä** | **82** | **82** | **0** |
 
 **Testikattavuus (ali-fe2-work branch):**
 - Kirjautuminen (validointi + API): ✅ 100%
@@ -258,4 +286,5 @@ Funktio `logout()` poistaa `token`-avaimen `localStorage`-muistista ja ohjaa kä
 - Uloskirjautuminen: ✅ 100%
 - Teema (dark/light mode): ✅ 100%
 - Kielenkääntö (fi/en): ✅ 100%
-- localStorage-tallennus: ✅ 100%
+- Tietoja-sivu (sisältö, navigointi, dark mode, kieli): ✅ 100%
+- Asetukset-parannukset (togglet, aikamuoto): ✅ 100%
