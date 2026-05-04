@@ -230,18 +230,22 @@
         <i class="fas fa-th-large"></i>
         <span data-i18n="sidebarDashboard">Yleiskatsaus</span>
       </a>
+
       <a href="graph.html" class="db-nav-item">
         <i class="fas fa-chart-line"></i>
         <span data-i18n="chart">Kaavio</span>
       </a>
+
       <a href="raportit.html" class="db-nav-item">
         <i class="fas fa-file-medical"></i>
         <span data-i18n="reports">Raportit</span>
       </a>
+
       <a href="about.html" class="db-nav-item">
         <i class="fas fa-circle-info"></i>
         <span data-i18n="about">Tietoja</span>
       </a>
+
       <a href="asetukset.html" class="db-nav-item active">
         <i class="fas fa-cog"></i>
         <span data-i18n="settings">Asetukset</span>
@@ -314,7 +318,6 @@
               </button>
             </div>
           </div>
-
         </div>
 
         <div class="settings-panel">
@@ -360,7 +363,7 @@
         </div>
       </div>
 
-      <div class="settings-note">
+      <div class="settings-note" data-i18n="settingsNote">
         Asetukset tallennetaan selaimen localStorage-muistiin. Ilmoitusasetukset vaikuttavat dashboardin kellokuvakkeen ilmoituksiin.
       </div>
     </section>
@@ -411,41 +414,6 @@
       setToggle(document.getElementById("hrvToggle"), getSetting(notificationSettings.hrv));
     }
 
-    function updateNotificationTexts() {
-      const lang = localStorage.getItem("apneapp-language") || "fi";
-
-      const text = lang === "en"
-        ? {
-            title: "Notifications",
-            desc: "Choose which notifications are shown in the top bar bell icon.",
-            riskTitle: "Risk alerts",
-            riskText: "Show a notification when sleep apnea risk is elevated.",
-            sleepTitle: "Sleep duration",
-            sleepText: "Show a notification when sleep duration is below recommendation.",
-            hrvTitle: "HRV / RMSSD",
-            hrvText: "Show a notification when recovery value is below reference value."
-          }
-        : {
-            title: "Ilmoitukset",
-            desc: "Valitse, mitä ilmoituksia näytetään yläpalkin kellokuvakkeessa.",
-            riskTitle: "Riskivaroitukset",
-            riskText: "Näytä ilmoitus, jos uniapneariski on kohonnut.",
-            sleepTitle: "Unen kesto",
-            sleepText: "Näytä ilmoitus, jos unen kesto jää alle suosituksen.",
-            hrvTitle: "HRV / RMSSD",
-            hrvText: "Näytä ilmoitus, jos palautumisarvo on alle viitearvon."
-          };
-
-      document.getElementById("notifCardTitle").textContent = text.title;
-      document.getElementById("notifCardText").textContent = text.desc;
-      document.getElementById("riskNotifTitle").textContent = text.riskTitle;
-      document.getElementById("riskNotifText").textContent = text.riskText;
-      document.getElementById("sleepNotifTitle").textContent = text.sleepTitle;
-      document.getElementById("sleepNotifText").textContent = text.sleepText;
-      document.getElementById("hrvNotifTitle").textContent = text.hrvTitle;
-      document.getElementById("hrvNotifText").textContent = text.hrvText;
-    }
-
     const savedTheme = localStorage.getItem("apneapp-theme") || "light";
     const savedLanguage = localStorage.getItem("apneapp-language") || "fi";
     const savedTimeFormat = localStorage.getItem("apneapp-time-format") || "24h";
@@ -454,7 +422,6 @@
     languageSelect.value = savedLanguage;
     timeFormatSelect.value = savedTimeFormat;
     loadNotificationToggles();
-    updateNotificationTexts();
 
     if (typeof applyTranslations === "function") {
       applyTranslations();
@@ -474,8 +441,6 @@
       if (typeof applyTranslations === "function") {
         applyTranslations();
       }
-
-      updateNotificationTexts();
     });
 
     timeFormatSelect.addEventListener("change", function () {
