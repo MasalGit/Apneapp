@@ -133,23 +133,23 @@
         <div class="db-sleep-bar-row">
           <div class="db-sleep-bar-label">
             <span><i class="fas fa-bed"></i> Syvä uni</span>
-            <span>1h 48min <span class="db-compare db-compare-up"><i class="fas fa-arrow-up"></i> +12min</span></span>
+            <span id="deepLabel">1h 48min</span>
           </div>
-          <div class="db-progress-track"><div class="db-progress-fill" style="width:60%; background:#6366f1;"></div></div>
+          <div class="db-progress-track"><div id="deepBar" class="db-progress-fill" style="width:60%; background:#6366f1;"></div></div>
         </div>
         <div class="db-sleep-bar-row">
           <div class="db-sleep-bar-label">
             <span><i class="fas fa-eye"></i> REM-uni</span>
-            <span>1h 12min <span class="db-compare db-compare-down"><i class="fas fa-arrow-down"></i> -8min</span></span>
+            <span id="remLabel">1h 12min</span>
           </div>
-          <div class="db-progress-track"><div class="db-progress-fill" style="width:40%; background:#8b5cf6;"></div></div>
+          <div class="db-progress-track"><div id="remBar" class="db-progress-fill" style="width:40%; background:#8b5cf6;"></div></div>
         </div>
         <div class="db-sleep-bar-row">
           <div class="db-sleep-bar-label">
             <span><i class="fas fa-cloud"></i> Kevyt uni</span>
-            <span>3h 22min <span class="db-compare db-compare-up"><i class="fas fa-arrow-up"></i> +5min</span></span>
+            <span id="lightLabel">3h 22min</span>
           </div>
-          <div class="db-progress-track"><div class="db-progress-fill" style="width:75%; background:#a78bfa;"></div></div>
+          <div class="db-progress-track"><div id="lightBar" class="db-progress-fill" style="width:75%; background:#a78bfa;"></div></div>
         </div>
       </div>
     </section>
@@ -176,6 +176,52 @@
     localStorage.removeItem('token');
     window.location.href = "index.html";
   }
+
+  // ── Univaiheet – lasketaan duration_s:stä (mittaukset) ──────────────────
+  function formatDuration(seconds) {
+    if (!seconds || seconds <= 0) return null;
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    return h > 0 ? `${h}h ${m}min` : `${m}min`;
+  }
+
+  function setSleepBars(deep_s, rem_s, light_s) {
+    const total = deep_s + rem_s + light_s;
+    document.getElementById('deepLabel').textContent  = formatDuration(deep_s)  || '1h 48min';
+    document.getElementById('remLabel').textContent   = formatDuration(rem_s)   || '1h 12min';
+    document.getElementById('lightLabel').textContent = formatDuration(light_s) || '3h 22min';
+    document.getElementById('deepBar').style.width    = (deep_s  / total * 100).toFixed(1) + '%';
+    document.getElementById('remBar').style.width     = (rem_s   / total * 100).toFixed(1) + '%';
+    document.getElementById('lightBar').style.width   = (light_s / total * 100).toFixed(1) + '%';
+  }
+
+  async function fetchSleepPhases() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    try {
+      const res = await fetch('/api/kubios/measures', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const sessions = data.sessions || data.results || [];
+      if (sessions.length === 0) return;
+      // Uusin mittaus
+      const latest = sessions[sessions.length - 1];
+      const duration_s = latest.duration_s || latest.measure?.duration_s || 0;
+      if (duration_s > 0) {
+        setSleepBars(
+          Math.round(duration_s * 0.25),  // Syvä uni 25%
+          Math.round(duration_s * 0.20),  // REM-uni  20%
+          Math.round(duration_s * 0.55)   // Kevyt uni 55%
+        );
+      }
+    } catch (e) {
+      console.error('Sleep phases error:', e);
+    }
+  }
+
+  fetchSleepPhases();
 </script>
 
 </body>
