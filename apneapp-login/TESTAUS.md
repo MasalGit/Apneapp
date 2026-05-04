@@ -1,7 +1,7 @@
 ﻿# Apneapp – Testausdokumentti
 
 **Testaaja:** Yamama  
-**Päivämäärä:** 30.4.2026  
+**Päivämäärä:** 4.5.2026  
 **Branch:** `Yamama-FE`
 
 ---
@@ -144,6 +144,23 @@
 
 ---
 
+## Tehtävä 11 – fetchSleepPhases() – Univaiheiden laskenta duration_s:stä (dashboard.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | duration_s = 28800 (8h) | `28800` | Syvä uni: 2h, REM: 1h 36min, Kevyt: 4h 24min |
+| 2 | duration_s = 0 | `0` | Näytetään fallback-arvot (1h 48min, 1h 12min, 3h 22min) |
+| 3 | Ei tokeä (ei kirjautunut) | `null` | Fallback-arvot näkyvissä, ei virhettä |
+| 4 | API-virhe (500) | palvelin ei vastaa | Fallback-arvot näkyvissä |
+
+**Manuaalinen testi:**
+
+| # | Testitapaus | Toiminto | Odotettu tulos |
+|---|---|---|---|
+| 5 | Kirjaudu sisään → avaa dashboard | Selaimessa | Univaiheet päivittyvät automaattisesti duration_s-arvosta |
+
+---
+
 ## Robot Framework – Automaatiotestit
 
 Yksikkötestien lisäksi on toteutettu **Browser-kirjastolla** toimivat automaatiotestit, jotka testaavat lomakkeiden todellista käyttäytymistä selaimessa.
@@ -189,7 +206,9 @@ robot apneapp-login/tests/register_tests.robot
 | | Määrä |
 |---|---|
 | Tehtäviä (JS yksikkötestit) | 10 |
+| Manuaalisia tehtäviä | 1 |
 | JS testejä yhteensä | 48 |
+| Manuaalisia TC | 5 |
 | Robot Framework testejä | 12 |
 | Läpäissyt | 48 / 48 |
 | Epäonnistuneet | 0 |
