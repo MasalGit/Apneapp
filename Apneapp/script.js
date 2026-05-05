@@ -33,7 +33,7 @@ const spinner           = document.getElementById("spinner");
 const messageBox        = document.getElementById("message");
 const rememberMe        = document.getElementById("rememberMe");
 
-const API_URL = "http://localhost:3000/api/kubios/login";
+const API_URL = "https://ryhma5-server.swedencentral.cloudapp.azure.com/api/kubios/login"
 
 if (form) {
   // Restore remembered email

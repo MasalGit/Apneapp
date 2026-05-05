@@ -82,7 +82,7 @@
       color: #d1d5db !important;
     }
   </style>
-  <script src="src/js/language.js"></script>
+  <script type="module" src="language.js"></script>
 </head>
 
 <body class="db-body">
@@ -154,7 +154,7 @@
 </main>
 
 <script>
-const API_BASE_URL = 'http://127.0.0.1:3000/api';
+const API_BASE_URL = 'https://ryhma5-server.swedencentral.cloudapp.azure.com/api';
 
 document.getElementById("dbDate").textContent =
   new Date().toLocaleDateString("fi-FI", {
