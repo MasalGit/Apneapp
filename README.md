@@ -6,6 +6,9 @@
 **Branch:** `Yamama-FE`  
 **Testaaja:** Yamama
 
+🔗 **GitHub-kansio:** [github.com/MasalGit/Apneapp_FE](https://github.com/MasalGit/Apneapp_FE)  
+🌐 **GitHub Pages:** [masalgit.github.io/Apneapp_FE](https://masalgit.github.io/Apneapp_FE/)
+
 ---
 
 ## Projektin kuvaus
@@ -28,13 +31,13 @@ Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjau
 
 | Raportti | Avaa selaimessa |
 |---|---|
-| JS-yksikkötestit (Yamama) | [tests/tests.html](apneapp-login/tests/tests.html) |
-| JS-yksikkötestit (Paavo) | [tests/tests_Paavo.html](apneapp-login/tests/tests_Paavo.html) |
-| JS-yksikkötestit (Ali) | [tests/tests_Ali.html](apneapp-login/tests/tests_Ali.html) |
-| RF – Kirjautuminen (report) | [tests/reports/report.html](apneapp-login/tests/reports/report.html) |
-| RF – Kirjautuminen (log) | [tests/reports/log.html](apneapp-login/tests/reports/log.html) |
-| RF – Rekisteröinti (report) | [tests/reports/register_report.html](apneapp-login/tests/reports/register_report.html) |
-| RF – Rekisteröinti (log) | [tests/reports/register_log.html](apneapp-login/tests/reports/register_log.html) |
+| JS-yksikkötestit (Yamama) | [tests/tests.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/tests.html) |
+| JS-yksikkötestit (Paavo) | [tests/tests_Paavo.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/tests_Paavo.html) |
+| JS-yksikkötestit (Ali) | [tests/tests_Ali.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/tests_Ali.html) |
+| RF – Kirjautuminen (report) | [tests/reports/report.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/report.html) |
+| RF – Kirjautuminen (log) | [tests/reports/log.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/log.html) |
+| RF – Rekisteröinti (report) | [tests/reports/register_report.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/register_report.html) |
+| RF – Rekisteröinti (log) | [tests/reports/register_log.html](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/register_log.html) |
 
 ---
 
