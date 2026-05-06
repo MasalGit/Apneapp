@@ -248,6 +248,48 @@
     });
   });
 
+  // ── report.html – interpret() (Paavo_FE2: "Report 0.1") ─────────────────
+
+  function interpret(data) {
+    let riskLevel = "Matala";
+    if (data.elevatedRatio > 0.5) riskLevel = "Korkea";
+    else if (data.elevatedRatio > 0.2) riskLevel = "Keskitaso";
+
+    let msg = data.avgSleep < 6
+      ? "Unesi määrä on alle suosituksen. "
+      : "Unen määrä on hyvällä tasolla. ";
+
+    msg += data.avgLFHF > 0.6
+      ? "Kohonnut stressi. "
+      : "Autonominen tasapaino normaali. ";
+
+    if (riskLevel === "Korkea") {
+      msg += "Suositellaan terveydenhuoltoon yhteydenottoa.";
+    }
+
+    return { riskLevel, msg };
+  }
+
+  // Tehtävä 13 – interpret() (Riskitason tulkinta)
+  suite("Tehtävä 13 – interpret() (riskitaso report.html)", () => {
+    test("elevatedRatio > 0.5 → Korkea", () => {
+      const r = interpret({ elevatedRatio: 0.8, avgSleep: 5, avgLFHF: 0.7 });
+      expect(r.riskLevel).toBe("Korkea");
+    });
+    test("elevatedRatio 0.2–0.5 → Keskitaso", () => {
+      const r = interpret({ elevatedRatio: 0.3, avgSleep: 7, avgLFHF: 0.4 });
+      expect(r.riskLevel).toBe("Keskitaso");
+    });
+    test("elevatedRatio < 0.2 → Matala", () => {
+      const r = interpret({ elevatedRatio: 0.1, avgSleep: 8, avgLFHF: 0.3 });
+      expect(r.riskLevel).toBe("Matala");
+    });
+    test("avgSleep < 6 → viesti sisältää 'alle suosituksen'", () => {
+      const r = interpret({ elevatedRatio: 0.0, avgSleep: 5, avgLFHF: 0.2 });
+      expect(r.msg.includes("alle suosituksen")).toBe(true);
+    });
+  });
+
   // ── Render ───────────────────────────────────────────────────────────────
   const out = document.getElementById("output");
   let totalPass = 0, totalFail = 0;

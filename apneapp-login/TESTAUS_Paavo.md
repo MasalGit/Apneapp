@@ -1,7 +1,7 @@
 # Apneapp – Testausdokumentti
 
 **Testaaja:** Yamama  
-**Päivämäärä:** 26.4.2026  
+**Päivämäärä:** 6.5.2026  
 **Branch:** `Paavo_FE2`
 
 ---
@@ -165,6 +165,30 @@ Uusi versio käyttää yhdistettyä dataa `{date, hours, lfhf}` ja suodattaa cut
 
 ---
 
+## Tehtävä 13 – interpret() – Riskitason tulkinta (report.html)
+
+[Katso testit selaimessa](tests/tests_Paavo.html)
+
+| # | Testitapaus | Syöte | Odotettu tulos |
+|---|---|---|---|
+| 1 | Korkea riski (elevatedRatio > 0.5) | `{elevatedRatio: 0.8, avgSleep: 5, avgLFHF: 0.7}` | riskLevel: `"Korkea"`, msg sisältää "stressi" ja "terveydenhuolto" |
+| 2 | Keskitaso (elevatedRatio 0.2–0.5) | `{elevatedRatio: 0.3, avgSleep: 7, avgLFHF: 0.4}` | riskLevel: `"Keskitaso"` |
+| 3 | Matala riski (elevatedRatio < 0.2) | `{elevatedRatio: 0.1, avgSleep: 8, avgLFHF: 0.3}` | riskLevel: `"Matala"`, msg sisältää "hyvällä tasolla" |
+| 4 | Liian vähän unta (avgSleep < 6) | `{elevatedRatio: 0.0, avgSleep: 5, avgLFHF: 0.2}` | msg sisältää "alle suosituksen" |
+
+---
+
+## Tehtävä 14 – Manuaalinen testi: Raportti-sivu (report.html)
+
+| # | Testitapaus | Toiminto | Odotettu tulos |
+|---|---|---|---|
+| 1 | Sivu latautuu oikein | Avaa report.html kirjautuneena | Näytetään kortit: Keskiarvoinen uni, LF/HF keskiarvo, Mittauksia |
+| 2 | Riskitaso näkyy | Avaa report.html | `#riskLevel`-elementti täytetään: Matala / Keskitaso / Korkea |
+| 3 | Navigointi toimii | Klikkaa sivupalkin linkkejä | Siirrytään oikein dashboard / graph / report sivuille |
+| 4 | API-virhe käsitellään | Käytä ilman tokenia | Teksti "Raportin lataus epäonnistui." näkyy |
+
+---
+
 ## Robot Framework – Automaatiotestit
 
 Sovelluksen lomakkeet on testattu myös **Browser-kirjastolla** automaattisesti selaimessa.
@@ -204,11 +228,11 @@ Sovelluksen lomakkeet on testattu myös **Browser-kirjastolla** automaattisesti 
 
 | | Määrä |
 |---|---|
-| Tehtäviä (JS yksikkötestit) | 11 |
-| Manuaalisia tehtäviä | 1 |
-| JS testejä yhteensä | 43 |
+| Tehtäviä (JS yksikkötestit) | 12 |
+| Manuaalisia tehtäviä | 2 |
+| JS testejä yhteensä | 47 |
 | Robot Framework testejä | 12 |
-| Läpäissyt | 43 / 43 |
+| Läpäissyt | 47 / 47 |
 | Epäonnistuneet | 0 |
 
 > Kaikki testit läpäistiin hyväksytysti.  
