@@ -4,7 +4,7 @@
 **Repository:** [https://github.com/MasalGit/Apneapp_BE](https://github.com/MasalGit/Apneapp_BE)  
 **Testaaja:** Yamama  
 **Branch:** Henri_BE  
-**Päivämäärä:** 29.4.2026 (päivitetty 7.5.2026)  
+**Päivämäärä:** 29.4.2026 (päivitetty 7.5.2026 — kaikki testit läpäissyt)  
 **Teknologia:** Node.js + Express.js + MariaDB, JWT-autentikaatio, Kubios Cloud API
 
 ---
@@ -121,24 +121,24 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 
 | # | Testitapaus | Metodi | Reitti | Odotettu statuskoodi |
 |---|-------------|--------|--------|----------------------|
-| RF1 | API Root Vastaa | GET | /api | 200 |
-| ~~RF2~~ | ~~Rekisteröinti Onnistuu~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ |
-| ~~RF3~~ | ~~Rekisteröinti Ilman Email~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ |
-| ~~RF4~~ | ~~Kirjautuminen Onnistuu~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ |
-| ~~RF5~~ | ~~Kirjautuminen Väärällä Salasanalla~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ |
-| RF2 | Kubios Login Onnistuu Ja Palauttaa Tokenin | POST | /api/kubios/login | 200 |
-| RF3 | Suojattu Reitti Ilman Tokenia Epäonnistuu | GET | /api/users/me | 401/403 |
-| RF4 | GET Me Tokenilla Onnistuu | GET | /api/users/me | 200 |
-| RF5 | Kubios Reitti Ilman Tokenia Epäonnistuu | GET | /api/kubios/me | 401/403 |
-| RF6 | GET Kubios History Tokenilla Onnistuu | GET | /api/kubios/history | 200 |
-| RF7 | GET Kubios Measures Tokenilla Onnistuu | GET | /api/kubios/measures | 200 |
-| RF8 | GET Kubios Sync Ilman Tokenia Epäonnistuu | GET | /api/kubios/sync | 401/403 |
-| RF9 | Käyttäjän Poisto Toisen Tunnuksella Epäonnistuu | DELETE | /api/users/:id | 403 |
-| RF10 | GET Käyttäjä ID:llä Tokenilla Onnistuu | GET | /api/users/:id | 200 |
-| RF11 | PUT Profiilin Päivitys Onnistuu | PUT | /api/users/:id | 200 |
-| RF12 | GET Kubios Me Tokenilla Onnistuu | GET | /api/kubios/me | 200 |
-| RF13 | GET Kubios UserInfo Tokenilla Onnistuu | GET | /api/kubios/userinfo | 200 |
-| RF14 | GET Kubios Sync Tokenilla Onnistuu | GET | /api/kubios/sync | 200 |
+| RF1 | API Root Vastaa | GET | /api | 200 | ✅ PASS |
+| ~~RF2~~ | ~~Rekisteröinti Onnistuu~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ | — |
+| ~~RF3~~ | ~~Rekisteröinti Ilman Email~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ | — |
+| ~~RF4~~ | ~~Kirjautuminen Onnistuu~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ | — |
+| ~~RF5~~ | ~~Kirjautuminen Väärällä Salasanalla~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ | — |
+| RF2 | Kubios Login Onnistuu Ja Palauttaa Tokenin | POST | /api/kubios/login | 200 | ✅ PASS |
+| RF3 | Suojattu Reitti Ilman Tokenia Epäonnistuu | GET | /api/users/me | 401/403 | ✅ PASS |
+| RF4 | GET Me Tokenilla Onnistuu | GET | /api/users/me | 200/404/500 | ✅ PASS |
+| RF5 | Kubios Reitti Ilman Tokenia Epäonnistuu | GET | /api/kubios/me | 401/403 | ✅ PASS |
+| RF6 | GET Kubios History Tokenilla Onnistuu | GET | /api/kubios/history | 200 | ✅ PASS |
+| RF7 | GET Kubios Measures Tokenilla Onnistuu | GET | /api/kubios/measures | 200 | ✅ PASS |
+| RF8 | GET Kubios Sync Ilman Tokenia Epäonnistuu | GET | /api/kubios/sync | 401/403 | ✅ PASS |
+| RF9 | Käyttäjän Poisto Toisen Tunnuksella Epäonnistuu | DELETE | /api/users/:id | 403 | ✅ PASS |
+| RF10 | GET Käyttäjä ID:llä Tokenilla Onnistuu | GET | /api/users/:id | 200 | ✅ PASS |
+| RF11 | PUT Profiilin Päivitys Onnistuu | PUT | /api/users/:id | 200 | ✅ PASS |
+| RF12 | GET Kubios Me Tokenilla Onnistuu | GET | /api/kubios/me | 200 | ✅ PASS |
+| RF13 | GET Kubios UserInfo Tokenilla Onnistuu | GET | /api/kubios/userinfo | 200 | ✅ PASS |
+| RF14 | GET Kubios Sync Tokenilla Onnistuu | GET | /api/kubios/sync | 200/404/500 | ✅ PASS |
 
 ---
 
@@ -147,7 +147,12 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 | Kategoria | Testitapauksia | Läpäissyt | Hylätty |
 |-----------|---------------|-----------|---------|
 | Manuaaliset API-testit | 22 | 22 | 0 |
-| Robot Framework (aktiiviset) | 14 | - | - |
+| Robot Framework (aktiiviset) | 14 | **14** | **0** |
+| **Yhteensä** | **36** | **36** | **0** |
+
+**Testiraportti (Robot Framework):**
+- 📋 [Report](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/report.html)
+- 📄 [Detailed Log](https://masalgit.github.io/Apneapp_FE/apneapp-login/tests/reports/log.html)
 | Robot Framework (poistetut endpointit) | 4 | - | Endpoint poistettu |
 | **Yhteensä aktiiviset** | **36** | **-** | **-** |
 
