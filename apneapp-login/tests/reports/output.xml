@@ -1,1374 +1,1369 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-05-07T23:01:45.045956" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-05-07T23:05:48.280437" rpa="false" schemaversion="5">
 <suite id="s1" name="Login Tests &amp; Register Tests &amp; Be Api Tests">
 <suite id="s1-s1" name="Login Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\login_tests.robot">
 <kw name="New Browser" owner="Browser" type="SETUP">
-<msg time="2026-05-07T23:01:45.799845" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\ba6cbdb4-7636-4f82-8b06-b4d543e92d1c"}</msg>
-<msg time="2026-05-07T23:01:45.862838" level="INFO">Starting Browser process C:\Users\yamam\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:51757</msg>
-<msg time="2026-05-07T23:01:48.389216" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\ba6cbdb4-7636-4f82-8b06-b4d543e92d1c"}</msg>
+<msg time="2026-05-07T23:05:48.772533" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\daa992e9-c7c1-404c-8883-bb61f300f983"}</msg>
+<msg time="2026-05-07T23:05:48.870981" level="INFO">Starting Browser process C:\Users\yamam\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:53321</msg>
+<msg time="2026-05-07T23:05:50.702082" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\daa992e9-c7c1-404c-8883-bb61f300f983"}</msg>
 <arg>chromium</arg>
 <arg>headless=True</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2026-05-07T23:01:45.797093" elapsed="2.592642"/>
+<status status="PASS" start="2026-05-07T23:05:48.771215" elapsed="1.931296"/>
 </kw>
 <test id="s1-s1-t1" name="TC1: Tyhjä lomake – sähköposti ja salasana pakollisia" line="13">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:49.090230" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:49.090364" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:51.485962" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:51.486069" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:48.447588" elapsed="0.643003"/>
+<status status="PASS" start="2026-05-07T23:05:50.712764" elapsed="0.773509"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:49.092642" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:51.487594" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.091229" elapsed="0.350087"/>
+<status status="PASS" start="2026-05-07T23:05:51.486693" elapsed="0.100913"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:49.496007" level="INFO">Text: 'Sähköposti on pakollinen'</msg>
-<msg time="2026-05-07T23:01:49.496236" level="INFO">${email_err} = Sähköposti on pakollinen</msg>
+<msg time="2026-05-07T23:05:51.665136" level="INFO">Text: 'Sähköposti on pakollinen'</msg>
+<msg time="2026-05-07T23:05:51.665511" level="INFO">${email_err} = Sähköposti on pakollinen</msg>
 <var>${email_err}</var>
 <arg>id=emailError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.441756" elapsed="0.054509"/>
+<status status="PASS" start="2026-05-07T23:05:51.588222" elapsed="0.077355"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${email_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.496711" elapsed="0.001311"/>
+<status status="PASS" start="2026-05-07T23:05:51.666196" elapsed="0.001629"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:49.534442" level="INFO">Text: 'Salasana on pakollinen'</msg>
-<msg time="2026-05-07T23:01:49.534788" level="INFO">${pw_err} = Salasana on pakollinen</msg>
+<msg time="2026-05-07T23:05:51.708413" level="INFO">Text: 'Salasana on pakollinen'</msg>
+<msg time="2026-05-07T23:05:51.708696" level="INFO">${pw_err} = Salasana on pakollinen</msg>
 <var>${pw_err}</var>
 <arg>id=passwordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.498475" elapsed="0.036391"/>
+<status status="PASS" start="2026-05-07T23:05:51.668419" elapsed="0.040316"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${pw_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.535506" elapsed="0.001465"/>
+<status status="PASS" start="2026-05-07T23:05:51.709299" elapsed="0.001588"/>
 </kw>
-<msg time="2026-05-07T23:01:49.567112" level="INFO">Switching context to context=761a3aa8-8e51-490b-b69f-c780487a3a31 in CURRENT</msg>
-<msg time="2026-05-07T23:01:49.606379" level="INFO">Successfully changed active context: context=761a3aa8-8e51-490b-b69f-c780487a3a31</msg>
-<msg time="2026-05-07T23:01:49.695768" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:51.753535" level="INFO">Switching context to context=420fa37b-0282-4e6c-8225-fe1c5bbd6475 in CURRENT</msg>
+<msg time="2026-05-07T23:05:51.768075" level="INFO">Successfully changed active context: context=420fa37b-0282-4e6c-8225-fe1c5bbd6475</msg>
+<msg time="2026-05-07T23:05:51.784920" level="INFO">Successfully closed Context</msg>
 <doc>Tyhjällä lomakkeella kirjautuminen näyttää pakollisuusvirheet</doc>
-<status status="PASS" start="2026-05-07T23:01:48.390492" elapsed="1.147032"/>
+<status status="PASS" start="2026-05-07T23:05:50.702969" elapsed="1.010680"/>
 </test>
 <test id="s1-s1-t2" name="TC2: Virheellinen sähköposti näyttää virheilmoituksen" line="22">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:50.162741" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:50.162871" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:52.701446" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:52.701570" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:49.701183" elapsed="0.461863"/>
+<status status="PASS" start="2026-05-07T23:05:51.792542" elapsed="0.909301"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:50.164552" level="INFO">Fills the text 'eiole' in the given field.</msg>
+<msg time="2026-05-07T23:05:52.703410" level="INFO">Fills the text 'eiole' in the given field.</msg>
 <arg>id=email</arg>
 <arg>eiole</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.163425" elapsed="0.059401"/>
+<status status="PASS" start="2026-05-07T23:05:52.702388" elapsed="0.048974"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:50.224486" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:05:52.752819" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.223386" elapsed="0.017370"/>
+<status status="PASS" start="2026-05-07T23:05:52.751922" elapsed="0.020146"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:50.242694" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:52.773545" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.241293" elapsed="0.281341"/>
+<status status="PASS" start="2026-05-07T23:05:52.772640" elapsed="0.054784"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:50.559815" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
-<msg time="2026-05-07T23:01:50.560025" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
+<msg time="2026-05-07T23:05:52.867666" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
+<msg time="2026-05-07T23:05:52.867898" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
 <var>${email_err}</var>
 <arg>id=emailError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.523067" elapsed="0.036987"/>
+<status status="PASS" start="2026-05-07T23:05:52.827908" elapsed="0.040031"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${email_err}</arg>
 <arg>Virheellinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.560365" elapsed="0.000894"/>
+<status status="PASS" start="2026-05-07T23:05:52.868295" elapsed="0.000754"/>
 </kw>
-<msg time="2026-05-07T23:01:50.580058" level="INFO">Switching context to context=b164c439-2d0a-49a6-9807-a018c34fc7d8 in CURRENT</msg>
-<msg time="2026-05-07T23:01:50.594739" level="INFO">Successfully changed active context: context=b164c439-2d0a-49a6-9807-a018c34fc7d8</msg>
-<msg time="2026-05-07T23:01:50.604808" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:52.890314" level="INFO">Switching context to context=06ea9de6-cd94-46a0-8f94-4cdb0c1ef6f9 in CURRENT</msg>
+<msg time="2026-05-07T23:05:52.900510" level="INFO">Successfully changed active context: context=06ea9de6-cd94-46a0-8f94-4cdb0c1ef6f9</msg>
+<msg time="2026-05-07T23:05:52.909437" level="INFO">Successfully closed Context</msg>
 <doc>Sähköposti ilman @-merkkiä hylätään</doc>
-<status status="PASS" start="2026-05-07T23:01:49.696920" elapsed="0.864620"/>
+<status status="PASS" start="2026-05-07T23:05:51.786337" elapsed="1.083032"/>
 </test>
 <test id="s1-s1-t3" name="TC3: Sähköposti ilman pistettä hylätään" line="31">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:51.038204" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:51.038749" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:53.970090" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:53.970436" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:50.609478" elapsed="0.429674"/>
+<status status="PASS" start="2026-05-07T23:05:52.915310" elapsed="1.055294"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:51.040907" level="INFO">Fills the text 'kayttaja@esimerkki' in the given field.</msg>
+<msg time="2026-05-07T23:05:53.972441" level="INFO">Fills the text 'kayttaja@esimerkki' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@esimerkki</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.039762" elapsed="0.046180"/>
+<status status="PASS" start="2026-05-07T23:05:53.971021" elapsed="0.044391"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:51.087729" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:05:54.017039" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.086588" elapsed="0.015709"/>
+<status status="PASS" start="2026-05-07T23:05:54.015938" elapsed="0.013931"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:51.104670" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:54.031438" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.102838" elapsed="0.264651"/>
+<status status="PASS" start="2026-05-07T23:05:54.030368" elapsed="0.079200"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:51.406384" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
-<msg time="2026-05-07T23:01:51.406563" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
+<msg time="2026-05-07T23:05:54.166970" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
+<msg time="2026-05-07T23:05:54.167162" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
 <var>${email_err}</var>
 <arg>id=emailError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.368194" elapsed="0.038398"/>
+<status status="PASS" start="2026-05-07T23:05:54.118304" elapsed="0.048926"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${email_err}</arg>
 <arg>Virheellinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.406980" elapsed="0.000894"/>
+<status status="PASS" start="2026-05-07T23:05:54.167817" elapsed="0.001149"/>
 </kw>
-<msg time="2026-05-07T23:01:51.426384" level="INFO">Switching context to context=068eb8e8-9782-4e03-a425-dd3582c94f8e in CURRENT</msg>
-<msg time="2026-05-07T23:01:51.435323" level="INFO">Successfully changed active context: context=068eb8e8-9782-4e03-a425-dd3582c94f8e</msg>
-<msg time="2026-05-07T23:01:51.445000" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:54.189956" level="INFO">Switching context to context=fd3c455f-360e-4634-aace-eae359b13a15 in CURRENT</msg>
+<msg time="2026-05-07T23:05:54.202102" level="INFO">Successfully changed active context: context=fd3c455f-360e-4634-aace-eae359b13a15</msg>
+<msg time="2026-05-07T23:05:54.210599" level="INFO">Successfully closed Context</msg>
 <doc>Sähköposti ilman domainpistettä hylätään</doc>
-<status status="PASS" start="2026-05-07T23:01:50.606073" elapsed="0.802085"/>
+<status status="PASS" start="2026-05-07T23:05:52.910661" elapsed="1.258771"/>
 </test>
 <test id="s1-s1-t4" name="TC4: Liian lyhyt salasana hylätään" line="40">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:51.860040" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:51.860138" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:55.374425" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:55.374548" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.450571" elapsed="0.409737"/>
+<status status="PASS" start="2026-05-07T23:05:54.216211" elapsed="1.158601"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:51.862104" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:05:55.376631" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.860806" elapsed="0.044094"/>
+<status status="PASS" start="2026-05-07T23:05:55.375485" elapsed="0.038941"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:51.907518" level="INFO">Fills the text 'abc' in the given field.</msg>
+<msg time="2026-05-07T23:05:55.415861" level="INFO">Fills the text 'abc' in the given field.</msg>
 <arg>id=password</arg>
 <arg>abc</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.905569" elapsed="0.016312"/>
+<status status="PASS" start="2026-05-07T23:05:55.414903" elapsed="0.016292"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:51.924080" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:55.432586" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:51.922683" elapsed="0.281943"/>
+<status status="PASS" start="2026-05-07T23:05:55.431614" elapsed="0.044854"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:52.243959" level="INFO">Text: 'Salasanan on oltava vähintään 6 merkkiä'</msg>
-<msg time="2026-05-07T23:01:52.244137" level="INFO">${pw_err} = Salasanan on oltava vähintään 6 merkkiä</msg>
+<msg time="2026-05-07T23:05:55.516571" level="INFO">Text: 'Salasanan on oltava vähintään 6 merkkiä'</msg>
+<msg time="2026-05-07T23:05:55.516775" level="INFO">${pw_err} = Salasanan on oltava vähintään 6 merkkiä</msg>
 <var>${pw_err}</var>
 <arg>id=passwordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:52.205021" elapsed="0.039145"/>
+<status status="PASS" start="2026-05-07T23:05:55.476986" elapsed="0.039818"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${pw_err}</arg>
 <arg>6 merkkiä</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:52.244569" elapsed="0.000931"/>
+<status status="PASS" start="2026-05-07T23:05:55.517380" elapsed="0.001162"/>
 </kw>
-<msg time="2026-05-07T23:01:52.267275" level="INFO">Switching context to context=bbb875a0-a330-444a-a0d3-082963089860 in CURRENT</msg>
-<msg time="2026-05-07T23:01:52.278639" level="INFO">Successfully changed active context: context=bbb875a0-a330-444a-a0d3-082963089860</msg>
-<msg time="2026-05-07T23:01:52.289023" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:55.537887" level="INFO">Switching context to context=895c50ba-9a83-40ee-8d2e-75dcac49dd3c in CURRENT</msg>
+<msg time="2026-05-07T23:05:55.548986" level="INFO">Successfully changed active context: context=895c50ba-9a83-40ee-8d2e-75dcac49dd3c</msg>
+<msg time="2026-05-07T23:05:55.556945" level="INFO">Successfully closed Context</msg>
 <doc>Alle 6 merkin salasana näyttää virheilmoituksen</doc>
-<status status="PASS" start="2026-05-07T23:01:51.446284" elapsed="0.799536"/>
+<status status="PASS" start="2026-05-07T23:05:54.211876" elapsed="1.307107"/>
 </test>
 <test id="s1-s1-t5" name="TC5: Tyhjä salasana hylätään" line="49">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:52.708248" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:52.708342" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:56.172567" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:56.172657" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:52.294786" elapsed="0.413713"/>
+<status status="PASS" start="2026-05-07T23:05:55.561620" elapsed="0.611203"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:52.710345" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:05:56.174568" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:52.709024" elapsed="0.046039"/>
+<status status="PASS" start="2026-05-07T23:05:56.173278" elapsed="0.045943"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:52.757934" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:56.220734" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:52.755785" elapsed="0.277159"/>
+<status status="PASS" start="2026-05-07T23:05:56.219683" elapsed="0.138010"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:53.077205" level="INFO">Text: 'Salasana on pakollinen'</msg>
-<msg time="2026-05-07T23:01:53.077383" level="INFO">${pw_err} = Salasana on pakollinen</msg>
+<msg time="2026-05-07T23:05:56.400563" level="INFO">Text: 'Salasana on pakollinen'</msg>
+<msg time="2026-05-07T23:05:56.400743" level="INFO">${pw_err} = Salasana on pakollinen</msg>
 <var>${pw_err}</var>
 <arg>id=passwordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.033336" elapsed="0.044074"/>
+<status status="PASS" start="2026-05-07T23:05:56.358135" elapsed="0.042637"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${pw_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.077808" elapsed="0.000906"/>
+<status status="PASS" start="2026-05-07T23:05:56.401186" elapsed="0.001025"/>
 </kw>
-<msg time="2026-05-07T23:01:53.099709" level="INFO">Switching context to context=40634e95-aad1-4540-93d8-ea6257b7585c in CURRENT</msg>
-<msg time="2026-05-07T23:01:53.111890" level="INFO">Successfully changed active context: context=40634e95-aad1-4540-93d8-ea6257b7585c</msg>
-<msg time="2026-05-07T23:01:53.119917" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:56.420279" level="INFO">Switching context to context=86a32824-f281-4d33-81e3-651b06c21d04 in CURRENT</msg>
+<msg time="2026-05-07T23:05:56.432452" level="INFO">Successfully changed active context: context=86a32824-f281-4d33-81e3-651b06c21d04</msg>
+<msg time="2026-05-07T23:05:56.441037" level="INFO">Successfully closed Context</msg>
 <doc>Tyhjä salasanakenttä näyttää pakollisuusvirheen</doc>
-<status status="PASS" start="2026-05-07T23:01:52.290293" elapsed="0.788807"/>
+<status status="PASS" start="2026-05-07T23:05:55.558168" elapsed="0.844377"/>
 </test>
 <test id="s1-s1-t6" name="TC6: Oikeilla arvoilla ei validointivirheitä" line="57">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:53.529870" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
-<msg time="2026-05-07T23:01:53.529961" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:56.928910" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../index.html</msg>
+<msg time="2026-05-07T23:05:56.929047" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${LOGIN_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.125606" elapsed="0.404510"/>
+<status status="PASS" start="2026-05-07T23:05:56.447121" elapsed="0.482151"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:53.531636" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:05:56.931151" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.530622" elapsed="0.044383"/>
+<status status="PASS" start="2026-05-07T23:05:56.929850" elapsed="0.043093"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:53.576815" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:05:56.974312" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.575653" elapsed="0.020901"/>
+<status status="PASS" start="2026-05-07T23:05:56.973450" elapsed="0.019735"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:53.598846" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:56.994638" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.597469" elapsed="0.286427"/>
+<status status="PASS" start="2026-05-07T23:05:56.993724" elapsed="0.263669"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:53.923870" level="INFO">Text: ''</msg>
-<msg time="2026-05-07T23:01:53.924106" level="INFO">${email_err} = </msg>
+<msg time="2026-05-07T23:05:57.298013" level="INFO">Text: ''</msg>
+<msg time="2026-05-07T23:05:57.298199" level="INFO">${email_err} = </msg>
 <var>${email_err}</var>
 <arg>id=emailError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.884321" elapsed="0.039827"/>
+<status status="PASS" start="2026-05-07T23:05:57.257811" elapsed="0.040415"/>
 </kw>
 <kw name="Should Be Empty" owner="BuiltIn">
-<msg time="2026-05-07T23:01:53.925750" level="INFO">Length is 0.</msg>
+<msg time="2026-05-07T23:05:57.299691" level="INFO">Length is 0.</msg>
 <arg>${email_err}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.924642" elapsed="0.001209"/>
+<status status="PASS" start="2026-05-07T23:05:57.298724" elapsed="0.001047"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:53.950099" level="INFO">Text: ''</msg>
-<msg time="2026-05-07T23:01:53.950287" level="INFO">${pw_err} = </msg>
+<msg time="2026-05-07T23:05:57.321715" level="INFO">Text: ''</msg>
+<msg time="2026-05-07T23:05:57.321883" level="INFO">${pw_err} = </msg>
 <var>${pw_err}</var>
 <arg>id=passwordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.926352" elapsed="0.023965"/>
+<status status="PASS" start="2026-05-07T23:05:57.300187" elapsed="0.021725"/>
 </kw>
 <kw name="Should Be Empty" owner="BuiltIn">
-<msg time="2026-05-07T23:01:53.952242" level="INFO">Length is 0.</msg>
+<msg time="2026-05-07T23:05:57.323198" level="INFO">Length is 0.</msg>
 <arg>${pw_err}</arg>
 <doc>Verifies that the given item is empty.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.950951" elapsed="0.001404"/>
+<status status="PASS" start="2026-05-07T23:05:57.322353" elapsed="0.000918"/>
 </kw>
-<msg time="2026-05-07T23:01:53.972912" level="INFO">Switching context to context=6e9dcfdf-d877-49de-8ef9-67d2d7f6532f in CURRENT</msg>
-<msg time="2026-05-07T23:01:53.982023" level="INFO">Successfully changed active context: context=6e9dcfdf-d877-49de-8ef9-67d2d7f6532f</msg>
-<msg time="2026-05-07T23:01:53.990680" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:57.354791" level="INFO">Switching context to context=96cdd851-55d7-46de-95ff-5f0ffd732f9a in CURRENT</msg>
+<msg time="2026-05-07T23:05:57.366422" level="INFO">Successfully changed active context: context=96cdd851-55d7-46de-95ff-5f0ffd732f9a</msg>
+<msg time="2026-05-07T23:05:57.378366" level="INFO">Successfully closed Context</msg>
 <doc>Oikea sähköposti ja pitkä salasana eivät tuota validointivirheitä</doc>
-<status status="PASS" start="2026-05-07T23:01:53.120970" elapsed="0.831898"/>
+<status status="PASS" start="2026-05-07T23:05:56.442039" elapsed="0.881609"/>
 </test>
 <kw name="Close Browser" owner="Browser" type="TEARDOWN">
-<msg time="2026-05-07T23:01:54.098234" level="INFO">Closed browser</msg>
+<msg time="2026-05-07T23:05:57.449512" level="INFO">Closed browser</msg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-05-07T23:01:53.992288" elapsed="0.106152"/>
+<status status="PASS" start="2026-05-07T23:05:57.382568" elapsed="0.067236"/>
 </kw>
 <doc>Apneapp – Kirjautumislomakkeen automaatiotestit
 Testaaja: Yamama | Branch: Yamama-FE</doc>
-<status status="PASS" start="2026-05-07T23:01:45.095189" elapsed="9.003335"/>
+<status status="PASS" start="2026-05-07T23:05:48.337785" elapsed="9.112148"/>
 </suite>
 <suite id="s1-s2" name="Register Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\register_tests.robot">
 <kw name="New Browser" owner="Browser" type="SETUP">
-<msg time="2026-05-07T23:01:54.117249" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\834fd1ff-ca73-46dc-88f9-ad1186a20f49"}</msg>
-<msg time="2026-05-07T23:01:54.262426" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\834fd1ff-ca73-46dc-88f9-ad1186a20f49"}</msg>
+<msg time="2026-05-07T23:05:57.469842" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\4ed03af0-ff31-48e9-9853-0c48b25d4d03"}</msg>
+<msg time="2026-05-07T23:05:57.640413" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\4ed03af0-ff31-48e9-9853-0c48b25d4d03"}</msg>
 <arg>chromium</arg>
 <arg>headless=True</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2026-05-07T23:01:54.116078" elapsed="0.146780"/>
+<status status="PASS" start="2026-05-07T23:05:57.468271" elapsed="0.172551"/>
 </kw>
 <test id="s1-s2-t1" name="TC1: Tyhjä lomake – kaikki kentät pakollisia" line="13">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:54.713604" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:54.713695" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:58.332122" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:05:58.332237" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:54.268904" elapsed="0.444965"/>
+<status status="PASS" start="2026-05-07T23:05:57.647815" elapsed="0.684708"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:54.715060" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:58.334453" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:54.714255" elapsed="0.419288"/>
+<status status="PASS" start="2026-05-07T23:05:58.333200" elapsed="0.424030"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.173016" level="INFO">Text: 'Etunimi on pakollinen'</msg>
-<msg time="2026-05-07T23:01:55.173190" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
+<msg time="2026-05-07T23:05:58.802803" level="INFO">Text: 'Etunimi on pakollinen'</msg>
+<msg time="2026-05-07T23:05:58.802986" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
 <var>${fn_err}</var>
 <arg>id=firstNameError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.133976" elapsed="0.039244"/>
+<status status="PASS" start="2026-05-07T23:05:58.757717" elapsed="0.045301"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${fn_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.173744" elapsed="0.000975"/>
+<status status="PASS" start="2026-05-07T23:05:58.803409" elapsed="0.000824"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.204709" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
-<msg time="2026-05-07T23:01:55.205091" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
+<msg time="2026-05-07T23:05:58.831002" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
+<msg time="2026-05-07T23:05:58.831184" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
 <var>${ln_err}</var>
 <arg>id=lastNameError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.175196" elapsed="0.029995"/>
+<status status="PASS" start="2026-05-07T23:05:58.804670" elapsed="0.026547"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${ln_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.206010" elapsed="0.001430"/>
+<status status="PASS" start="2026-05-07T23:05:58.831879" elapsed="0.001290"/>
 </kw>
-<msg time="2026-05-07T23:01:55.226696" level="INFO">Switching context to context=2c8df3de-7be3-48c9-b430-5673b4693966 in CURRENT</msg>
-<msg time="2026-05-07T23:01:55.235403" level="INFO">Successfully changed active context: context=2c8df3de-7be3-48c9-b430-5673b4693966</msg>
-<msg time="2026-05-07T23:01:55.246347" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:58.854877" level="INFO">Switching context to context=4a053d1a-eff4-4d68-b6bf-d0af6d41156b in CURRENT</msg>
+<msg time="2026-05-07T23:05:58.867463" level="INFO">Successfully changed active context: context=4a053d1a-eff4-4d68-b6bf-d0af6d41156b</msg>
+<msg time="2026-05-07T23:05:58.877201" level="INFO">Successfully closed Context</msg>
 <doc>Tyhjällä lomakkeella rekisteröityminen näyttää pakollisuusvirheet</doc>
-<status status="PASS" start="2026-05-07T23:01:54.263096" elapsed="0.944817"/>
+<status status="PASS" start="2026-05-07T23:05:57.641124" elapsed="1.192625"/>
 </test>
 <test id="s1-s2-t2" name="TC2: Virheellinen sähköposti hylätään" line="22">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:55.641211" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:55.641328" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:05:59.312066" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:05:59.312199" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.250553" elapsed="0.391008"/>
+<status status="PASS" start="2026-05-07T23:05:58.882967" elapsed="0.429522"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.644161" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<msg time="2026-05-07T23:05:59.314572" level="INFO">Fills the text 'Testi' in the given field.</msg>
 <arg>id=firstName</arg>
 <arg>Testi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.642192" elapsed="0.057347"/>
+<status status="PASS" start="2026-05-07T23:05:59.313124" elapsed="0.047194"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.703863" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<msg time="2026-05-07T23:05:59.362185" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
 <arg>id=lastName</arg>
 <arg>Kayttaja</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.702138" elapsed="0.036902"/>
+<status status="PASS" start="2026-05-07T23:05:59.360840" elapsed="0.022030"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.741377" level="INFO">Fills the text 'eiole' in the given field.</msg>
+<msg time="2026-05-07T23:05:59.384786" level="INFO">Fills the text 'eiole' in the given field.</msg>
 <arg>id=email</arg>
 <arg>eiole</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.739832" elapsed="0.037397"/>
+<status status="PASS" start="2026-05-07T23:05:59.383418" elapsed="0.021931"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.780487" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:05:59.407124" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.779013" elapsed="0.024115"/>
+<status status="PASS" start="2026-05-07T23:05:59.405836" elapsed="0.022026"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:55.805840" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:05:59.430288" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=confirmPassword</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.803867" elapsed="0.030011"/>
+<status status="PASS" start="2026-05-07T23:05:59.428636" elapsed="0.022086"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:55.835692" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:05:59.453959" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:55.834393" elapsed="0.269977"/>
+<status status="PASS" start="2026-05-07T23:05:59.451960" elapsed="0.294144"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.143150" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
-<msg time="2026-05-07T23:01:56.143325" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
+<msg time="2026-05-07T23:05:59.789869" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
+<msg time="2026-05-07T23:05:59.790051" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
 <var>${email_err}</var>
 <arg>id=emailError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.104760" elapsed="0.038593"/>
+<status status="PASS" start="2026-05-07T23:05:59.746686" elapsed="0.043393"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${email_err}</arg>
 <arg>Virheellinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.143868" elapsed="0.000994"/>
+<status status="PASS" start="2026-05-07T23:05:59.790484" elapsed="0.001088"/>
 </kw>
-<msg time="2026-05-07T23:01:56.168181" level="INFO">Switching context to context=e732bc2d-14c9-4053-ad8c-ddfa9e843450 in CURRENT</msg>
-<msg time="2026-05-07T23:01:56.177118" level="INFO">Successfully changed active context: context=e732bc2d-14c9-4053-ad8c-ddfa9e843450</msg>
-<msg time="2026-05-07T23:01:56.185518" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:05:59.812632" level="INFO">Switching context to context=bf4d1115-de9a-4d95-8795-66e5a57d8250 in CURRENT</msg>
+<msg time="2026-05-07T23:05:59.821593" level="INFO">Successfully changed active context: context=bf4d1115-de9a-4d95-8795-66e5a57d8250</msg>
+<msg time="2026-05-07T23:05:59.835384" level="INFO">Successfully closed Context</msg>
 <doc>Virheellinen sähköpostiosoite näyttää virheilmoituksen</doc>
-<status status="PASS" start="2026-05-07T23:01:55.247272" elapsed="0.898082"/>
+<status status="PASS" start="2026-05-07T23:05:58.878274" elapsed="0.914173"/>
 </test>
 <test id="s1-s2-t3" name="TC3: Liian lyhyt salasana hylätään (alle 8 merkkiä)" line="34">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:56.580453" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:56.580544" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:06:00.283923" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:06:00.284021" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.192507" elapsed="0.388220"/>
+<status status="PASS" start="2026-05-07T23:05:59.842217" elapsed="0.441987"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.581948" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<msg time="2026-05-07T23:06:00.285930" level="INFO">Fills the text 'Testi' in the given field.</msg>
 <arg>id=firstName</arg>
 <arg>Testi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.581110" elapsed="0.062804"/>
+<status status="PASS" start="2026-05-07T23:06:00.284852" elapsed="0.048582"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.646079" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<msg time="2026-05-07T23:06:00.335241" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
 <arg>id=lastName</arg>
 <arg>Kayttaja</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.644733" elapsed="0.060250"/>
+<status status="PASS" start="2026-05-07T23:06:00.334052" elapsed="0.024142"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.709059" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:06:00.360428" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.706876" elapsed="0.069317"/>
+<status status="PASS" start="2026-05-07T23:06:00.358898" elapsed="0.021881"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.778381" level="INFO">Fills the text 'abc1234' in the given field.</msg>
+<msg time="2026-05-07T23:06:00.382867" level="INFO">Fills the text 'abc1234' in the given field.</msg>
 <arg>id=password</arg>
 <arg>abc1234</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.776816" elapsed="0.024837"/>
+<status status="PASS" start="2026-05-07T23:06:00.381431" elapsed="0.020680"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.814834" level="INFO">Fills the text 'abc1234' in the given field.</msg>
+<msg time="2026-05-07T23:06:00.403931" level="INFO">Fills the text 'abc1234' in the given field.</msg>
 <arg>id=confirmPassword</arg>
 <arg>abc1234</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.812936" elapsed="0.021538"/>
+<status status="PASS" start="2026-05-07T23:06:00.402637" elapsed="0.023831"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:56.836095" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:06:00.428201" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.834909" elapsed="0.083926"/>
+<status status="PASS" start="2026-05-07T23:06:00.427026" elapsed="0.299436"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:56.963505" level="INFO">Text: 'Salasanan on oltava vähintään 8 merkkiä'</msg>
-<msg time="2026-05-07T23:01:56.963693" level="INFO">${pw_err} = Salasanan on oltava vähintään 8 merkkiä</msg>
+<msg time="2026-05-07T23:06:00.767009" level="INFO">Text: 'Salasanan on oltava vähintään 8 merkkiä'</msg>
+<msg time="2026-05-07T23:06:00.767185" level="INFO">${pw_err} = Salasanan on oltava vähintään 8 merkkiä</msg>
 <var>${pw_err}</var>
 <arg>id=passwordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.919471" elapsed="0.044257"/>
+<status status="PASS" start="2026-05-07T23:06:00.726879" elapsed="0.040334"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${pw_err}</arg>
 <arg>8 merkkiä</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:56.964137" elapsed="0.000970"/>
+<status status="PASS" start="2026-05-07T23:06:00.767623" elapsed="0.000841"/>
 </kw>
-<msg time="2026-05-07T23:01:56.986173" level="INFO">Switching context to context=64861d16-7a4e-4a14-9dec-6c4456753e7b in CURRENT</msg>
-<msg time="2026-05-07T23:01:56.997013" level="INFO">Successfully changed active context: context=64861d16-7a4e-4a14-9dec-6c4456753e7b</msg>
-<msg time="2026-05-07T23:01:57.008619" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:06:00.787400" level="INFO">Switching context to context=e0402591-d18c-4bbb-a80d-22611804cb39 in CURRENT</msg>
+<msg time="2026-05-07T23:06:00.798775" level="INFO">Successfully changed active context: context=e0402591-d18c-4bbb-a80d-22611804cb39</msg>
+<msg time="2026-05-07T23:06:00.808130" level="INFO">Successfully closed Context</msg>
 <doc>Alle 8 merkin salasana rekisteröinnissä hylätään</doc>
-<status status="PASS" start="2026-05-07T23:01:56.187567" elapsed="0.778187"/>
+<status status="PASS" start="2026-05-07T23:05:59.837609" elapsed="0.931349"/>
 </test>
 <test id="s1-s2-t4" name="TC4: Erilaiset salasanat hylätään" line="46">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:57.413939" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:57.414037" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:06:01.217844" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:06:01.217944" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.014861" elapsed="0.399365"/>
+<status status="PASS" start="2026-05-07T23:06:00.813148" elapsed="0.405035"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.415519" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<msg time="2026-05-07T23:06:01.219955" level="INFO">Fills the text 'Testi' in the given field.</msg>
 <arg>id=firstName</arg>
 <arg>Testi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.414636" elapsed="0.046076"/>
+<status status="PASS" start="2026-05-07T23:06:01.218862" elapsed="0.046482"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.462246" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<msg time="2026-05-07T23:06:01.267622" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
 <arg>id=lastName</arg>
 <arg>Kayttaja</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.461259" elapsed="0.019394"/>
+<status status="PASS" start="2026-05-07T23:06:01.266066" elapsed="0.019980"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.482366" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:06:01.287575" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.481366" elapsed="0.017923"/>
+<status status="PASS" start="2026-05-07T23:06:01.286608" elapsed="0.018874"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.501249" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:06:01.307116" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.499772" elapsed="0.020993"/>
+<status status="PASS" start="2026-05-07T23:06:01.306001" elapsed="0.023698"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.523295" level="INFO">Fills the text 'erilainen1' in the given field.</msg>
+<msg time="2026-05-07T23:06:01.332583" level="INFO">Fills the text 'erilainen1' in the given field.</msg>
 <arg>id=confirmPassword</arg>
 <arg>erilainen1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.521567" elapsed="0.022359"/>
+<status status="PASS" start="2026-05-07T23:06:01.331048" elapsed="0.019054"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:57.546192" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:06:01.352154" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.544573" elapsed="0.290263"/>
+<status status="PASS" start="2026-05-07T23:06:01.350926" elapsed="0.261236"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:57.877807" level="INFO">Text: 'Salasanat eivät täsmää'</msg>
-<msg time="2026-05-07T23:01:57.877999" level="INFO">${confirm_err} = Salasanat eivät täsmää</msg>
+<msg time="2026-05-07T23:06:01.650603" level="INFO">Text: 'Salasanat eivät täsmää'</msg>
+<msg time="2026-05-07T23:06:01.650785" level="INFO">${confirm_err} = Salasanat eivät täsmää</msg>
 <var>${confirm_err}</var>
 <arg>id=confirmPasswordError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.835468" elapsed="0.042560"/>
+<status status="PASS" start="2026-05-07T23:06:01.612890" elapsed="0.037923"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${confirm_err}</arg>
 <arg>täsmää</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.878479" elapsed="0.000909"/>
+<status status="PASS" start="2026-05-07T23:06:01.651296" elapsed="0.000956"/>
 </kw>
-<msg time="2026-05-07T23:01:57.900462" level="INFO">Switching context to context=212caa99-0798-4a5d-90da-8aa7f7d9d29d in CURRENT</msg>
-<msg time="2026-05-07T23:01:57.912725" level="INFO">Successfully changed active context: context=212caa99-0798-4a5d-90da-8aa7f7d9d29d</msg>
-<msg time="2026-05-07T23:01:57.921618" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:06:01.672279" level="INFO">Switching context to context=eac86584-7217-4d6f-b051-f364b6bcbc7b in CURRENT</msg>
+<msg time="2026-05-07T23:06:01.683957" level="INFO">Successfully changed active context: context=eac86584-7217-4d6f-b051-f364b6bcbc7b</msg>
+<msg time="2026-05-07T23:06:01.692649" level="INFO">Successfully closed Context</msg>
 <doc>Jos salasanat eivät täsmää, näytetään virheilmoitus</doc>
-<status status="PASS" start="2026-05-07T23:01:57.010698" elapsed="0.869333"/>
+<status status="PASS" start="2026-05-07T23:06:00.809145" elapsed="0.843624"/>
 </test>
 <test id="s1-s2-t5" name="TC5: Puuttuva etunimi hylätään" line="58">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:58.458336" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:58.458482" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:06:02.118058" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:06:02.118198" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:57.928307" elapsed="0.530465"/>
+<status status="PASS" start="2026-05-07T23:06:01.697360" elapsed="0.421173"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:58.460969" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
+<msg time="2026-05-07T23:06:02.120209" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
 <arg>id=lastName</arg>
 <arg>Kayttaja</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.459465" elapsed="0.045987"/>
+<status status="PASS" start="2026-05-07T23:06:02.119092" elapsed="0.047192"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:58.508101" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:06:02.168072" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.506337" elapsed="0.021379"/>
+<status status="PASS" start="2026-05-07T23:06:02.166920" elapsed="0.018871"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:58.529288" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:06:02.188042" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.528241" elapsed="0.017955"/>
+<status status="PASS" start="2026-05-07T23:06:02.186554" elapsed="0.026257"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:58.547526" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:06:02.215857" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=confirmPassword</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.546618" elapsed="0.020412"/>
+<status status="PASS" start="2026-05-07T23:06:02.213846" elapsed="0.023167"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:58.569442" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:06:02.239716" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.568011" elapsed="0.138396"/>
+<status status="PASS" start="2026-05-07T23:06:02.237904" elapsed="0.287721"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:58.743541" level="INFO">Text: 'Etunimi on pakollinen'</msg>
-<msg time="2026-05-07T23:01:58.743823" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
+<msg time="2026-05-07T23:06:02.566577" level="INFO">Text: 'Etunimi on pakollinen'</msg>
+<msg time="2026-05-07T23:06:02.566808" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
 <var>${fn_err}</var>
 <arg>id=firstNameError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.706915" elapsed="0.036945"/>
+<status status="PASS" start="2026-05-07T23:06:02.526217" elapsed="0.040629"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${fn_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.744305" elapsed="0.001034"/>
+<status status="PASS" start="2026-05-07T23:06:02.567389" elapsed="0.001117"/>
 </kw>
-<msg time="2026-05-07T23:01:58.772144" level="INFO">Switching context to context=afab05d5-ceb7-41e0-bd35-3a06d0946305 in CURRENT</msg>
-<msg time="2026-05-07T23:01:58.781424" level="INFO">Successfully changed active context: context=afab05d5-ceb7-41e0-bd35-3a06d0946305</msg>
-<msg time="2026-05-07T23:01:58.791078" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:06:02.590144" level="INFO">Switching context to context=0671e764-ae79-4241-98d8-47f22a2bec8c in CURRENT</msg>
+<msg time="2026-05-07T23:06:02.603814" level="INFO">Successfully changed active context: context=0671e764-ae79-4241-98d8-47f22a2bec8c</msg>
+<msg time="2026-05-07T23:06:02.612992" level="INFO">Successfully closed Context</msg>
 <doc>Tyhjä etunimikenttä näyttää pakollisuusvirheen</doc>
-<status status="PASS" start="2026-05-07T23:01:57.923200" elapsed="0.822812"/>
+<status status="PASS" start="2026-05-07T23:06:01.693658" elapsed="0.875285"/>
 </test>
 <test id="s1-s2-t6" name="TC6: Puuttuva sukunimi hylätään" line="69">
 <kw name="New Page" owner="Browser">
-<msg time="2026-05-07T23:01:59.241770" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-07T23:01:59.241887" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<msg time="2026-05-07T23:06:03.000404" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
+<msg time="2026-05-07T23:06:03.000528" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
 <arg>${REGISTER_URL}</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-07T23:01:58.796215" elapsed="0.445855"/>
+<status status="PASS" start="2026-05-07T23:06:02.619259" elapsed="0.381490"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:59.243471" level="INFO">Fills the text 'Testi' in the given field.</msg>
+<msg time="2026-05-07T23:06:03.003377" level="INFO">Fills the text 'Testi' in the given field.</msg>
 <arg>id=firstName</arg>
 <arg>Testi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.242486" elapsed="0.041918"/>
+<status status="PASS" start="2026-05-07T23:06:03.002282" elapsed="0.044996"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:59.287531" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
+<msg time="2026-05-07T23:06:03.048884" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
 <arg>id=email</arg>
 <arg>kayttaja@email.fi</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.285077" elapsed="0.019272"/>
+<status status="PASS" start="2026-05-07T23:06:03.047818" elapsed="0.020684"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:59.306566" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:06:03.070803" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=password</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.305098" elapsed="0.020413"/>
+<status status="PASS" start="2026-05-07T23:06:03.069326" elapsed="0.020316"/>
 </kw>
 <kw name="Fill Text" owner="Browser">
-<msg time="2026-05-07T23:01:59.327486" level="INFO">Fills the text 'salasana1' in the given field.</msg>
+<msg time="2026-05-07T23:06:03.091266" level="INFO">Fills the text 'salasana1' in the given field.</msg>
 <arg>id=confirmPassword</arg>
 <arg>salasana1</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.326077" elapsed="0.020347"/>
+<status status="PASS" start="2026-05-07T23:06:03.090095" elapsed="0.021052"/>
 </kw>
 <kw name="Click" owner="Browser">
-<msg time="2026-05-07T23:01:59.347935" level="INFO">Clicks the element 'id=submitBtn'.</msg>
+<msg time="2026-05-07T23:06:03.113075" level="INFO">Clicks the element 'id=submitBtn'.</msg>
 <arg>id=submitBtn</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.346957" elapsed="0.290777"/>
+<status status="PASS" start="2026-05-07T23:06:03.111768" elapsed="0.354556"/>
 </kw>
 <kw name="Get Text" owner="Browser">
-<msg time="2026-05-07T23:01:59.675335" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
-<msg time="2026-05-07T23:01:59.675505" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
+<msg time="2026-05-07T23:06:03.508178" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
+<msg time="2026-05-07T23:06:03.508428" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
 <var>${ln_err}</var>
 <arg>id=lastNameError</arg>
 <tag>Assertion</tag>
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.638387" elapsed="0.037146"/>
+<status status="PASS" start="2026-05-07T23:06:03.466757" elapsed="0.041714"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${ln_err}</arg>
 <arg>pakollinen</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.675906" elapsed="0.000832"/>
+<status status="PASS" start="2026-05-07T23:06:03.509039" elapsed="0.001900"/>
 </kw>
-<msg time="2026-05-07T23:01:59.698362" level="INFO">Switching context to context=94fab556-b66f-40d9-938b-1c65cbb9d7b8 in CURRENT</msg>
-<msg time="2026-05-07T23:01:59.708018" level="INFO">Successfully changed active context: context=94fab556-b66f-40d9-938b-1c65cbb9d7b8</msg>
-<msg time="2026-05-07T23:01:59.716368" level="INFO">Successfully closed Context</msg>
+<msg time="2026-05-07T23:06:03.536208" level="INFO">Switching context to context=ced1aca9-e222-4f7c-a6d1-f962395ca4bf in CURRENT</msg>
+<msg time="2026-05-07T23:06:03.546854" level="INFO">Successfully changed active context: context=ced1aca9-e222-4f7c-a6d1-f962395ca4bf</msg>
+<msg time="2026-05-07T23:06:03.557107" level="INFO">Successfully closed Context</msg>
 <doc>Tyhjä sukunimikenttä näyttää pakollisuusvirheen</doc>
-<status status="PASS" start="2026-05-07T23:01:58.792136" elapsed="0.884959"/>
+<status status="PASS" start="2026-05-07T23:06:02.614670" elapsed="0.897097"/>
 </test>
 <kw name="Close Browser" owner="Browser" type="TEARDOWN">
-<msg time="2026-05-07T23:01:59.798414" level="INFO">Closed browser</msg>
+<msg time="2026-05-07T23:06:03.636026" level="INFO">Closed browser</msg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.717901" elapsed="0.080842"/>
+<status status="PASS" start="2026-05-07T23:06:03.558765" elapsed="0.077487"/>
 </kw>
 <doc>Apneapp – Rekisteröintilomakkeen automaatiotestit
 Testaaja: Yamama | Branch: Yamama-FE</doc>
-<status status="PASS" start="2026-05-07T23:01:54.108929" elapsed="5.689935"/>
+<status status="PASS" start="2026-05-07T23:05:57.459197" elapsed="6.177144"/>
 </suite>
 <suite id="s1-s3" name="Be Api Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\be_api_tests.robot">
 <kw name="Alusta Testit" type="SETUP">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:01:59.997098" level="INFO">Creating Session using : alias=apneapp, url=http://localhost:3000/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2026-05-07T23:06:03.867834" level="INFO">Creating Session using : alias=apneapp, url=http://localhost:3000/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>apneapp</arg>
 <arg>${BASE_URL}</arg>
 <arg>verify=False</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-05-07T23:01:59.996836" elapsed="0.001098"/>
+<status status="PASS" start="2026-05-07T23:06:03.867518" elapsed="0.001169"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:01:59.998818" level="INFO">${login_body} = {'username': 'elsikubios@gmail.com', 'password': 'hYr062vQh6'}</msg>
+<msg time="2026-05-07T23:06:03.869915" level="INFO">${login_body} = {'username': 'elsikubios@gmail.com', 'password': 'hYr062vQh6'}</msg>
 <var>${login_body}</var>
 <arg>username=${KUBIOS_USER}</arg>
 <arg>password=${KUBIOS_PASS}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.998163" elapsed="0.000692"/>
+<status status="PASS" start="2026-05-07T23:06:03.868962" elapsed="0.001013"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.259615" level="INFO">POST Request : url=http://localhost:3000/api/kubios/login 
+<msg time="2026-05-07T23:06:07.589724" level="INFO">POST Request : url=http://localhost:3000/api/kubios/login 
  path_url=/api/kubios/login 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '62', 'Content-Type': 'application/json'} 
  body=b'{"username": "elsikubios@gmail.com", "password": "hYr062vQh6"}' 
  </msg>
-<msg time="2026-05-07T23:02:03.259874" level="INFO">POST Response : url=http://localhost:3000/api/kubios/login 
+<msg time="2026-05-07T23:06:07.589842" level="INFO">POST Response : url=http://localhost:3000/api/kubios/login 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1956', 'ETag': 'W/"7a4-XCFzcudf60HJ4amhDSL/mZw7niM"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Logged in successfully with Kubios","user":{"birthdate":"1982-01-01","email":"elsikubios@gmail.com","family_name":"Kubios","gender":"female","given_name":"Elsi","height":1.5,"hr_max":182,"hr_rest":60,"sub":"4cc31d1d-41db-4d5d-87c4-eb55519640ea","weight":50},"user_id":1,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs"} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1956', 'ETag': 'W/"7a4-PHHRg1C6KnBE0xHLVu2o2bSi3g8"', 'Date': 'Thu, 07 May 2026 20:06:07 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Logged in successfully with Kubios","user":{"birthdate":"1982-01-01","email":"elsikubios@gmail.com","family_name":"Kubios","gender":"female","given_name":"Elsi","height":1.5,"hr_max":182,"hr_rest":60,"sub":"4cc31d1d-41db-4d5d-87c4-eb55519640ea","weight":50},"user_id":1,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8"} 
  </msg>
-<msg time="2026-05-07T23:02:03.260511" level="INFO">${login_resp} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:07.590154" level="INFO">${login_resp} = &lt;Response [200]&gt;</msg>
 <var>${login_resp}</var>
 <arg>apneapp</arg>
 <arg>/kubios/login</arg>
 <arg>json=${login_body}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:01:59.998996" elapsed="3.261585"/>
+<status status="PASS" start="2026-05-07T23:06:03.870185" elapsed="3.719996"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.262733" level="INFO">${json} = {'message': 'Logged in successfully with Kubios', 'user': {'birthdate': '1982-01-01', 'email': 'elsikubios@gmail.com', 'family_name': 'Kubios', 'gender': 'female', 'given_name': 'Elsi', 'height': 1.5,...</msg>
+<msg time="2026-05-07T23:06:07.591008" level="INFO">${json} = {'message': 'Logged in successfully with Kubios', 'user': {'birthdate': '1982-01-01', 'email': 'elsikubios@gmail.com', 'family_name': 'Kubios', 'gender': 'female', 'given_name': 'Elsi', 'height': 1.5,...</msg>
 <var>${json}</var>
 <arg>${login_resp.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.260937" elapsed="0.001894"/>
+<status status="PASS" start="2026-05-07T23:06:07.590351" elapsed="0.000685"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.264871" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
+<msg time="2026-05-07T23:06:07.591669" level="INFO">${TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
 <arg>${TOKEN}</arg>
 <arg>${json['token']}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.263197" elapsed="0.001806"/>
+<status status="PASS" start="2026-05-07T23:06:07.591153" elapsed="0.000556"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-05-07T23:02:03.265763" level="INFO">${uid} = 1</msg>
+<msg time="2026-05-07T23:06:07.591966" level="INFO">${uid} = 1</msg>
 <var>${uid}</var>
 <arg>${json}</arg>
 <arg>user_id</arg>
 <arg>default=1</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.265276" elapsed="0.000549"/>
+<status status="PASS" start="2026-05-07T23:06:07.591798" elapsed="0.000189"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.266942" level="INFO">${USER_ID} = 1</msg>
+<msg time="2026-05-07T23:06:07.592312" level="INFO">${USER_ID} = 1</msg>
 <arg>${USER_ID}</arg>
 <arg>${uid}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.266134" elapsed="0.000933"/>
+<status status="PASS" start="2026-05-07T23:06:07.592074" elapsed="0.000272"/>
 </kw>
-<status status="PASS" start="2026-05-07T23:01:59.996373" elapsed="3.270892"/>
+<status status="PASS" start="2026-05-07T23:06:03.866900" elapsed="3.725515"/>
 </kw>
 <test id="s1-s3-t1" name="API Root Vastaa" line="33">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.281588" level="INFO">GET Request : url=http://localhost:3000/api 
+<msg time="2026-05-07T23:06:07.600519" level="INFO">GET Request : url=http://localhost:3000/api 
  path_url=/api 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:03.281808" level="INFO">GET Response : url=http://localhost:3000/api 
+<msg time="2026-05-07T23:06:07.600613" level="INFO">GET Response : url=http://localhost:3000/api 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '7', 'ETag': 'W/"7-Ph3X5+XTqGyD1QKe088EDmiIwkw"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '7', 'ETag': 'W/"7-Ph3X5+XTqGyD1QKe088EDmiIwkw"', 'Date': 'Thu, 07 May 2026 20:06:07 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body=ApneApp 
  </msg>
-<msg time="2026-05-07T23:02:03.282162" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:07.600755" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>${EMPTY}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.269490" elapsed="0.012766"/>
+<status status="PASS" start="2026-05-07T23:06:07.593135" elapsed="0.007648"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.284499" level="INFO">Argument types are:
+<msg time="2026-05-07T23:06:07.602164" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.282943" elapsed="0.001746"/>
+<status status="PASS" start="2026-05-07T23:06:07.601272" elapsed="0.000969"/>
 </kw>
 <doc>GET /api → 200, "ApneApp"</doc>
 <tag>api</tag>
-<status status="PASS" start="2026-05-07T23:02:03.267409" elapsed="0.017822"/>
+<status status="PASS" start="2026-05-07T23:06:07.592478" elapsed="0.010081"/>
 </test>
 <test id="s1-s3-t2" name="Kubios Login Onnistuu Ja Palauttaa Tokenin" line="43">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.288764" level="INFO">${body} = {'username': 'elsikubios@gmail.com', 'password': 'hYr062vQh6'}</msg>
+<msg time="2026-05-07T23:06:07.605003" level="INFO">${body} = {'username': 'elsikubios@gmail.com', 'password': 'hYr062vQh6'}</msg>
 <var>${body}</var>
 <arg>username=${KUBIOS_USER}</arg>
 <arg>password=${KUBIOS_PASS}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.287537" elapsed="0.001310"/>
+<status status="PASS" start="2026-05-07T23:06:07.604148" elapsed="0.000913"/>
 </kw>
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.834652" level="INFO">POST Request : url=http://localhost:3000/api/kubios/login 
+<msg time="2026-05-07T23:06:08.140832" level="INFO">POST Request : url=http://localhost:3000/api/kubios/login 
  path_url=/api/kubios/login 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '62', 'Content-Type': 'application/json'} 
  body=b'{"username": "elsikubios@gmail.com", "password": "hYr062vQh6"}' 
  </msg>
-<msg time="2026-05-07T23:02:03.834809" level="INFO">POST Response : url=http://localhost:3000/api/kubios/login 
+<msg time="2026-05-07T23:06:08.140920" level="INFO">POST Response : url=http://localhost:3000/api/kubios/login 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1956', 'ETag': 'W/"7a4-QgL5SpYyWFnsyMOJ6v93B+rmwmI"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Logged in successfully with Kubios","user":{"birthdate":"1982-01-01","email":"elsikubios@gmail.com","family_name":"Kubios","gender":"female","given_name":"Elsi","height":1.5,"hr_max":182,"hr_rest":60,"sub":"4cc31d1d-41db-4d5d-87c4-eb55519640ea","weight":50},"user_id":1,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lTMGxQUVU1cGVtbFJUVEpLZWtNNVJqaDJiVll5UVNJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pWVdJMk1UTTBPVFF0TkdSaE1TMDBNelV5TFRoaU9URXRZMlpoT0dFeU5qRTVPR00xSWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qTXNJbVY0Y0NJNk1UYzNPREU0TnpjeU15d2lhV0YwSWpveE56YzRNVGcwTVRJekxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbU5tT1RaalpqaG1MVEJpWkRRdE5EY3dPQzFoTXpoa0xXUTFOMlkxWVRjd09USTNNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkZLSUs1ZUVHQVMyU2ZVMmtBMVNHdXhtTDRSVWJuQXNuVmlKUjhZZzRJZVFRVnFUUGk4OFZnNW5iYjUyYmZGZ1FIcHE3SHRxbzllN2lpSlFUSFhwLVoxN1F1Wm9XZW1hRHg2LXc1R0dUTVNDVEE0T05rMElRZmVhcmdHNUdOWUd5YzYtWWRkaEppRGw5QXRtbHQ1SzdFdl9MQVpMRXZTN2wtQUZQVmp1UnRzdmp2cHdjckc0YlY1ckZwSVkwZG5UM2VlM1lVMmQ3d3hkUHpBdXVTaWZJLWJjaW9lUkRTX1pITngzWFVGWkY4UGpPenhhckNzeF93OVhqbS1paUVPSnpiMjRyZVR0YjBtMzhqeFNWYzMtWmtGa1lGTGppYjB1UlVfOURPenJ1NUNFNGJ1bXF0VTFPek9iSFo2WmhWQzBGanlYYjVLRHAta1dYdXRkM0RLQUpxdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.PuG5RQPbJZdl_lWaXSxZdFYpxBVTYl8KcpPS6x80jlI"} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1956', 'ETag': 'W/"7a4-xtRnXumX94u0GgJ3zAY1pu5vNRE"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Logged in successfully with Kubios","user":{"birthdate":"1982-01-01","email":"elsikubios@gmail.com","family_name":"Kubios","gender":"female","given_name":"Elsi","height":1.5,"hr_max":182,"hr_rest":60,"sub":"4cc31d1d-41db-4d5d-87c4-eb55519640ea","weight":50},"user_id":1,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lVM00zYURKelJISm9hMmR1TTJsRVozSmxNMFZOUVNJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pWWpaalkySmtNR1F0TTJJM055MDBNMkpqTFdKaU1qUXRaak0wWTJNMVptUTRPRGcxSWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qY3NJbVY0Y0NJNk1UYzNPREU0TnprMk55d2lhV0YwSWpveE56YzRNVGcwTXpZM0xDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJalZqWVRjNE9UUXdMVFJtWXpJdE5ETm1PUzFpWmpObExUZGtaR1l3TkRneFlURmhNaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLmg2TU1lamhPNTg5Y2VLdmxSVGdmd3FCamM2UjRjNlBnQVdsSFdtU2d2YXQ5RXd4dVM5MDhBY0w2WTlabmtuc011U1VCci0xb2hPVzBrY2piUTZCQy01dHBaYTNGYUd0ZWQ5MEZCT0h3NU5qNGVHY2tfTjNILTF1bUZvTTgzWHdXaTdXbWlReC1aWmVib2d6eGt6Y1RoV0dCN3FrbFp4TzdBYTNfdE4yNDJWYmU0dVJMUVotSmsyQlBqRDRGZDBJMnQ0ZVY0UjJ3c0N3dFBkMm9NYjE0cWxCWFV3ejJZSnFGWW02ZXhBSUFXaGo0cnBlMDNFTHpKV1BqM2k4enhUWlMwT1YzUFMzSWJRS3RxdFJ6YkJlcEZhejVaVi00ell4eUNIckt5V0xVcjZqNjhtVmwyZVZETjc1bXNKYVpRYW43TS1vbzEzWXpUVFlFNVVzSzh1R1lxQSIsImlhdCI6MTc3ODE4NDM2OCwiZXhwIjoxNzc4MjcwNzY4fQ.9M9WZEakGcwqMi44s9OURVGrb5wuVOgNXhk7NlsYlfs"} 
  </msg>
-<msg time="2026-05-07T23:02:03.835058" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:08.141051" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/login</arg>
 <arg>json=${body}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.289396" elapsed="0.545689"/>
+<status status="PASS" start="2026-05-07T23:06:07.605441" elapsed="0.535633"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.836497" level="INFO">Argument types are:
+<msg time="2026-05-07T23:06:08.142263" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.835485" elapsed="0.001183"/>
+<status status="PASS" start="2026-05-07T23:06:08.141530" elapsed="0.000801"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.838207" level="INFO">${json} = {'message': 'Logged in successfully with Kubios', 'user': {'birthdate': '1982-01-01', 'email': 'elsikubios@gmail.com', 'family_name': 'Kubios', 'gender': 'female', 'given_name': 'Elsi', 'height': 1.5,...</msg>
+<msg time="2026-05-07T23:06:08.143600" level="INFO">${json} = {'message': 'Logged in successfully with Kubios', 'user': {'birthdate': '1982-01-01', 'email': 'elsikubios@gmail.com', 'family_name': 'Kubios', 'gender': 'female', 'given_name': 'Elsi', 'height': 1.5,...</msg>
 <var>${json}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.837253" elapsed="0.001113"/>
+<status status="PASS" start="2026-05-07T23:06:08.142683" elapsed="0.001063"/>
 </kw>
 <kw name="Dictionary Should Contain Key" owner="Collections">
 <arg>${json}</arg>
 <arg>token</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.838805" elapsed="0.000476"/>
+<status status="PASS" start="2026-05-07T23:06:08.144129" elapsed="0.000287"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.841056" level="INFO">Length is 1663.</msg>
+<msg time="2026-05-07T23:06:08.146090" level="INFO">Length is 1663.</msg>
 <arg>${json['token']}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.839860" elapsed="0.001273"/>
+<status status="PASS" start="2026-05-07T23:06:08.144953" elapsed="0.001238"/>
 </kw>
 <doc>POST /api/kubios/login oikeilla tunnuksilla → 200 + token</doc>
 <tag>kubios</tag>
 <tag>login</tag>
-<status status="PASS" start="2026-05-07T23:02:03.286414" elapsed="0.555051"/>
+<status status="PASS" start="2026-05-07T23:06:07.603252" elapsed="0.543408"/>
 </test>
 <test id="s1-s3-t3" name="Suojattu Reitti Ilman Tokenia Epaonnistuu" line="57">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.850195" level="INFO">GET Request : url=http://localhost:3000/api/users/me 
+<msg time="2026-05-07T23:06:08.153105" level="INFO">GET Request : url=http://localhost:3000/api/users/me 
  path_url=/api/users/me 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:03.850376" level="INFO">GET Response : url=http://localhost:3000/api/users/me 
+<msg time="2026-05-07T23:06:08.153295" level="INFO">GET Response : url=http://localhost:3000/api/users/me 
  status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body=Unauthorized 
  </msg>
-<msg time="2026-05-07T23:02:03.850676" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<msg time="2026-05-07T23:06:08.153522" level="INFO">${response} = &lt;Response [401]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/users/me</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.843405" elapsed="0.007347"/>
+<status status="PASS" start="2026-05-07T23:06:08.148296" elapsed="0.005255"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 401 or ${response.status_code} == 403</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.852236" elapsed="0.002996"/>
+<status status="PASS" start="2026-05-07T23:06:08.154052" elapsed="0.002069"/>
 </kw>
 <doc>GET /api/users/me ilman Authorization-headeria → 401 tai 403</doc>
 <tag>auth</tag>
 <tag>users</tag>
-<status status="PASS" start="2026-05-07T23:02:03.842228" elapsed="0.013589"/>
+<status status="PASS" start="2026-05-07T23:06:08.147282" elapsed="0.009289"/>
 </test>
 <test id="s1-s3-t4" name="GET Me Tokenilla Onnistuu" line="63">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.860800" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.158764" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.859788" elapsed="0.001122"/>
+<status status="PASS" start="2026-05-07T23:06:08.158233" elapsed="0.000574"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.872540" level="INFO">GET Request : url=http://localhost:3000/api/users/me 
+<msg time="2026-05-07T23:06:08.165619" level="INFO">GET Request : url=http://localhost:3000/api/users/me 
  path_url=/api/users/me 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:03.872757" level="INFO">GET Response : url=http://localhost:3000/api/users/me 
- status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '33', 'ETag': 'W/"21-rJeEMaec72JPjS+F1VgNckxJQ7w"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Error fetching user"} 
+<msg time="2026-05-07T23:06:08.165766" level="INFO">GET Response : url=http://localhost:3000/api/users/me 
+ status=404, reason=Not Found 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '28', 'ETag': 'W/"1c-ZEVVcvtFhxKX/QUvVKqKxwGbbNA"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"User not found"} 
  </msg>
-<msg time="2026-05-07T23:02:03.873053" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<msg time="2026-05-07T23:06:08.165949" level="INFO">${response} = &lt;Response [404]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/users/me</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.861378" elapsed="0.011716"/>
+<status status="PASS" start="2026-05-07T23:06:08.159211" elapsed="0.006773"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.875638" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2026-05-07T23:02:03.875946" level="FAIL">500 != 200</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2026-05-07T23:02:03.873734" elapsed="0.002645">500 != 200</status>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.status_code} == 200 or ${response.status_code} == 404 or ${response.status_code} == 500</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-05-07T23:06:08.166498" elapsed="0.004238"/>
 </kw>
-<doc>GET /api/users/me oikealla tokenilla → 200, Kubios-token tiedot</doc>
+<doc>GET /api/users/me oikealla tokenilla → 200, 404 tai 500 (vaatii DB-yhteyden)</doc>
 <tag>auth</tag>
 <tag>users</tag>
-<status status="FAIL" start="2026-05-07T23:02:03.858744" elapsed="0.023502">500 != 200</status>
+<status status="PASS" start="2026-05-07T23:06:08.157376" elapsed="0.013780"/>
 </test>
 <test id="s1-s3-t5" name="Kubios Reitti Ilman Tokenia Epaonnistuu" line="74">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.897286" level="INFO">GET Request : url=http://localhost:3000/api/kubios/me 
+<msg time="2026-05-07T23:06:08.177018" level="INFO">GET Request : url=http://localhost:3000/api/kubios/me 
  path_url=/api/kubios/me 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:03.897467" level="INFO">GET Response : url=http://localhost:3000/api/kubios/me 
+<msg time="2026-05-07T23:06:08.177113" level="INFO">GET Response : url=http://localhost:3000/api/kubios/me 
  status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body=Unauthorized 
  </msg>
-<msg time="2026-05-07T23:02:03.897722" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<msg time="2026-05-07T23:06:08.177246" level="INFO">${response} = &lt;Response [401]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/me</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.889662" elapsed="0.008117"/>
+<status status="PASS" start="2026-05-07T23:06:08.173011" elapsed="0.004258"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 401 or ${response.status_code} == 403</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.898460" elapsed="0.002948"/>
+<status status="PASS" start="2026-05-07T23:06:08.177722" elapsed="0.002029"/>
 </kw>
 <doc>GET /api/kubios/me ilman Authorization-headeria → 401 tai 403</doc>
 <tag>auth</tag>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:03.888612" elapsed="0.013266"/>
+<status status="PASS" start="2026-05-07T23:06:08.172078" elapsed="0.008299"/>
 </test>
 <test id="s1-s3-t6" name="GET Kubios History Tokenilla Onnistuu" line="80">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.905622" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.183548" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.904785" elapsed="0.000911"/>
+<status status="PASS" start="2026-05-07T23:06:08.182448" elapsed="0.001171"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:03.928807" level="INFO">GET Request : url=http://localhost:3000/api/kubios/history 
+<msg time="2026-05-07T23:06:08.192326" level="INFO">GET Request : url=http://localhost:3000/api/kubios/history 
  path_url=/api/kubios/history 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:03.928941" level="INFO">GET Response : url=http://localhost:3000/api/kubios/history 
+<msg time="2026-05-07T23:06:08.192450" level="INFO">GET Response : url=http://localhost:3000/api/kubios/history 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-24vRBFXLdkiGHboJ0qD/fA5L4XI"', 'Date': 'Thu, 07 May 2026 20:02:03 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-24vRBFXLdkiGHboJ0qD/fA5L4XI"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"results":[]} 
  </msg>
-<msg time="2026-05-07T23:02:03.929107" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:08.192636" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/history</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.906285" elapsed="0.022859"/>
+<status status="PASS" start="2026-05-07T23:06:08.184294" elapsed="0.008367"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 200 or ${response.status_code} == 500</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.929711" elapsed="0.001981"/>
+<status status="PASS" start="2026-05-07T23:06:08.193166" elapsed="0.002082"/>
 </kw>
 <doc>GET /api/kubios/history tokenilla → 200 tai 500 (vaatii DB-yhteyden)</doc>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:03.903326" elapsed="0.028859"/>
+<status status="PASS" start="2026-05-07T23:06:08.181150" elapsed="0.014597"/>
 </test>
 <test id="s1-s3-t7" name="GET Kubios Measures Tokenilla Onnistuu" line="87">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:03.935401" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.199162" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.934207" elapsed="0.001281"/>
+<status status="PASS" start="2026-05-07T23:06:08.198167" elapsed="0.001056"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.094573" level="INFO">GET Request : url=http://localhost:3000/api/kubios/measures 
+<msg time="2026-05-07T23:06:08.405670" level="INFO">GET Request : url=http://localhost:3000/api/kubios/measures 
  path_url=/api/kubios/measures 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.094867" level="INFO">GET Response : url=http://localhost:3000/api/kubios/measures 
+<msg time="2026-05-07T23:06:08.405997" level="INFO">GET Response : url=http://localhost:3000/api/kubios/measures 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '99000', 'ETag': 'W/"182b8-a5AmOlOy8D6HLUuDNkGX5gLRIkI"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"status":"ok","measures":[{"measure_id":"6a6acbdf-97db-439c-bab7-1b00df6033cb","measured_timestamp":"2025-05-08T07:02:03+03:00","create_timestamp":"2025-05-08T04:02:04.532552Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"3f98d01f-7bae-44c8-8938-1511fe351955","measured_timestamp":"2025-05-08T07:02:23+03:00","create_timestamp":"2025-05-08T04:02:24.615475Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":348,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-3f98d01f-7bae-44c8-8938-1511fe351955/channel-000/final/data?AWSAccessKeyId=ASIA6DPVPCLZSQRPKOQK&amp;Signature=1Mf2%2Fb3awaU3k2p0Q8e1P1BF9FQ%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIEpCkkpHHfXYliuTPcB%2FfUXFZR5y0lZQalcfuCyoTHFXAiBYF0iznNcqtyiXDc129fpmW8VgRhiEb%2F%2FySgpMw5RGbCr%2FBAi8%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDk2OTU2Njc4NjI5MSIMiILAPdbrvGI%2BDVOuKtMEtulMWyxc0NzRQssOrfA8s5MloYbA0OKkhIMN5U1U4ylpgmHgWYizBSu08ykyRFgn3br9S0yoML3jpeXLVCUWMeOS%2BWHCQBLS7IJsl0LvWct%2BGBBl9P2AZJFA3FzISW9NMK9HidYwpRXE9K9x%2FWC4hawcUXct4FlvsImOQQk%2FJiLkrToPHrPeadvNFVkAOjW5%2BNyCV2ea%2BETO4KKVGBiLNWLyIdJTV7XR1l3jq7QrWUqJDViS7S8DQfqX3kbZJK9czWSQ7gTwSndw%2B6Dblwj300ZyFvWTKwBkqw6cllfDXY8D7Z9O8TkxquMo5ZhQjmZk3FShKt%2FSkjAhXHxRirzDdBjCWfex1OJQ9FIRU9ykGr%2FKE4KtmDAh75w8s84L464f6TCibzQKwd3KLF0cG0LXzhXWW%2FJel1ke8iE3k%2Bm7VBbCvuKbMhtN2eCpsdVfBEQDD%2F56ZwJnqa7klE1HM1OFihWrSLkBREvoCoUTmXM3YIf%2B9VvzbSTXl5lTWFTG1MIhLWWDdc%2B0EI2DkEzZkdBv%2Bo%2FaD6YCXPFcTmQeN3369K%2FDirg7qFt6NDXqpU%2FtDDBToRjpa5xGdSP%2BIrfOGZn8IzH2kN2kfTamo11PXv2ADjpx4zAELLNrxAXXkA5CVQFfYvKvUsCiixbFhZxwKk3XDczDjguqTYV2L4G7YhocY7GWYPR4Zfkc3NgTm1lDckqT5mvF0zqTq9ppTFbwRaRg9kA%2FGDy7RQjTxMUtJvAPx3QHvfAlv5KSP7M8ML0%2FhgLwkvc0dNB47TfAurQKj%2Bku3XfivTCrvfPPBjqkAZyisBtSNwLz9gaj6qaw3IDOvg9XSLiwSR8sErG6GCetT12T1I8JIygRyPgNrNsrPdaPvBYdZZh3DARGwRsgNnnZZ%2BylvQTBxeK81p2LvZ1Zhok2pLEn4rUM7GpiTow2HBM3KTHIR46Erft4lUt2egkHWdldirUunBswJoL9Fo9i1Bjude8fVajRWJhy2QG%2BMUGzRFPWtMzOClM5RmpbVGkI7yBj&amp;Expires=1778187723"},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":440640,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-3f98d01f-7bae-44c8-8938-1511fe351955/channel-001/final/data?AWSAccessKeyId=ASIA6DPVPCLZSQRPKOQK&amp;Signature=9cze%2F3m960LQ5i4OdjdSBEN1VUI%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIEpCkkpHHfXYliuTPcB%2FfUXFZR5y0lZQalcfuCyoTHFXAiBYF0iznNcqtyiXDc129fpmW8VgRhiEb%2F%2FySgpMw5RGbCr%2FBAi8%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDk2OTU2Njc4NjI5MSIMiILAPdbrvGI%2BDVOuKtMEtulMWyxc0NzRQssOrfA8s5MloYbA0OKkhIMN5U1U4ylpgmHgWYizBSu08ykyRFgn3br9S0yoML3jpeXLVCUWMeOS%2BWHCQBLS7IJsl0LvWct%2BGBBl9P2AZJFA3FzISW9NMK9HidYwpRXE9K9x%2FWC4hawcUXct4FlvsImOQQk%2FJiLkrToPHrPeadvNFVkAOjW5%2BNyCV2ea%2BETO4KKVGBiLNWLyIdJTV7XR1l3jq7QrWUqJDViS7S8DQfqX3kbZJK9czWSQ7gTwSndw%2B6Dblwj300ZyFvWTKwBkqw6cllfDXY8D7Z9O8TkxquMo5ZhQjmZk3FShKt%2FSkjAhXHxRirzDdBjCWfex1OJQ9FIRU9ykGr%2FKE4KtmDAh75w8s84L464f6TCibzQKwd3KLF0cG0LXzhXWW%2FJel1ke8iE3k%2Bm7VBbCvuKbMhtN2eCpsdVfBEQDD%2F56ZwJnqa7klE1HM1OFihWrSLkBREvoCoUTmXM3YIf%2B9VvzbSTXl5lTWFTG1MIhLWWDdc%2B0EI2DkEzZkdBv%2Bo%2FaD6YCXPFcTmQeN3369K%2FDirg7qFt6NDXqpU%2FtDDBToRjpa5xGdSP%2BIrfOGZn8IzH2kN2kfTamo11PXv2ADjpx4zAELLNrxAXXkA5CVQFfYvKvUsCiixbFhZxwKk3XDczDjguqTYV2L4G7YhocY7GWYPR4Zfkc3NgTm1lDckqT5mvF0zqTq9ppTFbwRaRg9kA%2FGDy7RQjTxMUtJvAPx3QHvfAlv5KSP7M8ML0%2FhgLwkvc0dNB47TfAurQKj%2Bku3XfivTCrvfPPBjqkAZyisBtSNwLz9gaj6qaw3IDOvg9XSLiwSR8sErG6GCetT12T1I8JIygRyPgNrNsrPdaPvBYdZZh3DARGwRsgNnnZZ%2BylvQTBxeK81p2LvZ1Zhok2pLEn4rUM7GpiTow2HBM3KTHIR46Erft4lUt2egkHWdldirUunBswJoL9Fo9i1Bjude8fVajRWJhy2QG%2BMUGzRFPWtMzOClM5RmpbVGkI7yBj&amp;Expires=1778187723"}],"analysis_types":["readiness"],"tags":null,"state":"finalized"},{"measure_id":"5c39f89b-1a6c-4da7-a192-a02d3e1a9f30","measured_timestamp":"2025-05-09T07:07:32+03:00","create_timestamp":"2025-05-09T04:07:33.446444Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"e465510e-dc1f-491c-a109-830e49139941","measured_timestamp":"2025-05-09T07:07:35+03:00","create_timestamp":"2025-05-09T04:07:36.495096Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"2a8c6e43-81d2-4363-86c5-eb9b364c3b53","measured_timestamp":"2025-05-09T07:07:43+03:00","create_timestamp":"2025-05-09T04:07:44.349644Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":354,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-2a8c6e43-81d2-4363-86c5-eb9b364c3b53/channel-000/final/data?AWSAccessKeyId=ASIA6DPVPCLZSQRPKOQK&amp;Signature=FWQMHcZ3p0bW79f%2Fzr1Qn60WQqE%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIEpCkkpHHfXYliuTPcB%2FfUXFZR5y0lZQalcfuCyoTHFXAiBYF0iznNcqtyiXDc129fpmW8VgRhiEb%2F%2FySgpMw5RGbCr%2FBAi8%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDk2OTU2Njc4NjI5MSIMiILAPdbrvGI%2BDVOuKtMEtulMWyxc0NzRQssOrfA8s5MloYbA0OKkhIMN5U1U4ylpgmHgWYizBSu08ykyRFgn3br9S0yoML3jpeXLVCUWMeOS%2BWHCQBLS7IJsl0LvWct%2BGBBl9P2AZJFA3FzISW9NMK9HidYwpRXE9K9x%2FWC4hawcUXct4FlvsImOQQk%2FJiLkrToPHrPeadvNFVkAOjW5%2BNyCV2ea%2BETO4KKVGBiLNWLyIdJTV7XR1l3jq7QrWUqJDViS7S8DQfqX3kbZJK9czWSQ7gTwSndw%2B6Dblwj300ZyFvWTKwBkqw6cllfDXY8D7Z9O8TkxquMo5ZhQjmZk3FShKt%2FSkjAhXHxRirzDdBjCWfex1OJQ9FIRU9ykGr%2FKE4KtmDAh75w8s84L464f6TCibzQKwd3KLF0cG0LXzhXWW%2FJel1ke8iE3k%2Bm7VBbCvuKbMhtN2eCpsdVfBEQDD%2F56ZwJnqa7klE1HM1OFihWrSLkBREvoCoUTmXM3YIf%2B9VvzbSTXl5lTWFTG1MIhLWWDdc%2B0EI2DkEzZkdBv%2Bo%2FaD6YCXPFcTmQeN3369K%2FDirg7qFt6NDXqpU%2FtDDBToRjpa5xGdSP%2BIrfOGZn8IzH2kN2kfTamo11PXv2ADjpx4zAELLNrxAXXkA5CVQFfYvKvUsCiixbFhZxwKk3XDczDjguqTYV2L4G7YhocY7GWYPR4Zfkc3NgTm1lDckqT5mvF0zqTq9ppTFbwRaRg9kA%2FGDy7RQjTxMUtJvAPx3QHvfAlv5KSP7M8ML0%2FhgLwkvc0dNB47TfAurQKj%2Bku3XfivTCrvfPPBjqkAZyisBtSNwLz9gaj6qaw3IDOvg9XSLiwSR8sErG6GCetT12T1I8JIygRyPgNrNsrPdaPvBYdZZh3DARGwRsgNnnZZ%2BylvQTBxeK81p2LvZ1Zhok2pLEn4rUM7GpiTow2HBM3KTHIR46Erft4lUt2egkHWdldirUunBswJoL9Fo9i1Bjude8fVajRWJhy2QG%2BMUGzRFPWtMzOClM5RmpbVGkI7yBj&amp;Expires=1778187723"},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":439776,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-2a8c6e43-81d2-4363-86c5-eb9b364c3b53/channel-001/final/data?AWSAccessKeyId=ASIA6DPVPCLZSQRPKOQK&amp;Signature=Kkul3wYBPPDlmm3gz1u6p5lzQi4%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIEpCkkpHHfXYliuTPcB%2FfUXFZR5y0lZQalcfuCyoTHFXAiBYF0iznNcqtyiXDc129fpmW8VgRhiEb%2F%2FySgpMw5RGbCr%2FBAi8%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDk2OTU2Njc4NjI5MSIMiILAPdbrvGI%2BDVOuKtMEtulMWyxc0NzRQssOrfA8s5MloYbA0OKkhIMN5U1U4ylpgmHgWYizBSu08ykyRFgn3br9S0yoML3jpeXLVCUWMeOS%2BWHCQBLS7IJsl0LvWct%2BGBBl9P2AZJFA3FzISW9NMK9HidYwpRXE9K9x%2FWC4hawcUXct4FlvsImOQQk%2FJiLkrToPHrPeadvNFVkAOjW5%2BNyCV2ea%2BETO4KKVGBiLNWLyIdJTV7XR1l3jq7QrWUqJDViS7S8DQfqX3kbZJK9czWSQ7gTwSndw%2B6Dblwj300ZyFvWTKwBkqw6cllfDXY8D7Z9O8TkxquMo5ZhQjmZk3FShKt%2FSkjAhXHxRirzDdBjCWfex1OJQ9FIRU9ykGr%2FKE4KtmDAh75w8s84L464f6TCibzQKwd3KLF0cG0LXzhXWW%2FJel1ke8iE3k%2Bm7VBbCvuKbMhtN2eCpsdVfBEQDD%2F56ZwJnqa7klE1HM1OFihWrSLkBREvoCoUTmXM3YIf%2B9VvzbSTXl5lTWFTG1MIhLWWDdc%2B0EI2DkEzZkdBv%2Bo%2FaD6YCXPFcTmQeN3369K%2FDirg7qFt6NDXqpU%2FtDDBToRjpa5xGdSP%2BIrfOGZn8IzH2kN2kfTamo11PXv2ADjpx4zAELLNrxAXXkA5CVQFfYvKvUsCiixbFhZxwKk3XDczDjguqTYV2L4G7YhocY7GWYPR4Zfkc3NgTm1lDckqT5mvF0zqTq9ppTFbwRaRg9kA%2FGDy7RQjTxMUtJvAPx3QHvfAlv5KSP7M8ML0%2FhgLwkvc0dNB47TfAurQKj%2Bku3XfivTCrvfPPBjqkAZyisBtSNwLz9gaj6qaw3IDOvg9XSLiwSR8sErG6GCetT12T1I8JIygRyPgNrNsrPdaPvBYdZZh3DARGwRsgNnnZZ%2BylvQTBxeK81p2LvZ1Zhok2pLEn4rUM7GpiTow2HBM3KTHIR46Erft4lUt2egkHWdldirUunBswJoL9Fo9i1Bjude8fVajRWJhy2QG%2BMUGzRFPWtMzOClM5RmpbVGkI7yBj&amp;Expires=1778187723"}],"analysis_types":["readiness"],"tags":null,"state":"finalized"},{"measure_id":"139d92fb-a39a-41cf-8185-e156e442c0b2","measured_timestamp":"2026-01-23T20:11:27+02:00","create_timestamp":"2026-01-23T18:11:28.214607Z","subject":null,"description":"Test\n","channels":[{"index":0,"type":"Markers","data_enc":"list","label":null,"sample_rate":null,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":41,"data... (set the log level to DEBUG or TRACE to see the full content) 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '99226', 'ETag': 'W/"1839a-8KyWDSGcctiTtFy8dlzqXj0OvLQ"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"status":"ok","measures":[{"measure_id":"6a6acbdf-97db-439c-bab7-1b00df6033cb","measured_timestamp":"2025-05-08T07:02:03+03:00","create_timestamp":"2025-05-08T04:02:04.532552Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"3f98d01f-7bae-44c8-8938-1511fe351955","measured_timestamp":"2025-05-08T07:02:23+03:00","create_timestamp":"2025-05-08T04:02:24.615475Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":348,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-3f98d01f-7bae-44c8-8938-1511fe351955/channel-000/final/data?AWSAccessKeyId=ASIA6DPVPCLZRVZHIUSC&amp;Signature=60GTFcgO63yxJIkET6tj%2FcCPVGw%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIEY4ilK16Rkma7pjFUr4csIerpITUbVvu7aEbNNcP3c3AiEApoVrgVqT3MemtT1UOCKByZWhHX2kPSd%2BooM%2FQnMXSQkq%2FwQIvP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw5Njk1NjY3ODYyOTEiDHe6lCIdPcDxCsHYNirTBAHCkHvbF%2Bz7Kf%2B8uxbNqJO5Yayzh3JQEOUvL5a8oV%2FQYdIuSQAMQVC54rkMPEWaOduaFxVMzhbCGhU4Y5CM%2FGfBZcz3%2BO4gieQ65Juolrgjo%2B32tFJVTbbE0Zg5YWRw4FVV5bt0evs8MoIuj8WpTsVf2r6OuWvolOVgctlVsR7dY%2Birxqqh%2FkG5tGkkOcpjolb0kJINH3LYXsLghLCx2piYWlHqw%2BxBIAn4saPDwEVJuFkOjJOa6HIsI1ZbVBNU5hAK5g9eEQC3OIdp0WfESC3KPyYfeFxyNtlhmfLVTiHC7Il9zbSl5%2B53iuPCdIGt%2FY5YG8TU9845YaKCsuJQyzwxFUHsq%2BuAD%2BXD8hoW7JiMxc5KErcB0mz69lEbzMwEZq0DfEQAbIveuOeauPZgxinkJQt15%2B65nb7jsyvBg1S2zNBZoZxdqJZtoVjY4rQSsCko%2BkHPH2334TyyhlWN8aKGHaAYtAmFbZAYsCSwA4JXXqvsynmZp%2FZnAE6lIKHRvL9RxJq%2B4K3yzdtkhRQbLpb3hLhovLVB%2BYyVUe%2F9wSxLf6xrEEMiwzp6iMjy4h0H2lvHxd7Qjc3mhKFkq3JJlWj6G6A99toH3B31Y5Hd87qXI0q81KY6Tpq1d0dK0Inqnmggt9BoQga%2BFThvEj2Haf5n5BJKnHJnrY%2B18xmBU1EUxqW8mwr0UEtlqhrVMmaqlzSsiIPtBeX6xfpN96zqYfqlruiL8RIL1cB1ABrk45rRr7qHGyMpy2k%2FNUPJWXhSZzYtVcVjT8%2BRZz0HcfCL4fnpdHowksnzzwY6owHz4ANdRO1J9dwfyrlqzvJe9I%2BDMkxlvYh0L1xGiO811VwzU4l81BUeR4uWciREge1ZXmg6Tbz5I20z8MfAfm9n16gu2Mva4oOefoffVLYQgBuMFmrN73lbKVOIOczQBBnJnOVTbPrfS41qEmDXnuoSeM%2FroGQZgqqxRkQBU6H%2FUBJ6VfhIwa%2FmFi%2Fi6nU9OtlWH16tJUq9ZF7vdlW9Dt97W0uk&amp;Expires=1778187968"},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":440640,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-3f98d01f-7bae-44c8-8938-1511fe351955/channel-001/final/data?AWSAccessKeyId=ASIA6DPVPCLZRVZHIUSC&amp;Signature=tyeGJf2%2FmuTPjau%2BQ7myXr3hkHI%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIEY4ilK16Rkma7pjFUr4csIerpITUbVvu7aEbNNcP3c3AiEApoVrgVqT3MemtT1UOCKByZWhHX2kPSd%2BooM%2FQnMXSQkq%2FwQIvP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw5Njk1NjY3ODYyOTEiDHe6lCIdPcDxCsHYNirTBAHCkHvbF%2Bz7Kf%2B8uxbNqJO5Yayzh3JQEOUvL5a8oV%2FQYdIuSQAMQVC54rkMPEWaOduaFxVMzhbCGhU4Y5CM%2FGfBZcz3%2BO4gieQ65Juolrgjo%2B32tFJVTbbE0Zg5YWRw4FVV5bt0evs8MoIuj8WpTsVf2r6OuWvolOVgctlVsR7dY%2Birxqqh%2FkG5tGkkOcpjolb0kJINH3LYXsLghLCx2piYWlHqw%2BxBIAn4saPDwEVJuFkOjJOa6HIsI1ZbVBNU5hAK5g9eEQC3OIdp0WfESC3KPyYfeFxyNtlhmfLVTiHC7Il9zbSl5%2B53iuPCdIGt%2FY5YG8TU9845YaKCsuJQyzwxFUHsq%2BuAD%2BXD8hoW7JiMxc5KErcB0mz69lEbzMwEZq0DfEQAbIveuOeauPZgxinkJQt15%2B65nb7jsyvBg1S2zNBZoZxdqJZtoVjY4rQSsCko%2BkHPH2334TyyhlWN8aKGHaAYtAmFbZAYsCSwA4JXXqvsynmZp%2FZnAE6lIKHRvL9RxJq%2B4K3yzdtkhRQbLpb3hLhovLVB%2BYyVUe%2F9wSxLf6xrEEMiwzp6iMjy4h0H2lvHxd7Qjc3mhKFkq3JJlWj6G6A99toH3B31Y5Hd87qXI0q81KY6Tpq1d0dK0Inqnmggt9BoQga%2BFThvEj2Haf5n5BJKnHJnrY%2B18xmBU1EUxqW8mwr0UEtlqhrVMmaqlzSsiIPtBeX6xfpN96zqYfqlruiL8RIL1cB1ABrk45rRr7qHGyMpy2k%2FNUPJWXhSZzYtVcVjT8%2BRZz0HcfCL4fnpdHowksnzzwY6owHz4ANdRO1J9dwfyrlqzvJe9I%2BDMkxlvYh0L1xGiO811VwzU4l81BUeR4uWciREge1ZXmg6Tbz5I20z8MfAfm9n16gu2Mva4oOefoffVLYQgBuMFmrN73lbKVOIOczQBBnJnOVTbPrfS41qEmDXnuoSeM%2FroGQZgqqxRkQBU6H%2FUBJ6VfhIwa%2FmFi%2Fi6nU9OtlWH16tJUq9ZF7vdlW9Dt97W0uk&amp;Expires=1778187968"}],"analysis_types":["readiness"],"tags":null,"state":"finalized"},{"measure_id":"5c39f89b-1a6c-4da7-a192-a02d3e1a9f30","measured_timestamp":"2025-05-09T07:07:32+03:00","create_timestamp":"2025-05-09T04:07:33.446444Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"e465510e-dc1f-491c-a109-830e49139941","measured_timestamp":"2025-05-09T07:07:35+03:00","create_timestamp":"2025-05-09T04:07:36.495096Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":null,"data_url":null}],"analysis_types":[],"tags":null,"state":"active"},{"measure_id":"2a8c6e43-81d2-4363-86c5-eb9b364c3b53","measured_timestamp":"2025-05-09T07:07:43+03:00","create_timestamp":"2025-05-09T04:07:44.349644Z","subject":null,"description":null,"channels":[{"index":0,"type":"RRI","data_enc":[["value","H"]],"label":null,"sample_rate":null,"unit":"ms","scaling_factor":null,"offset":null,"description":null,"data_size":354,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-2a8c6e43-81d2-4363-86c5-eb9b364c3b53/channel-000/final/data?AWSAccessKeyId=ASIA6DPVPCLZRVZHIUSC&amp;Signature=oMYhMzAvSTSdJx2%2FGpMuNXUta%2BU%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIEY4ilK16Rkma7pjFUr4csIerpITUbVvu7aEbNNcP3c3AiEApoVrgVqT3MemtT1UOCKByZWhHX2kPSd%2BooM%2FQnMXSQkq%2FwQIvP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw5Njk1NjY3ODYyOTEiDHe6lCIdPcDxCsHYNirTBAHCkHvbF%2Bz7Kf%2B8uxbNqJO5Yayzh3JQEOUvL5a8oV%2FQYdIuSQAMQVC54rkMPEWaOduaFxVMzhbCGhU4Y5CM%2FGfBZcz3%2BO4gieQ65Juolrgjo%2B32tFJVTbbE0Zg5YWRw4FVV5bt0evs8MoIuj8WpTsVf2r6OuWvolOVgctlVsR7dY%2Birxqqh%2FkG5tGkkOcpjolb0kJINH3LYXsLghLCx2piYWlHqw%2BxBIAn4saPDwEVJuFkOjJOa6HIsI1ZbVBNU5hAK5g9eEQC3OIdp0WfESC3KPyYfeFxyNtlhmfLVTiHC7Il9zbSl5%2B53iuPCdIGt%2FY5YG8TU9845YaKCsuJQyzwxFUHsq%2BuAD%2BXD8hoW7JiMxc5KErcB0mz69lEbzMwEZq0DfEQAbIveuOeauPZgxinkJQt15%2B65nb7jsyvBg1S2zNBZoZxdqJZtoVjY4rQSsCko%2BkHPH2334TyyhlWN8aKGHaAYtAmFbZAYsCSwA4JXXqvsynmZp%2FZnAE6lIKHRvL9RxJq%2B4K3yzdtkhRQbLpb3hLhovLVB%2BYyVUe%2F9wSxLf6xrEEMiwzp6iMjy4h0H2lvHxd7Qjc3mhKFkq3JJlWj6G6A99toH3B31Y5Hd87qXI0q81KY6Tpq1d0dK0Inqnmggt9BoQga%2BFThvEj2Haf5n5BJKnHJnrY%2B18xmBU1EUxqW8mwr0UEtlqhrVMmaqlzSsiIPtBeX6xfpN96zqYfqlruiL8RIL1cB1ABrk45rRr7qHGyMpy2k%2FNUPJWXhSZzYtVcVjT8%2BRZz0HcfCL4fnpdHowksnzzwY6owHz4ANdRO1J9dwfyrlqzvJe9I%2BDMkxlvYh0L1xGiO811VwzU4l81BUeR4uWciREge1ZXmg6Tbz5I20z8MfAfm9n16gu2Mva4oOefoffVLYQgBuMFmrN73lbKVOIOczQBBnJnOVTbPrfS41qEmDXnuoSeM%2FroGQZgqqxRkQBU6H%2FUBJ6VfhIwa%2FmFi%2Fi6nU9OtlWH16tJUq9ZF7vdlW9Dt97W0uk&amp;Expires=1778187968"},{"index":1,"type":"Acc","data_enc":[["x","f"],["y","f"],["z","f"]],"label":null,"sample_rate":200,"unit":null,"scaling_factor":null,"offset":null,"description":null,"data_size":439776,"data_url":"https://ew1-kub-prd-content.s3.amazonaws.com/measure/user-4cc31d1d-41db-4d5d-87c4-eb55519640ea/session-2a8c6e43-81d2-4363-86c5-eb9b364c3b53/channel-001/final/data?AWSAccessKeyId=ASIA6DPVPCLZRVZHIUSC&amp;Signature=ZxBySmflZF%2BLIaQsg%2FaSoM22DaE%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIEY4ilK16Rkma7pjFUr4csIerpITUbVvu7aEbNNcP3c3AiEApoVrgVqT3MemtT1UOCKByZWhHX2kPSd%2BooM%2FQnMXSQkq%2FwQIvP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw5Njk1NjY3ODYyOTEiDHe6lCIdPcDxCsHYNirTBAHCkHvbF%2Bz7Kf%2B8uxbNqJO5Yayzh3JQEOUvL5a8oV%2FQYdIuSQAMQVC54rkMPEWaOduaFxVMzhbCGhU4Y5CM%2FGfBZcz3%2BO4gieQ65Juolrgjo%2B32tFJVTbbE0Zg5YWRw4FVV5bt0evs8MoIuj8WpTsVf2r6OuWvolOVgctlVsR7dY%2Birxqqh%2FkG5tGkkOcpjolb0kJINH3LYXsLghLCx2piYWlHqw%2BxBIAn4saPDwEVJuFkOjJOa6HIsI1ZbVBNU5hAK5g9eEQC3OIdp0WfESC3KPyYfeFxyNtlhmfLVTiHC7Il9zbSl5%2B53iuPCdIGt%2FY5YG8TU9845YaKCsuJQyzwxFUHsq%2BuAD%2BXD8hoW7JiMxc5KErcB0mz69lEbzMwEZq0DfEQAbIveuOeauPZgxinkJQt15%2B65nb7jsyvBg1S2zNBZoZxdqJZtoVjY4rQSsCko%2BkHPH2334TyyhlWN8aKGHaAYtAmFbZAYsCSwA4JXXqvsynmZp%2FZnAE6lIKHRvL9RxJq%2B4K3yzdtkhRQbLpb3hLhovLVB%2BYyVUe%2F9wSxLf6xrEEMiwzp6iMjy4h0H2lvHxd7Qjc3mhKFkq3JJlWj6G6A99toH3B31Y5Hd87qXI0q81KY6Tpq1d0dK0Inqnmggt9BoQga%2BFThvEj2Haf5n5BJKnHJnrY%2B18xmBU1EUxqW8mwr0UEtlqhrVMmaqlzSsiIPtBeX6xfpN96zqYfqlruiL8RIL1cB1ABrk45rRr7qHGyMpy2k%2FNUPJWXhSZzYtVcVjT8%2BRZz0HcfCL4fnpdHowksnzzwY6owHz4ANdRO1J9dwfyrlqzvJe9I%2BDMkxlvYh0L1xGiO811VwzU4l81BUeR4uWciREge1ZXmg6Tbz5I20z8MfAfm9n16gu2Mva4oOefoffVLYQgBuMFmrN73lbKVOIOczQBBnJnOVTbPrfS41qEmDXnuoSeM%2FroGQZgqqxRkQBU6H%2FUBJ6VfhIwa%2FmFi%2Fi6nU9OtlWH16tJUq9ZF7vdlW9Dt97W0uk&amp;Expires=1778187968"}],"analysis_types":["readiness"],"tags":null,"state":"finalized"},{"measure_id":"139d92fb-a39a-41cf-8185-e156e442c0b2","measured_timestamp":"2026-01-23T20:11:27+02:00","create_timestamp":"2026-01-23T18:11:28.214607Z","subject":null,"description":"Test\n","channels":[{"index":0,"type":"Markers","data_enc":"list","label":null,"sample_rate":null,"unit":null,"scaling_factor":null,"offset":null,"description":n... (set the log level to DEBUG or TRACE to see the full content) 
  </msg>
-<msg time="2026-05-07T23:02:04.106935" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:08.406416" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/measures</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:03.936013" elapsed="0.171011"/>
+<status status="PASS" start="2026-05-07T23:06:08.199679" elapsed="0.206786"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.109461" level="INFO">Argument types are:
+<msg time="2026-05-07T23:06:08.408133" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.108040" elapsed="0.001562"/>
+<status status="PASS" start="2026-05-07T23:06:08.406998" elapsed="0.001262"/>
 </kw>
 <doc>GET /api/kubios/measures tokenilla → 200 (Kubios Cloud data)</doc>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:03.933101" elapsed="0.177183"/>
+<status status="PASS" start="2026-05-07T23:06:08.197076" elapsed="0.211693"/>
 </test>
 <test id="s1-s3-t8" name="GET Kubios Sync Ilman Tokenia Epaonnistuu" line="94">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.117326" level="INFO">GET Request : url=http://localhost:3000/api/kubios/sync 
+<msg time="2026-05-07T23:06:08.418071" level="INFO">GET Request : url=http://localhost:3000/api/kubios/sync 
  path_url=/api/kubios/sync 
  headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.117448" level="INFO">GET Response : url=http://localhost:3000/api/kubios/sync 
+<msg time="2026-05-07T23:06:08.418190" level="INFO">GET Response : url=http://localhost:3000/api/kubios/sync 
  status=401, reason=Unauthorized 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '12', 'ETag': 'W/"c-dAuDFQrdjS3hezqxDTNgW7AOlYk"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body=Unauthorized 
  </msg>
-<msg time="2026-05-07T23:02:04.117622" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<msg time="2026-05-07T23:06:08.418359" level="INFO">${response} = &lt;Response [401]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/sync</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.112297" elapsed="0.005355"/>
+<status status="PASS" start="2026-05-07T23:06:08.410500" elapsed="0.007883"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 401 or ${response.status_code} == 403 or ${response.status_code} == 404</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.118191" elapsed="0.004451"/>
+<status status="PASS" start="2026-05-07T23:06:08.418970" elapsed="0.004069"/>
 </kw>
 <doc>GET /api/kubios/sync ilman tokenia → 401, 403 tai 404</doc>
 <tag>auth</tag>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:04.111317" elapsed="0.011836"/>
+<status status="PASS" start="2026-05-07T23:06:08.409499" elapsed="0.014369"/>
 </test>
 <test id="s1-s3-t9" name="Kayttajan Poisto Toisen Tunnuksella Epaonnistuu" line="100">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.126130" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.429715" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.125517" elapsed="0.000660"/>
+<status status="PASS" start="2026-05-07T23:06:08.427942" elapsed="0.001966"/>
 </kw>
 <kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.132702" level="INFO">DELETE Request : url=http://localhost:3000/api/users/9999999 
+<msg time="2026-05-07T23:06:08.441386" level="INFO">DELETE Request : url=http://localhost:3000/api/users/9999999 
  path_url=/api/users/9999999 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs', 'Content-Length': '0'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.132890" level="INFO">DELETE Response : url=http://localhost:3000/api/users/9999999 
+<msg time="2026-05-07T23:06:08.441600" level="INFO">DELETE Response : url=http://localhost:3000/api/users/9999999 
  status=403, reason=Forbidden 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'ETag': 'W/"30-KIKEiRQA18yvpvxuLEiGUK7cKlo"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'ETag': 'W/"30-KIKEiRQA18yvpvxuLEiGUK7cKlo"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"message":"Not authorized to delete this user"} 
  </msg>
-<msg time="2026-05-07T23:02:04.133081" level="INFO">${response} = &lt;Response [403]&gt;</msg>
+<msg time="2026-05-07T23:06:08.441849" level="INFO">${response} = &lt;Response [403]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/users/9999999</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.126657" elapsed="0.006450"/>
+<status status="PASS" start="2026-05-07T23:06:08.432894" elapsed="0.009010"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.134478" level="INFO">Argument types are:
+<msg time="2026-05-07T23:06:08.443686" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>403</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.133636" elapsed="0.000936"/>
+<status status="PASS" start="2026-05-07T23:06:08.442477" elapsed="0.001348"/>
 </kw>
 <doc>DELETE /api/users/:id toisen kayttajan ID → 403</doc>
 <tag>auth</tag>
 <tag>users</tag>
-<status status="PASS" start="2026-05-07T23:02:04.124535" elapsed="0.010440"/>
+<status status="PASS" start="2026-05-07T23:06:08.426605" elapsed="0.017685"/>
 </test>
 <test id="s1-s3-t10" name="GET Kayttaja ID Tokenilla Onnistuu" line="111">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.140967" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.447931" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.139542" elapsed="0.001479"/>
+<status status="PASS" start="2026-05-07T23:06:08.446958" elapsed="0.001041"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.148891" level="INFO">GET Request : url=http://localhost:3000/api/users/1 
+<msg time="2026-05-07T23:06:08.455990" level="INFO">GET Request : url=http://localhost:3000/api/users/1 
  path_url=/api/users/1 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.149257" level="INFO">GET Response : url=http://localhost:3000/api/users/1 
- status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '33', 'ETag': 'W/"21-rJeEMaec72JPjS+F1VgNckxJQ7w"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"message":"Error fetching user"} 
+<msg time="2026-05-07T23:06:08.456370" level="INFO">GET Response : url=http://localhost:3000/api/users/1 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '118', 'ETag': 'W/"76-y9dz5DbrGBIs4X5sEEkStENT0G0"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user_id":1,"username":"elsikubios@gmail.com","email":"elsikubios@gmail.com","created_at":"2026-05-07T20:02:03.000Z"} 
  </msg>
-<msg time="2026-05-07T23:02:04.149531" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<msg time="2026-05-07T23:06:08.456712" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/users/${USER_ID}</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.141547" elapsed="0.008050"/>
+<status status="PASS" start="2026-05-07T23:06:08.448555" elapsed="0.008218"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 200 or ${response.status_code} == 500</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.150240" elapsed="0.002768"/>
+<status status="PASS" start="2026-05-07T23:06:08.459386" elapsed="0.002704"/>
 </kw>
 <doc>GET /api/users/:id omalla tokenilla → 200 tai 500 (vaatii DB-yhteyden)</doc>
 <tag>auth</tag>
 <tag>users</tag>
-<status status="PASS" start="2026-05-07T23:02:04.138215" elapsed="0.015499"/>
+<status status="PASS" start="2026-05-07T23:06:08.445810" elapsed="0.016872"/>
 </test>
 <test id="s1-s3-t11" name="PUT Profiilin Paivitys Onnistuu" line="118">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.157874" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.466056" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.156456" elapsed="0.001517"/>
+<status status="PASS" start="2026-05-07T23:06:08.465036" elapsed="0.001078"/>
 </kw>
 <kw name="Generate Random String" owner="String">
-<msg time="2026-05-07T23:02:04.159219" level="INFO">${rand} = 3664</msg>
+<msg time="2026-05-07T23:06:08.467392" level="INFO">${rand} = 9362</msg>
 <var>${rand}</var>
 <arg>4</arg>
 <arg>[NUMBERS]</arg>
 <doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.158449" elapsed="0.000847"/>
+<status status="PASS" start="2026-05-07T23:06:08.466707" elapsed="0.000757"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.161007" level="INFO">${body} = {'username': 'updated3664', 'email': 'updated3664@test.com'}</msg>
+<msg time="2026-05-07T23:06:08.469087" level="INFO">${body} = {'username': 'updated9362', 'email': 'updated9362@test.com'}</msg>
 <var>${body}</var>
 <arg>username=updated${rand}</arg>
 <arg>email=updated${rand}@test.com</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.159928" elapsed="0.001158"/>
+<status status="PASS" start="2026-05-07T23:06:08.468084" elapsed="0.001079"/>
 </kw>
 <kw name="PUT On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.182171" level="INFO">PUT Request : url=http://localhost:3000/api/users/1 
+<msg time="2026-05-07T23:06:08.479616" level="INFO">PUT Request : url=http://localhost:3000/api/users/1 
  path_url=/api/users/1 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs', 'Content-Length': '60', 'Content-Type': 'application/json'} 
- body=b'{"username": "updated3664", "email": "updated3664@test.com"}' 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8', 'Content-Length': '60', 'Content-Type': 'application/json'} 
+ body=b'{"username": "updated9362", "email": "updated9362@test.com"}' 
  </msg>
-<msg time="2026-05-07T23:02:04.182332" level="INFO">PUT Response : url=http://localhost:3000/api/users/1 
+<msg time="2026-05-07T23:06:08.479788" level="INFO">PUT Response : url=http://localhost:3000/api/users/1 
  status=403, reason=Forbidden 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'ETag': 'W/"30-FEZidFXsLSVFpCBGe9G+zbyFjkU"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'ETag': 'W/"30-FEZidFXsLSVFpCBGe9G+zbyFjkU"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"message":"Not authorized to update this user"} 
  </msg>
-<msg time="2026-05-07T23:02:04.182970" level="INFO">${response} = &lt;Response [403]&gt;</msg>
+<msg time="2026-05-07T23:06:08.480019" level="INFO">${response} = &lt;Response [403]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/users/${USER_ID}</arg>
@@ -1376,160 +1371,159 @@ Testaaja: Yamama | Branch: Yamama-FE</doc>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a PUT request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.161658" elapsed="0.021415"/>
+<status status="PASS" start="2026-05-07T23:06:08.470138" elapsed="0.009937"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 200 or ${response.status_code} == 403 or ${response.status_code} == 500</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.184924" elapsed="0.008750"/>
+<status status="PASS" start="2026-05-07T23:06:08.481172" elapsed="0.004571"/>
 </kw>
 <doc>PUT /api/users/:id oman profiilin paivitys → 200 tai 500 (vaatii DB-yhteyden)</doc>
 <tag>auth</tag>
 <tag>users</tag>
-<status status="PASS" start="2026-05-07T23:02:04.154441" elapsed="0.040484"/>
+<status status="PASS" start="2026-05-07T23:06:08.463820" elapsed="0.022513"/>
 </test>
 <test id="s1-s3-t12" name="GET Kubios Me Tokenilla Onnistuu" line="131">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.202128" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.494654" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.200835" elapsed="0.001479"/>
+<status status="PASS" start="2026-05-07T23:06:08.493586" elapsed="0.001141"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.224570" level="INFO">GET Request : url=http://localhost:3000/api/kubios/me 
+<msg time="2026-05-07T23:06:08.502732" level="INFO">GET Request : url=http://localhost:3000/api/kubios/me 
  path_url=/api/kubios/me 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.225175" level="INFO">GET Response : url=http://localhost:3000/api/kubios/me 
- status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '88', 'ETag': 'W/"58-la4F8TsAhKAqkk6ryntlXZdoxbk"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
- body={"error":{"message":"Unknown column 'user_level' in 'SELECT'","status":500,"errors":""}} 
+<msg time="2026-05-07T23:06:08.503072" level="INFO">GET Response : url=http://localhost:3000/api/kubios/me 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1266', 'ETag': 'W/"4f2-1vTrnjilwDi7XUrRIL6b+/eQ2TI"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"user_id":1,"username":"elsikubios@gmail.com","email":"elsikubios@gmail.com","created_at":"2026-05-07T20:02:03.000Z"},"kubios_token":"eyJraWQiOiJQVERRUGZLbjU2bXB5RU9pcHVxOGRFUDBPeXlJMWh1WlQwMVJVekdXUStRPSIsImFsZyI6IlJTMjU2In0.eyJhdF9oYXNoIjoibnhObTVOdndsTTY4bmIteFJqRWIxZyIsInN1YiI6IjRjYzMxZDFkLTQxZGItNGQ1ZC04N2M0LWViNTU1MTk2NDBlYSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV91UW1BZzQ1eHkiLCJjb2duaXRvOnVzZXJuYW1lIjoiNGNjMzFkMWQtNDFkYi00ZDVkLTg3YzQtZWI1NTUxOTY0MGVhIiwiZ2l2ZW5fbmFtZSI6IkVsc2kiLCJhdWQiOiIycjgzOGVvaWQxdmViMHFucWduODFxYXVtMCIsImV2ZW50X2lkIjoiOTM1MDQ5MGQtN2VlMS00NWRjLWFlMjUtZjQ2YTgwMmJmODQ5IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NzgxODQzNjYsImV4cCI6MTc3ODE4Nzk2NiwiaWF0IjoxNzc4MTg0MzY2LCJmYW1pbHlfbmFtZSI6Ikt1YmlvcyIsImp0aSI6IjdlYjM2N2E0LTk0ZjMtNGRlNS04NzZjLTRjNDdlMmQ2M2NjMyIsImVtYWlsIjoiZWxzaWt1Ymlvc0BnbWFpbC5jb20ifQ.DpnJx4xIlUQwJYWrukzTFqxbDx6p327hokS2S12QpurEImr2murIrOD14RM9vTwDo-RR_P0EsNk1OOw1K4LQs2ImL5a6KDYHK1hMcb7S1S0jf3O8GXF4N-dpJnKlZWj0JB-oY6T6cZoxIynFXxmTGKvPwVtVhHmcK8XRI9mo1qgihfXNzhvPiqDLzsAbak7cYAuN6TRq2qB_If9khDR6QknLM8eKQGo97iQFzZHRSfos14HCq9b74oUm19rVXAELzgNT7pzH7rs3q8eiT_FWOfTHLIa6KHMZnKzjEA42StqK1b-b9OAdkFpvjLdDMJtS1RYa-0T9uWcBmtHRtzzXdg"} 
  </msg>
-<msg time="2026-05-07T23:02:04.226027" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<msg time="2026-05-07T23:06:08.503280" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/me</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.203145" elapsed="0.022981"/>
+<status status="PASS" start="2026-05-07T23:06:08.495506" elapsed="0.007816"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${response.status_code} == 200 or ${response.status_code} == 500</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.226824" elapsed="0.003721"/>
+<status status="PASS" start="2026-05-07T23:06:08.503777" elapsed="0.002009"/>
 </kw>
 <doc>GET /api/kubios/me tokenilla → 200 tai 500 (vaatii DB-yhteyden)</doc>
 <tag>auth</tag>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:04.199412" elapsed="0.032326"/>
+<status status="PASS" start="2026-05-07T23:06:08.491020" elapsed="0.015176"/>
 </test>
 <test id="s1-s3-t13" name="GET Kubios UserInfo Tokenilla Onnistuu" line="138">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.246447" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.508967" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.244631" elapsed="0.001927"/>
+<status status="PASS" start="2026-05-07T23:06:08.508014" elapsed="0.001019"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:04.447852" level="INFO">GET Request : url=http://localhost:3000/api/kubios/userinfo 
+<msg time="2026-05-07T23:06:08.740084" level="INFO">GET Request : url=http://localhost:3000/api/kubios/userinfo 
  path_url=/api/kubios/userinfo 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:04.448072" level="INFO">GET Response : url=http://localhost:3000/api/kubios/userinfo 
+<msg time="2026-05-07T23:06:08.740267" level="INFO">GET Response : url=http://localhost:3000/api/kubios/userinfo 
  status=200, reason=OK 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '237', 'ETag': 'W/"ed-6z/rM5R2K6F9VxjMOQ3fQ4+KP4c"', 'Date': 'Thu, 07 May 2026 20:02:04 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '237', 'ETag': 'W/"ed-6z/rM5R2K6F9VxjMOQ3fQ4+KP4c"', 'Date': 'Thu, 07 May 2026 20:06:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"status":"ok","user":{"birthdate":"1982-01-01","email":"elsikubios@gmail.com","family_name":"Kubios","gender":"female","given_name":"Elsi","height":1.5,"hr_max":182,"hr_rest":60,"sub":"4cc31d1d-41db-4d5d-87c4-eb55519640ea","weight":50}} 
  </msg>
-<msg time="2026-05-07T23:02:04.448392" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-05-07T23:06:08.740495" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/userinfo</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.247180" elapsed="0.201280"/>
+<status status="PASS" start="2026-05-07T23:06:08.509506" elapsed="0.231032"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.449976" level="INFO">Argument types are:
+<msg time="2026-05-07T23:06:08.742049" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.449077" elapsed="0.001045"/>
+<status status="PASS" start="2026-05-07T23:06:08.741130" elapsed="0.001007"/>
 </kw>
 <doc>GET /api/kubios/userinfo tokenilla → 200, Kubios-kayttajatiedot</doc>
 <tag>kubios</tag>
-<status status="PASS" start="2026-05-07T23:02:04.242078" elapsed="0.208575"/>
+<status status="PASS" start="2026-05-07T23:06:08.506951" elapsed="0.235627"/>
 </test>
 <test id="s1-s3-t14" name="GET Kubios Sync Tokenilla Onnistuu" line="145">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-05-07T23:02:04.454140" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<msg time="2026-05-07T23:06:08.744803" level="INFO">${headers} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${TOKEN}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.452201" elapsed="0.002055"/>
+<status status="PASS" start="2026-05-07T23:06:08.744242" elapsed="0.000607"/>
 </kw>
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-05-07T23:02:05.232473" level="INFO">GET Request : url=http://localhost:3000/api/kubios/sync 
+<msg time="2026-05-07T23:06:09.678581" level="INFO">GET Request : url=http://localhost:3000/api/kubios/sync 
  path_url=/api/kubios/sync 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2lSbmwzV2pBNU5Vc3lTa2RFYTJGbmVuaEZhbmhPZHlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pTW1Fd1lUZzRNamN0TkRBMU1TMDBPVGN3TFdGbU16SXROalF3TURReU16azJaalV4SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RReE1qSXNJbVY0Y0NJNk1UYzNPREU0TnpjeU1pd2lhV0YwSWpveE56YzRNVGcwTVRJeUxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJbUpsWlRjNU16UmlMVGs1TlRJdE5HUXlaQzFoT0dFNUxUUTFZV0kyTlRVNFlXUTBaaUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLlJ1U05CZElnWFFQMWxoUEFiMFI3aDR3WFo1VFF0S0xLZThiV05RUkxNZEVVLWJIZGhxM1JoTDdRRElVZ3NhbXdfNUNiR1NFMzhobks3U3BOYkx4clpFT2ZteFhvLV92WXZINmZkZ0hDc3VtbWpDRjlMNTdVV1JUMnJ3c0RlekMwSzhaTWJqOHFCYXlWWGFiNHZjS3F0ZnlqUW1JR3V0YjVFNFF0NFJyRXp1M25XVmw4bUtTU1UwNHpnMVBYLWQxc3NWdWRSdWd5MUJzaW9JeWJTTUFMTVZkZ0VtMFRWdGNsczhXc0dkRHJIdXhnXzZYUEhDU2FheVhWekc3LXJwckhFcUcwX0RUWDZtd1h1LVBQc1NJSjBkbFREVjRmR09NejlySUJyM1hxYUFOdXFnQlIwSmplbDFXMVE0RkFaZlFIa1JWbE9UbDNRNXZYTG10R2hqNmRUdyIsImlhdCI6MTc3ODE4NDEyMywiZXhwIjoxNzc4MjcwNTIzfQ.gkjV5p5qWwkK-dhwZu8KiJlWT4fPgT1Mrpzc47RzxNs'} 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libmhPYlRWT2RuZHNUVFk0Ym1JdGVGSnFSV0l4WnlJc0luTjFZaUk2SWpSall6TXhaREZrTFRReFpHSXROR1ExWkMwNE4yTTBMV1ZpTlRVMU1UazJOREJsWVNJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU5HTmpNekZrTVdRdE5ERmtZaTAwWkRWa0xUZzNZelF0WldJMU5UVXhPVFkwTUdWaElpd2laMmwyWlc1ZmJtRnRaU0k2SWtWc2Mya2lMQ0poZFdRaU9pSXljamd6T0dWdmFXUXhkbVZpTUhGdWNXZHVPREZ4WVhWdE1DSXNJbVYyWlc1MFgybGtJam9pT1RNMU1EUTVNR1F0TjJWbE1TMDBOV1JqTFdGbE1qVXRaalEyWVRnd01tSm1PRFE1SWl3aWRHOXJaVzVmZFhObElqb2lhV1FpTENKaGRYUm9YM1JwYldVaU9qRTNOemd4T0RRek5qWXNJbVY0Y0NJNk1UYzNPREU0TnprMk5pd2lhV0YwSWpveE56YzRNVGcwTXpZMkxDSm1ZVzFwYkhsZmJtRnRaU0k2SWt0MVltbHZjeUlzSW1wMGFTSTZJamRsWWpNMk4yRTBMVGswWmpNdE5HUmxOUzA0TnpaakxUUmpORGRsTW1RMk0yTmpNeUlzSW1WdFlXbHNJam9pWld4emFXdDFZbWx2YzBCbmJXRnBiQzVqYjIwaWZRLkRwbkp4NHhJbFVRd0pZV3J1a3pURnF4YkR4NnAzMjdob2tTMlMxMlFwdXJFSW1yMm11cklyT0QxNFJNOXZUd0RvLVJSX1AwRXNOazFPT3cxSzRMUXMySW1MNWE2S0RZSEsxaE1jYjdTMVMwamYzTzhHWEY0Ti1kcEpuS2xaV2owSkItb1k2VDZjWm94SXluRlh4bVRHS3ZQd1Z0VmhIbWNLOFhSSTltbzFxZ2loZlhOemh2UGlxREx6c0FiYWs3Y1lBdU42VFJxMnFCX0lmOWtoRFI2UWtuTE04ZUtRR285N2lRRnpaSFJTZm9zMTRIQ3E5Yjc0b1VtMTlyVlhBRUx6Z05UN3B6SDdyczNxOGVpVF9GV09mVEhMSWE2S0hNWm5LempFQTQyU3RxSzFiLWI5T0Fka0ZwdmpMZERNSnRTMVJZYS0wVDl1V2NCbXRIUnR6elhkZyIsImlhdCI6MTc3ODE4NDM2NywiZXhwIjoxNzc4MjcwNzY3fQ.3uq0Gf5kotSAZlVVLNZJxP18HaPl_40ippOMGbynrg8'} 
  body=None 
  </msg>
-<msg time="2026-05-07T23:02:05.232751" level="INFO">GET Response : url=http://localhost:3000/api/kubios/sync 
+<msg time="2026-05-07T23:06:09.678982" level="INFO">GET Response : url=http://localhost:3000/api/kubios/sync 
  status=500, reason=Internal Server Error 
- headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'ETag': 'W/"52-1S6+mVXCyqtJiF0Yxrk305yzwMg"', 'Date': 'Thu, 07 May 2026 20:02:05 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'ETag': 'W/"52-1S6+mVXCyqtJiF0Yxrk305yzwMg"', 'Date': 'Thu, 07 May 2026 20:06:09 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
  body={"error":{"message":"Analytics token fetch failed: 400","status":500,"errors":""}} 
  </msg>
-<msg time="2026-05-07T23:02:05.232962" level="INFO">${response} = &lt;Response [500]&gt;</msg>
+<msg time="2026-05-07T23:06:09.679383" level="INFO">${response} = &lt;Response [500]&gt;</msg>
 <var>${response}</var>
 <arg>apneapp</arg>
 <arg>/kubios/sync</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-05-07T23:02:04.454759" elapsed="0.778267"/>
+<status status="PASS" start="2026-05-07T23:06:08.745236" elapsed="0.934365"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
-<msg time="2026-05-07T23:02:05.235914" level="FAIL">'500 == 200 or 500 == 404' should be true.</msg>
-<arg>${response.status_code} == 200 or ${response.status_code} == 404</arg>
+<arg>${response.status_code} == 200 or ${response.status_code} == 404 or ${response.status_code} == 500</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="FAIL" start="2026-05-07T23:02:05.233627" elapsed="0.002460">'500 == 200 or 500 == 404' should be true.</status>
+<status status="PASS" start="2026-05-07T23:06:09.680347" elapsed="0.004277"/>
 </kw>
-<doc>GET /api/kubios/sync tokenilla → 200 tai 404 (riippuu DB-yhteydestä)</doc>
+<doc>GET /api/kubios/sync tokenilla → 200, 404 tai 500 (riippuu DB-yhteydestä ja Kubios-datasta)</doc>
 <tag>kubios</tag>
-<status status="FAIL" start="2026-05-07T23:02:04.451303" elapsed="0.785362">'500 == 200 or 500 == 404' should be true.</status>
+<status status="PASS" start="2026-05-07T23:06:08.743368" elapsed="0.941818"/>
 </test>
 <kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
-<msg time="2026-05-07T23:02:05.238704" level="INFO">Deleting All Sessions</msg>
+<msg time="2026-05-07T23:06:09.688056" level="INFO">Deleting All Sessions</msg>
 <doc>Removes all the session objects</doc>
-<status status="PASS" start="2026-05-07T23:02:05.238445" elapsed="0.000480"/>
+<status status="PASS" start="2026-05-07T23:06:09.687470" elapsed="0.001012"/>
 </kw>
-<status status="FAIL" start="2026-05-07T23:01:59.806092" elapsed="5.432955"/>
+<status status="PASS" start="2026-05-07T23:06:03.643364" elapsed="6.045296"/>
 </suite>
-<status status="FAIL" start="2026-05-07T23:01:45.048731" elapsed="20.192749"/>
+<status status="PASS" start="2026-05-07T23:05:48.284122" elapsed="21.406314"/>
 </suite>
 <statistics>
 <total>
-<stat pass="24" fail="2" skip="0">All Tests</stat>
+<stat pass="26" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">api</stat>
-<stat pass="7" fail="1" skip="0">auth</stat>
-<stat pass="7" fail="1" skip="0">kubios</stat>
+<stat pass="8" fail="0" skip="0">auth</stat>
+<stat pass="8" fail="0" skip="0">kubios</stat>
 <stat pass="1" fail="0" skip="0">login</stat>
-<stat pass="4" fail="1" skip="0">users</stat>
+<stat pass="5" fail="0" skip="0">users</stat>
 </tag>
 <suite>
-<stat name="Login Tests &amp; Register Tests &amp; Be Api Tests" id="s1" pass="24" fail="2" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests</stat>
+<stat name="Login Tests &amp; Register Tests &amp; Be Api Tests" id="s1" pass="26" fail="0" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests</stat>
 <stat name="Login Tests" id="s1-s1" pass="6" fail="0" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests.Login Tests</stat>
 <stat name="Register Tests" id="s1-s2" pass="6" fail="0" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests.Register Tests</stat>
-<stat name="Be Api Tests" id="s1-s3" pass="12" fail="2" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests.Be Api Tests</stat>
+<stat name="Be Api Tests" id="s1-s3" pass="14" fail="0" skip="0">Login Tests &amp; Register Tests &amp; Be Api Tests.Be Api Tests</stat>
 </suite>
 </statistics>
 <errors>
