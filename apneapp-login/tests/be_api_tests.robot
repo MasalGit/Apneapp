@@ -7,27 +7,20 @@ Suite Setup    Alusta Testit
 Suite Teardown    Delete All Sessions
 
 *** Variables ***
-${BASE_URL}    http://localhost:3000/api
-${TOKEN}       ${EMPTY}
-${USER_ID}     ${EMPTY}
+${BASE_URL}       http://localhost:3000/api
+${TOKEN}          ${EMPTY}
+${USER_ID}        ${EMPTY}
+${KUBIOS_USER}    elsikubios@gmail.com
+${KUBIOS_PASS}    hYr062vQh6
 
 *** Keywords ***
 Alusta Testit
     Create Session    apneapp    ${BASE_URL}    verify=False
-    # Luo uniikki testikayttaja
-    ${rand}=    Generate Random String    6    [NUMBERS]
-    Set Suite Variable    ${TEST_USER}    testuser${rand}
-    Set Suite Variable    ${TEST_PASS}    TestPass123
-    Set Suite Variable    ${TEST_EMAIL}    testuser${rand}@test.com
-    # Rekisteroi testikayttaja
-    ${body}=    Create Dictionary    username=${TEST_USER}    password=${TEST_PASS}    email=${TEST_EMAIL}
-    ${reg_resp}=    POST On Session    apneapp    /users    json=${body}    expected_status=any
-    # Kirjaudu sisaan ja tallenna token
-    ${login_body}=    Create Dictionary    username=${TEST_USER}    password=${TEST_PASS}
-    ${login_resp}=    POST On Session    apneapp    /users/login    json=${login_body}    expected_status=any
+    # Kirjaudu Kubios-tunnuksilla ja hae token (POST /api/users ja /login poistettu)
+    ${login_body}=    Create Dictionary    username=${KUBIOS_USER}    password=${KUBIOS_PASS}
+    ${login_resp}=    POST On Session    apneapp    /kubios/login    json=${login_body}    expected_status=any
     ${json}=    Set Variable    ${login_resp.json()}
     Set Suite Variable    ${TOKEN}    ${json['token']}
-    Set Suite Variable    ${USER_ID}    ${json['user']['user_id']}
 
 *** Test Cases ***
 # -----------------------------------------------
@@ -41,50 +34,21 @@ API Root Vastaa
     Should Be Equal As Integers    ${response.status_code}    200
 
 # -----------------------------------------------
-# Tehtava 2: Kayttajan rekisterointi
+# Tehtava 2: Kubios-kirjautuminen
 # -----------------------------------------------
 
-Rekisterointi Onnistuu
-    [Documentation]    POST /api/users uudella kayttajalla → 201
-    [Tags]    users    register
-    ${rand}=    Generate Random String    6    [NUMBERS]
-    ${body}=    Create Dictionary
-    ...    username=newuser${rand}
-    ...    password=TestPass123
-    ...    email=newuser${rand}@test.com
-    ${response}=    POST On Session    apneapp    /users    json=${body}    expected_status=any
-    Should Be Equal As Integers    ${response.status_code}    201
-
-Rekisterointi Ilman Email Epaonnistuu
-    [Documentation]    POST /api/users ilman email-kenttaa → 400
-    [Tags]    users    register
-    ${body}=    Create Dictionary    username=noemailuser    password=TestPass123
-    ${response}=    POST On Session    apneapp    /users    json=${body}    expected_status=any
-    Should Be Equal As Integers    ${response.status_code}    400
-
-# -----------------------------------------------
-# Tehtava 3: Kirjautuminen
-# -----------------------------------------------
-
-Kirjautuminen Onnistuu Ja Palauttaa Tokenin
-    [Documentation]    POST /api/users/login oikeilla tiedoilla → 200 + JWT-token
-    [Tags]    users    login
-    ${body}=    Create Dictionary    username=${TEST_USER}    password=${TEST_PASS}
-    ${response}=    POST On Session    apneapp    /users/login    json=${body}    expected_status=any
+Kubios Login Onnistuu Ja Palauttaa Tokenin
+    [Documentation]    POST /api/kubios/login oikeilla tunnuksilla → 200 + token
+    [Tags]    kubios    login
+    ${body}=    Create Dictionary    username=${KUBIOS_USER}    password=${KUBIOS_PASS}
+    ${response}=    POST On Session    apneapp    /kubios/login    json=${body}    expected_status=any
     Should Be Equal As Integers    ${response.status_code}    200
     ${json}=    Set Variable    ${response.json()}
     Dictionary Should Contain Key    ${json}    token
     Should Not Be Empty    ${json['token']}
 
-Kirjautuminen Vaaralla Salasanalla Epaonnistuu
-    [Documentation]    POST /api/users/login vaaralla salasanalla → 403
-    [Tags]    users    login
-    ${body}=    Create Dictionary    username=${TEST_USER}    password=WrongPass999
-    ${response}=    POST On Session    apneapp    /users/login    json=${body}    expected_status=any
-    Should Be Equal As Integers    ${response.status_code}    403
-
 # -----------------------------------------------
-# Tehtava 4: Suojatut kayttajareitit
+# Tehtava 3: Suojatut kayttajareitit
 # -----------------------------------------------
 
 Suojattu Reitti Ilman Tokenia Epaonnistuu
@@ -140,3 +104,53 @@ Kayttajan Poisto Toisen Tunnuksella Epaonnistuu
     ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
     ${response}=    DELETE On Session    apneapp    /users/9999999    headers=${headers}    expected_status=any
     Should Be Equal As Integers    ${response.status_code}    403
+
+# -----------------------------------------------
+# Tehtava 6: Kayttajan haku ID:lla ja profiilin paivitys
+# -----------------------------------------------
+
+GET Kayttaja ID Tokenilla Onnistuu
+    [Documentation]    GET /api/users/:id omalla tokenilla → 200, kayttajan tiedot
+    [Tags]    users    auth
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /users/${USER_ID}    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+    ${body}=    Set Variable    ${response.json()}
+    Should Contain    ${body}    username
+
+PUT Profiilin Paivitys Onnistuu
+    [Documentation]    PUT /api/users/:id oman profiilin paivitys → 200
+    [Tags]    users    auth
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${rand}=    Generate Random String    4    [NUMBERS]
+    ${body}=    Create Dictionary    username=updated${rand}    email=updated${rand}@test.com
+    ${response}=    PUT On Session    apneapp    /users/${USER_ID}    json=${body}    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+
+# -----------------------------------------------
+# Tehtava 7: Kubios Cloud API - lisatestit
+# -----------------------------------------------
+
+GET Kubios Me Tokenilla Onnistuu
+    [Documentation]    GET /api/kubios/me tokenilla → 200, Kubios-token tiedot
+    [Tags]    kubios    auth
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /kubios/me    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+
+GET Kubios UserInfo Tokenilla Onnistuu
+    [Documentation]    GET /api/kubios/userinfo tokenilla → 200, Kubios-kayttajatiedot
+    [Tags]    kubios
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /kubios/userinfo    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+
+GET Kubios Sync Tokenilla Onnistuu
+    [Documentation]    GET /api/kubios/sync tokenilla → 200, synced + skipped
+    [Tags]    kubios
+    ${headers}=    Create Dictionary    Authorization=Bearer ${TOKEN}
+    ${response}=    GET On Session    apneapp    /kubios/sync    headers=${headers}    expected_status=any
+    Should Be Equal As Integers    ${response.status_code}    200
+    ${body}=    Set Variable    ${response.json()}
+    Dictionary Should Contain Key    ${body}    synced
+    Dictionary Should Contain Key    ${body}    skipped

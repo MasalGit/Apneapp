@@ -1,506 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-05-04T10:53:34.201351" rpa="false" schemaversion="5">
-<suite id="s1" name="Register Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\register_tests.robot">
-<kw name="New Browser" owner="Browser" type="SETUP">
-<msg time="2026-05-04T10:53:34.887709" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\6bfa75a1-97d8-4a94-be50-dc6ebd40a165"}</msg>
-<msg time="2026-05-04T10:53:35.008313" level="INFO">Starting Browser process C:\Users\yamam\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:64537</msg>
-<msg time="2026-05-04T10:53:38.096017" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\yamam\\OneDrive\\Desktop\\FE projekti13\\Apneapp_FE\\apneapp-login\\tests\\reports\\browser\\traces\\temp\\6bfa75a1-97d8-4a94-be50-dc6ebd40a165"}</msg>
-<arg>chromium</arg>
-<arg>headless=True</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Create a new playwright Browser with specified options.</doc>
-<status status="PASS" start="2026-05-04T10:53:34.885753" elapsed="3.210687"/>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-05-07T15:47:50.402110" rpa="false" schemaversion="5">
+<suite id="s1" name="Be Api Tests" source="C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests\be_api_tests.robot">
+<kw name="Alusta Testit" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-05-07T15:47:50.752446" level="INFO">Creating Session using : alias=apneapp, url=http://localhost:3000/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>apneapp</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-05-07T15:47:50.752037" elapsed="0.000679"/>
 </kw>
-<test id="s1-t1" name="TC1: Tyhjä lomake – kaikki kentät pakollisia" line="13">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:38.853259" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:38.853422" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:38.140718" elapsed="0.713065"/>
+<kw name="Generate Random String" owner="String">
+<msg time="2026-05-07T15:47:50.753252" level="INFO">${rand} = 106611</msg>
+<var>${rand}</var>
+<arg>6</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.752898" elapsed="0.000385"/>
 </kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:38.856411" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:38.854639" elapsed="0.513583"/>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-05-07T15:47:50.754185" level="INFO">${TEST_USER} = testuser106611</msg>
+<arg>${TEST_USER}</arg>
+<arg>testuser${rand}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.753423" elapsed="0.000827"/>
 </kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.432372" level="INFO">Text: 'Etunimi on pakollinen'</msg>
-<msg time="2026-05-04T10:53:39.432581" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
-<var>${fn_err}</var>
-<arg>id=firstNameError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.368821" elapsed="0.063794"/>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-05-07T15:47:50.755048" level="INFO">${TEST_PASS} = TestPass123</msg>
+<arg>${TEST_PASS}</arg>
+<arg>TestPass123</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.754423" elapsed="0.000664"/>
 </kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${fn_err}</arg>
-<arg>pakollinen</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.433159" elapsed="0.001151"/>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-05-07T15:47:50.755796" level="INFO">${TEST_EMAIL} = testuser106611@test.com</msg>
+<arg>${TEST_EMAIL}</arg>
+<arg>testuser${rand}@test.com</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.755189" elapsed="0.000644"/>
 </kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.461298" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
-<msg time="2026-05-04T10:53:39.461490" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
-<var>${ln_err}</var>
-<arg>id=lastNameError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.434699" elapsed="0.026822"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-07T15:47:50.756385" level="INFO">${body} = {'username': 'testuser106611', 'password': 'TestPass123', 'email': 'testuser106611@test.com'}</msg>
+<var>${body}</var>
+<arg>username=${TEST_USER}</arg>
+<arg>password=${TEST_PASS}</arg>
+<arg>email=${TEST_EMAIL}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.755926" elapsed="0.000487"/>
 </kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${ln_err}</arg>
-<arg>pakollinen</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.461964" elapsed="0.001079"/>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-05-07T15:47:53.582363" level="INFO">POST Request : url=http://localhost:3000/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '93', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testuser106611", "password": "TestPass123", "email": "testuser106611@test.com"}' 
+ </msg>
+<msg time="2026-05-07T15:47:53.582519" level="INFO">POST Response : url=http://localhost:3000/api/users 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '109', 'ETag': 'W/"6d-AeOTvpUcjEYKWIO4aCVu6YrF03o"', 'Date': 'Thu, 07 May 2026 12:47:53 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"new user added","user_id":{"error":"Access denied for user ''@'localhost' (using password: NO)"}} 
+ </msg>
+<msg time="2026-05-07T15:47:53.582702" level="INFO">${reg_resp} = &lt;Response [201]&gt;</msg>
+<var>${reg_resp}</var>
+<arg>apneapp</arg>
+<arg>/users</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-05-07T15:47:50.756548" elapsed="2.826192"/>
 </kw>
-<msg time="2026-05-04T10:53:39.491772" level="INFO">Switching context to context=e6eb9805-a8e8-4683-b537-b890441574e2 in CURRENT</msg>
-<msg time="2026-05-04T10:53:39.505428" level="INFO">Successfully changed active context: context=e6eb9805-a8e8-4683-b537-b890441574e2</msg>
-<msg time="2026-05-04T10:53:39.535622" level="INFO">Successfully closed Context</msg>
-<doc>Tyhjällä lomakkeella rekisteröityminen näyttää pakollisuusvirheet</doc>
-<status status="PASS" start="2026-05-04T10:53:38.096948" elapsed="1.366520"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-07T15:47:53.584121" level="INFO">${login_body} = {'username': 'testuser106611', 'password': 'TestPass123'}</msg>
+<var>${login_body}</var>
+<arg>username=${TEST_USER}</arg>
+<arg>password=${TEST_PASS}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-07T15:47:53.583070" elapsed="0.001114"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-05-07T15:47:53.600200" level="INFO">POST Request : url=http://localhost:3000/api/users/login 
+ path_url=/api/users/login 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '57', 'Content-Type': 'application/json'} 
+ body=b'{"username": "testuser106611", "password": "TestPass123"}' 
+ </msg>
+<msg time="2026-05-07T15:47:53.600332" level="INFO">POST Response : url=http://localhost:3000/api/users/login 
+ status=500, reason=Internal Server Error 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '85', 'ETag': 'W/"55-HB7fDvmgJfxfcmFiT912ojvps3k"', 'Date': 'Thu, 07 May 2026 12:47:53 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"error":{"message":"Illegal arguments: string, undefined","status":500,"errors":""}} 
+ </msg>
+<msg time="2026-05-07T15:47:53.600488" level="INFO">${login_resp} = &lt;Response [500]&gt;</msg>
+<var>${login_resp}</var>
+<arg>apneapp</arg>
+<arg>/users/login</arg>
+<arg>json=${login_body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-05-07T15:47:53.584362" elapsed="0.016150"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-05-07T15:47:53.601929" level="INFO">${json} = {'error': {'message': 'Illegal arguments: string, undefined', 'status': 500, 'errors': ''}}</msg>
+<var>${json}</var>
+<arg>${login_resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-05-07T15:47:53.600680" elapsed="0.001302"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-05-07T15:47:53.602935" level="FAIL">Resolving variable '${json['token']}' failed: KeyError: 'token'</msg>
+<arg>${TOKEN}</arg>
+<arg>${json['token']}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="FAIL" start="2026-05-07T15:47:53.602155" elapsed="0.000839">Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${USER_ID}</arg>
+<arg>${json['user']['user_id']}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2026-05-07T15:47:53.603157" elapsed="0.000025"/>
+</kw>
+<status status="FAIL" start="2026-05-07T15:47:50.750795" elapsed="2.852499">Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</kw>
+<test id="s1-t1" name="API Root Vastaa" line="37">
+<doc>GET /api → 200, "ApneApp"</doc>
+<tag>api</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.604434" elapsed="0.002294">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<test id="s1-t2" name="TC2: Virheellinen sähköposti hylätään" line="22">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:39.848462" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:39.848565" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.542877" elapsed="0.305910"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.851038" level="INFO">Fills the text 'Testi' in the given field.</msg>
-<arg>id=firstName</arg>
-<arg>Testi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.849426" elapsed="0.060318"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.911582" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
-<arg>id=lastName</arg>
-<arg>Kayttaja</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.910477" elapsed="0.028719"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.941403" level="INFO">Fills the text 'eiole' in the given field.</msg>
-<arg>id=email</arg>
-<arg>eiole</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.939935" elapsed="0.035672"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:39.978608" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=password</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:39.976678" elapsed="0.030291"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.009482" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=confirmPassword</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.007735" elapsed="0.032840"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:40.044512" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.043101" elapsed="0.282010"/>
-</kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.374289" level="INFO">Text: 'Virheellinen sähköpostiosoite'</msg>
-<msg time="2026-05-04T10:53:40.374509" level="INFO">${email_err} = Virheellinen sähköpostiosoite</msg>
-<var>${email_err}</var>
-<arg>id=emailError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.325528" elapsed="0.049019"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${email_err}</arg>
-<arg>Virheellinen</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.375381" elapsed="0.001175"/>
-</kw>
-<msg time="2026-05-04T10:53:40.407450" level="INFO">Switching context to context=8c834212-5947-4afe-9a10-8c3a67727dde in CURRENT</msg>
-<msg time="2026-05-04T10:53:40.418536" level="INFO">Successfully changed active context: context=8c834212-5947-4afe-9a10-8c3a67727dde</msg>
-<msg time="2026-05-04T10:53:40.428463" level="INFO">Successfully closed Context</msg>
-<doc>Virheellinen sähköpostiosoite näyttää virheilmoituksen</doc>
-<status status="PASS" start="2026-05-04T10:53:39.536755" elapsed="0.840469"/>
+<test id="s1-t2" name="Rekisterointi Onnistuu" line="47">
+<doc>POST /api/users uudella kayttajalla → 201</doc>
+<tag>register</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.607986" elapsed="0.001008">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<test id="s1-t3" name="TC3: Liian lyhyt salasana hylätään (alle 8 merkkiä)" line="34">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:40.732478" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:40.732623" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.433835" elapsed="0.299089"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.735319" level="INFO">Fills the text 'Testi' in the given field.</msg>
-<arg>id=firstName</arg>
-<arg>Testi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.733651" elapsed="0.050660"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.786607" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
-<arg>id=lastName</arg>
-<arg>Kayttaja</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.785051" elapsed="0.020300"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.807524" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
-<arg>id=email</arg>
-<arg>kayttaja@email.fi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.806183" elapsed="0.020646"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.828233" level="INFO">Fills the text 'abc1234' in the given field.</msg>
-<arg>id=password</arg>
-<arg>abc1234</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.827334" elapsed="0.021710"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:40.851115" level="INFO">Fills the text 'abc1234' in the given field.</msg>
-<arg>id=confirmPassword</arg>
-<arg>abc1234</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.849668" elapsed="0.025154"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:40.877066" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:40.875408" elapsed="0.285040"/>
-</kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.207632" level="INFO">Text: 'Salasanan on oltava vähintään 8 merkkiä'</msg>
-<msg time="2026-05-04T10:53:41.207843" level="INFO">${pw_err} = Salasanan on oltava vähintään 8 merkkiä</msg>
-<var>${pw_err}</var>
-<arg>id=passwordError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.160971" elapsed="0.046905"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${pw_err}</arg>
-<arg>8 merkkiä</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.208408" elapsed="0.000880"/>
-</kw>
-<msg time="2026-05-04T10:53:41.230135" level="INFO">Switching context to context=e17dbb8b-a0ea-4ee8-8425-f219ea307aa1 in CURRENT</msg>
-<msg time="2026-05-04T10:53:41.241038" level="INFO">Successfully changed active context: context=e17dbb8b-a0ea-4ee8-8425-f219ea307aa1</msg>
-<msg time="2026-05-04T10:53:41.250742" level="INFO">Successfully closed Context</msg>
-<doc>Alle 8 merkin salasana rekisteröinnissä hylätään</doc>
-<status status="PASS" start="2026-05-04T10:53:40.429538" elapsed="0.780265"/>
+<test id="s1-t3" name="Rekisterointi Ilman Email Epaonnistuu" line="58">
+<doc>POST /api/users ilman email-kenttaa → 400</doc>
+<tag>register</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.609942" elapsed="0.000566">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<test id="s1-t4" name="TC4: Erilaiset salasanat hylätään" line="46">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:41.545073" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:41.545251" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.256474" elapsed="0.289182"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.548362" level="INFO">Fills the text 'Testi' in the given field.</msg>
-<arg>id=firstName</arg>
-<arg>Testi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.546522" elapsed="0.070747"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.620373" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
-<arg>id=lastName</arg>
-<arg>Kayttaja</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.618281" elapsed="0.025900"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.645998" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
-<arg>id=email</arg>
-<arg>kayttaja@email.fi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.644869" elapsed="0.029971"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.677058" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=password</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.675542" elapsed="0.035242"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:41.715388" level="INFO">Fills the text 'erilainen1' in the given field.</msg>
-<arg>id=confirmPassword</arg>
-<arg>erilainen1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.713522" elapsed="0.061530"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:41.780326" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:41.778242" elapsed="0.303500"/>
-</kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:42.133930" level="INFO">Text: 'Salasanat eivät täsmää'</msg>
-<msg time="2026-05-04T10:53:42.134224" level="INFO">${confirm_err} = Salasanat eivät täsmää</msg>
-<var>${confirm_err}</var>
-<arg>id=confirmPasswordError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.084216" elapsed="0.050067"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${confirm_err}</arg>
-<arg>täsmää</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.139082" elapsed="0.001329"/>
-</kw>
-<msg time="2026-05-04T10:53:42.301658" level="INFO">Switching context to context=5e87a180-bf59-480a-9b6a-c13e8f2915b3 in CURRENT</msg>
-<msg time="2026-05-04T10:53:42.312436" level="INFO">Successfully changed active context: context=5e87a180-bf59-480a-9b6a-c13e8f2915b3</msg>
-<msg time="2026-05-04T10:53:42.327488" level="INFO">Successfully closed Context</msg>
-<doc>Jos salasanat eivät täsmää, näytetään virheilmoitus</doc>
-<status status="PASS" start="2026-05-04T10:53:41.251946" elapsed="0.990190"/>
+<test id="s1-t4" name="Kirjautuminen Onnistuu Ja Palauttaa Tokenin" line="69">
+<doc>POST /api/users/login oikeilla tiedoilla → 200 + JWT-token</doc>
+<tag>login</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.611612" elapsed="0.000720">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<test id="s1-t5" name="TC5: Puuttuva etunimi hylätään" line="58">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:42.667162" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:42.667330" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.334465" elapsed="0.333230"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:42.669700" level="INFO">Fills the text 'Kayttaja' in the given field.</msg>
-<arg>id=lastName</arg>
-<arg>Kayttaja</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.668338" elapsed="0.042808"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:42.712708" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
-<arg>id=email</arg>
-<arg>kayttaja@email.fi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.711657" elapsed="0.016208"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:42.730790" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=password</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.728375" elapsed="0.077943"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:42.810622" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=confirmPassword</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.808764" elapsed="0.042361"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:42.858029" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:42.856249" elapsed="0.283695"/>
-</kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:43.189228" level="INFO">Text: 'Etunimi on pakollinen'</msg>
-<msg time="2026-05-04T10:53:43.189413" level="INFO">${fn_err} = Etunimi on pakollinen</msg>
-<var>${fn_err}</var>
-<arg>id=firstNameError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.140490" elapsed="0.048955"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${fn_err}</arg>
-<arg>pakollinen</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.189809" elapsed="0.001038"/>
-</kw>
-<msg time="2026-05-04T10:53:43.210213" level="INFO">Switching context to context=4b0d0d10-695c-4a32-ab26-3fc30ad9960f in CURRENT</msg>
-<msg time="2026-05-04T10:53:43.220053" level="INFO">Successfully changed active context: context=4b0d0d10-695c-4a32-ab26-3fc30ad9960f</msg>
-<msg time="2026-05-04T10:53:43.231012" level="INFO">Successfully closed Context</msg>
-<doc>Tyhjä etunimikenttä näyttää pakollisuusvirheen</doc>
-<status status="PASS" start="2026-05-04T10:53:42.329086" elapsed="0.862142"/>
+<test id="s1-t5" name="Kirjautuminen Vaaralla Salasanalla Epaonnistuu" line="79">
+<doc>POST /api/users/login vaaralla salasanalla → 403</doc>
+<tag>login</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.613306" elapsed="0.000869">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<test id="s1-t6" name="TC6: Puuttuva sukunimi hylätään" line="69">
-<kw name="New Page" owner="Browser">
-<msg time="2026-05-04T10:53:43.513806" level="INFO">Successfully initialized new page object and opened url: file:///C:\Users\yamam\OneDrive\Desktop\FE projekti13\Apneapp_FE\apneapp-login\tests/../register.html</msg>
-<msg time="2026-05-04T10:53:43.513943" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<arg>${REGISTER_URL}</arg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Open a new Page.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.236648" elapsed="0.277665"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:43.516019" level="INFO">Fills the text 'Testi' in the given field.</msg>
-<arg>id=firstName</arg>
-<arg>Testi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.514865" elapsed="0.048094"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:43.566055" level="INFO">Fills the text 'kayttaja@email.fi' in the given field.</msg>
-<arg>id=email</arg>
-<arg>kayttaja@email.fi</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.563800" elapsed="0.021638"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:43.587705" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=password</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.585922" elapsed="0.025025"/>
-</kw>
-<kw name="Fill Text" owner="Browser">
-<msg time="2026-05-04T10:53:43.614726" level="INFO">Fills the text 'salasana1' in the given field.</msg>
-<arg>id=confirmPassword</arg>
-<arg>salasana1</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.612233" elapsed="0.027300"/>
-</kw>
-<kw name="Click" owner="Browser">
-<msg time="2026-05-04T10:53:43.642300" level="INFO">Clicks the element 'id=submitBtn'.</msg>
-<arg>id=submitBtn</arg>
-<tag>PageContent</tag>
-<tag>Setter</tag>
-<doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:43.640193" elapsed="0.417899"/>
-</kw>
-<kw name="Get Text" owner="Browser">
-<msg time="2026-05-04T10:53:44.108880" level="INFO">Text: 'Sukunimi on pakollinen'</msg>
-<msg time="2026-05-04T10:53:44.109164" level="INFO">${ln_err} = Sukunimi on pakollinen</msg>
-<var>${ln_err}</var>
-<arg>id=lastNameError</arg>
-<tag>Assertion</tag>
-<tag>Getter</tag>
-<tag>PageContent</tag>
-<doc>Returns text attribute of the element found by ``selector``.</doc>
-<status status="PASS" start="2026-05-04T10:53:44.058645" elapsed="0.050554"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${ln_err}</arg>
-<arg>pakollinen</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2026-05-04T10:53:44.109619" elapsed="0.000912"/>
-</kw>
-<msg time="2026-05-04T10:53:44.131449" level="INFO">Switching context to context=5874844f-1dda-485a-a8c3-edf54f9bd454 in CURRENT</msg>
-<msg time="2026-05-04T10:53:44.141678" level="INFO">Successfully changed active context: context=5874844f-1dda-485a-a8c3-edf54f9bd454</msg>
-<msg time="2026-05-04T10:53:44.154429" level="INFO">Successfully closed Context</msg>
-<doc>Tyhjä sukunimikenttä näyttää pakollisuusvirheen</doc>
-<status status="PASS" start="2026-05-04T10:53:43.232125" elapsed="0.878761"/>
+<test id="s1-t6" name="Suojattu Reitti Ilman Tokenia Epaonnistuu" line="90">
+<doc>GET /api/users/me ilman Authorization-headeria → 401 tai 403</doc>
+<tag>auth</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.615013" elapsed="0.000783">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </test>
-<kw name="Close Browser" owner="Browser" type="TEARDOWN">
-<msg time="2026-05-04T10:53:44.305533" level="INFO">Closed browser</msg>
-<tag>BrowserControl</tag>
-<tag>Setter</tag>
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-05-04T10:53:44.158536" elapsed="0.147221"/>
+<test id="s1-t7" name="GET Me Tokenilla Onnistuu" line="96">
+<doc>GET /api/users/me oikealla tokenilla → 200, kayttajan tiedot</doc>
+<tag>auth</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.616508" elapsed="0.000627">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t8" name="Kubios Reitti Ilman Tokenia Epaonnistuu" line="109">
+<doc>GET /api/kubios/me ilman Authorization-headeria → 401 tai 403</doc>
+<tag>auth</tag>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.617849" elapsed="0.000729">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t9" name="GET Kubios History Tokenilla Onnistuu" line="115">
+<doc>GET /api/kubios/history tokenilla → 200, {results:[...]}</doc>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.619269" elapsed="0.000664">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t10" name="GET Kubios Measures Tokenilla Onnistuu" line="124">
+<doc>GET /api/kubios/measures tokenilla → 200 (Kubios Cloud data)</doc>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.620634" elapsed="0.000721">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t11" name="GET Kubios Sync Ilman Tokenia Epaonnistuu" line="131">
+<doc>GET /api/kubios/sync ilman tokenia → 401 tai 403</doc>
+<tag>auth</tag>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.621907" elapsed="0.000726">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t12" name="Kayttajan Poisto Toisen Tunnuksella Epaonnistuu" line="137">
+<doc>DELETE /api/users/:id toisen kayttajan ID → 403</doc>
+<tag>auth</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.623526" elapsed="0.000725">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t13" name="GET Kayttaja ID Tokenilla Onnistuu" line="148">
+<doc>GET /api/users/:id omalla tokenilla → 200, kayttajan tiedot</doc>
+<tag>auth</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.625092" elapsed="0.000849">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t14" name="PUT Profiilin Paivitys Onnistuu" line="157">
+<doc>PUT /api/users/:id oman profiilin paivitys → 200</doc>
+<tag>auth</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.626752" elapsed="0.000650">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t15" name="Kirjautuminen Olemattomalla Kayttajalla Epaonnistuu" line="166">
+<doc>POST /api/users/login kayttajalla jota ei ole → 404</doc>
+<tag>login</tag>
+<tag>users</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.628265" elapsed="0.000734">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t16" name="GET Kubios Me Tokenilla Onnistuu" line="177">
+<doc>GET /api/kubios/me tokenilla → 200, Kubios-token tiedot</doc>
+<tag>auth</tag>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.629735" elapsed="0.000982">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t17" name="GET Kubios UserInfo Tokenilla Onnistuu" line="184">
+<doc>GET /api/kubios/userinfo tokenilla → 200, Kubios-kayttajatiedot</doc>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.631607" elapsed="0.000870">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<test id="s1-t18" name="GET Kubios Sync Tokenilla Onnistuu" line="191">
+<doc>GET /api/kubios/sync tokenilla → 200, synced + skipped</doc>
+<tag>kubios</tag>
+<status status="FAIL" start="2026-05-07T15:47:53.633315" elapsed="0.000691">Parent suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
+</test>
+<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
+<msg time="2026-05-07T15:47:53.635487" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2026-05-07T15:47:53.635303" elapsed="0.000295"/>
 </kw>
-<doc>Apneapp – Rekisteröintilomakkeen automaatiotestit
-Testaaja: Yamama | Branch: Yamama-FE</doc>
-<status status="PASS" start="2026-05-04T10:53:34.205887" elapsed="10.100001"/>
+<status status="FAIL" start="2026-05-07T15:47:50.405270" elapsed="3.230379">Suite setup failed:
+Resolving variable '${json['token']}' failed: KeyError: 'token'</status>
 </suite>
 <statistics>
 <total>
-<stat pass="6" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="18" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">api</stat>
+<stat pass="0" fail="8" skip="0">auth</stat>
+<stat pass="0" fail="7" skip="0">kubios</stat>
+<stat pass="0" fail="3" skip="0">login</stat>
+<stat pass="0" fail="2" skip="0">register</stat>
+<stat pass="0" fail="10" skip="0">users</stat>
 </tag>
 <suite>
-<stat name="Register Tests" id="s1" pass="6" fail="0" skip="0">Register Tests</stat>
+<stat name="Be Api Tests" id="s1" pass="0" fail="18" skip="0">Be Api Tests</stat>
 </suite>
 </statistics>
 <errors>

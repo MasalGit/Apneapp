@@ -11,6 +11,12 @@
 
 ---
 
+## Tekoälyn käyttö
+
+Käytin tekoälyä apuna README:n järjestämisessä sekä kysyin neuvoa backend-testien liittämisessä projektiin.
+
+---
+
 ## Projektin kuvaus
 
 Apneapp on web-pohjainen uniapnean seurantasovellus. Frontend sisältää kirjautumis-, rekisteröinti- ja dashboard-sivut sekä kaavionäkymän.
@@ -64,8 +70,8 @@ robot apneapp-login/tests/register_tests.robot
 
 | Dokumentti | Kuvaus |
 |---|---|
-| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (22 manuaalinen + 12 Robot Framework) |
-| [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (12 TC, RequestsLibrary) |
+| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (22 manuaalinen + 18 Robot Framework) |
+| [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (18 TC, RequestsLibrary) |
 
 ### BE-testien ajaminen
 
@@ -79,6 +85,10 @@ npm run dev
 robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_tests.robot
 ```
 
+### Päivitys 7.5.2026
+
+Huomasin että osaa reiteistä ei oltu testattu, joten lisäsin testejä. Erityisesti käyttäjän haku ID:llä, profiilin päivitys ja Kubios-reitit puuttuivat kokonaan. Lisäsin nämä testit (RF13–RF18) be_api_tests.robot -tiedostoon.
+
 ---
 
 ## Testitulokset
@@ -90,7 +100,7 @@ robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_test
 | JS yksikkötestit (Ali) | ✅ 33 / 33 läpäisty |
 | Robot Framework – UI (FE) | ✅ 12 / 12 läpäisty |
 | Manuaaliset API-testit (BE) | ✅ 22 / 22 läpäisty |
-| Robot Framework – API (BE) | 12 TC (vaatii käynnissä olevan BE-palvelimen) |
+| Robot Framework – API (BE) | 18 TC (vaatii käynnissä olevan BE-palvelimen) |
 
 ---
 

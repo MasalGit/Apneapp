@@ -4,7 +4,7 @@
 **Repository:** [https://github.com/MasalGit/Apneapp_BE](https://github.com/MasalGit/Apneapp_BE)  
 **Testaaja:** Yamama  
 **Branch:** Henri_BE  
-**Päivämäärä:** 29.4.2026  
+**Päivämäärä:** 29.4.2026 (päivitetty 7.5.2026)  
 **Teknologia:** Node.js + Express.js + MariaDB, JWT-autentikaatio, Kubios Cloud API
 
 ---
@@ -14,13 +14,13 @@
 | Metodi | Reitti | Kuvaus | Autentikaatio |
 |--------|--------|--------|---------------|
 | GET | /api | Backend root | Ei |
-| POST | /api/users | Rekisteröityminen | Ei |
-| POST | /api/users/login | Kirjautuminen | Ei |
+| ~~POST~~ | ~~**/api/users**~~ | ~~Rekisteröityminen~~ | ~~Poistettu 7.5.2026~~ |
+| ~~POST~~ | ~~**/api/users/login**~~ | ~~Kirjautuminen~~ | ~~Poistettu 7.5.2026~~ |
 | GET | /api/users/me | Oma profiili (JWT) | JWT |
 | GET | /api/users/:id | Käyttäjä ID:llä | JWT |
 | PUT | /api/users/:id | Päivitä profiili (vain oma) | JWT |
 | DELETE | /api/users/:id | Poista käyttäjä (vain oma) | JWT |
-| POST | /api/kubios/login | Kirjautuu Kubios Cloud -palveluun | Ei |
+| POST | /api/kubios/login | Kirjautuu Kubios Cloud -palveluun (ainoa kirjautumistapa) | Ei |
 | GET | /api/kubios/me | Kubios-token tiedot | JWT |
 | GET | /api/kubios/userinfo | Kubios-käyttäjätiedot | JWT |
 | GET | /api/kubios/history | Tallennetut mittaukset tietokannasta | JWT |
@@ -40,31 +40,14 @@
 
 ---
 
-## Tehtävä 2 — Käyttäjän rekisteröinti
+## Tehtävä 2 — ~~Rekisteröinti~~ ja ~~Kirjautuminen~~ → Poistettu 7.5.2026
 
-**Testataan:** POST /api/users  
-**Pakolliset kentät:** `username` (3–20 alfanumeerinen), `password` (min 8 merkkiä), `email` (kelvollinen sähköposti)
+**Huomio:** `POST /api/users` ja `POST /api/users/login` on poistettu backendistä (7.5.2026).  
+Kirjautuminen tapahtuu nyt vain Kubios Cloudin kautta: `POST /api/kubios/login`.
 
-| # | Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|-------------|-------|----------------|-------|
-| TC2 | Onnistunut rekisteröinti | `{username:"testuser1", password:"TestPass123", email:"test@test.com"}` | 201, `{message:"new user added", user_id:...}` | PASS |
-| TC3 | Puuttuvat pakolliset kentät | `{username:"testuser1"}` (ilman password & email) | 400, validointivirhe | PASS |
-| TC4 | Virheellinen sähköposti | `{username:"testi", password:"TestPass123", email:"eiole"}` | 400, "sähköpostiosoite ei ole kelvollinen" | PASS |
-| TC5 | Liian lyhyt salasana | `{username:"testi2", password:"abc", email:"a@b.com"}` | 400, "salasanan pitää olla vähintään 8 merkkiä" | PASS |
-| TC6 | Käyttäjänimi liian lyhyt | `{username:"ab", password:"TestPass123", email:"a@b.com"}` | 400, "käyttäjänimen pitää olla 3-20 merkkiä" | PASS |
-
----
-
-## Tehtävä 3 — Kirjautuminen
-
-**Testataan:** POST /api/users/login  
-**Pakolliset kentät:** `username`, `password`
-
-| # | Testitapaus | Syöte | Odotettu tulos | Tulos |
-|---|-------------|-------|----------------|-------|
-| TC7 | Onnistunut kirjautuminen | `{username:"testuser1", password:"TestPass123"}` | 200, `{message:"login ok", user:{...}, token:"..."}` | PASS |
-| TC8 | Väärä salasana | `{username:"testuser1", password:"VaaraPass"}` | 403, `{error:"invalid password"}` | PASS |
-| TC9 | Käyttäjää ei löydy | `{username:"eiolekayttajaa", password:"TestPass123"}` | 404, `{error:"user not found"}` | PASS |
+| # | Testitapaus | Tulos |
+|---|-------------|-------|
+| TC2–TC9 | Rekisteröinti ja kirjautuminen | ~~PASS~~ → Endpoint poistettu |
 
 ---
 
@@ -139,17 +122,23 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 | # | Testitapaus | Metodi | Reitti | Odotettu statuskoodi |
 |---|-------------|--------|--------|----------------------|
 | RF1 | API Root Vastaa | GET | /api | 200 |
-| RF2 | Rekisteröinti Onnistuu | POST | /api/users | 201 |
-| RF3 | Rekisteröinti Ilman Email Epäonnistuu | POST | /api/users | 400 |
-| RF4 | Kirjautuminen Onnistuu Ja Palauttaa Tokenin | POST | /api/users/login | 200 |
-| RF5 | Kirjautuminen Väärällä Salasanalla Epäonnistuu | POST | /api/users/login | 403 |
-| RF6 | Suojattu Reitti Ilman Tokenia Epäonnistuu | GET | /api/users/me | 401/403 |
-| RF7 | GET Me Tokenilla Onnistuu | GET | /api/users/me | 200 |
-| RF8 | Kubios Reitti Ilman Tokenia Epäonnistuu | GET | /api/kubios/me | 401/403 |
-| RF9 | GET Kubios History Tokenilla Onnistuu | GET | /api/kubios/history | 200 |
-| RF10 | GET Kubios Measures Tokenilla Onnistuu | GET | /api/kubios/measures | 200 |
-| RF11 | GET Kubios Sync Ilman Tokenia Epäonnistuu | GET | /api/kubios/sync | 401/403 |
-| RF12 | Käyttäjän Poisto Toisen Tunnuksella Epäonnistuu | DELETE | /api/users/:id | 403 |
+| ~~RF2~~ | ~~Rekisteröinti Onnistuu~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ |
+| ~~RF3~~ | ~~Rekisteröinti Ilman Email~~ | ~~POST~~ | ~~*/api/users*~~ | ~~Poistettu 7.5.2026~~ |
+| ~~RF4~~ | ~~Kirjautuminen Onnistuu~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ |
+| ~~RF5~~ | ~~Kirjautuminen Väärällä Salasanalla~~ | ~~POST~~ | ~~*/api/users/login*~~ | ~~Poistettu 7.5.2026~~ |
+| RF2 | Kubios Login Onnistuu Ja Palauttaa Tokenin | POST | /api/kubios/login | 200 |
+| RF3 | Suojattu Reitti Ilman Tokenia Epäonnistuu | GET | /api/users/me | 401/403 |
+| RF4 | GET Me Tokenilla Onnistuu | GET | /api/users/me | 200 |
+| RF5 | Kubios Reitti Ilman Tokenia Epäonnistuu | GET | /api/kubios/me | 401/403 |
+| RF6 | GET Kubios History Tokenilla Onnistuu | GET | /api/kubios/history | 200 |
+| RF7 | GET Kubios Measures Tokenilla Onnistuu | GET | /api/kubios/measures | 200 |
+| RF8 | GET Kubios Sync Ilman Tokenia Epäonnistuu | GET | /api/kubios/sync | 401/403 |
+| RF9 | Käyttäjän Poisto Toisen Tunnuksella Epäonnistuu | DELETE | /api/users/:id | 403 |
+| RF10 | GET Käyttäjä ID:llä Tokenilla Onnistuu | GET | /api/users/:id | 200 |
+| RF11 | PUT Profiilin Päivitys Onnistuu | PUT | /api/users/:id | 200 |
+| RF12 | GET Kubios Me Tokenilla Onnistuu | GET | /api/kubios/me | 200 |
+| RF13 | GET Kubios UserInfo Tokenilla Onnistuu | GET | /api/kubios/userinfo | 200 |
+| RF14 | GET Kubios Sync Tokenilla Onnistuu | GET | /api/kubios/sync | 200 |
 
 ---
 
@@ -158,10 +147,11 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 | Kategoria | Testitapauksia | Läpäissyt | Hylätty |
 |-----------|---------------|-----------|---------|
 | Manuaaliset API-testit | 22 | 22 | 0 |
-| Robot Framework (automaattiset) | 12 | 12 | 0 |
-| **Yhteensä** | **34** | **34** | **0** |
+| Robot Framework (aktiiviset) | 14 | - | - |
+| Robot Framework (poistetut endpointit) | 4 | - | Endpoint poistettu |
+| **Yhteensä aktiiviset** | **36** | **-** | **-** |
 
-**Testikattavuus (Henri_BE branch — päivitetty 29.4.2026):**
+**Testikattavuus (Henri_BE branch — päivitetty 7.5.2026):**
 - API root: ✅ 100%
 - Käyttäjien hallinta (CRUD + auth): ✅ 100%
 - Autentikaatio (JWT): ✅ 100%
@@ -171,7 +161,7 @@ robot --outputdir tests/be_reports tests/be_api_tests.robot
 
 **Huomiot:**
 - Kaikki suojatut reitit vaativat `Authorization: Bearer <token>` -otsikon
-- `entry_date` on **pakollinen** merkinnässä (muoto YYYY-MM-DD)
+- `POST /api/users` ja `POST /api/users/login` poistettu 7.5.2026 — kirjautuminen vain Kubios Cloudin kautta
 - Kubios-testit vaativat oikeat ympäristömuuttujat (`.env`-tiedosto)
 - Uniapneariski lasketaan LF/HF-arvojen keskiarvosta (lähde: Hakala 2017)
 - Backend-palvelin pitää olla käynnissä testejä ajettaessa (`npm run dev`)
