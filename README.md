@@ -70,8 +70,8 @@ robot apneapp-login/tests/register_tests.robot
 
 | Dokumentti | Kuvaus |
 |---|---|
-| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (22 manuaalinen + 18 Robot Framework) |
-| [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (18 TC, RequestsLibrary) |
+| [TESTAUS_BE.md](apneapp-login/TESTAUS_BE.md) | Backend API-testit (22 manuaalinen + 14 Robot Framework) |
+| [tests/be_api_tests.robot](apneapp-login/tests/be_api_tests.robot) | Robot Framework API-testit (14 TC, RequestsLibrary) |
 
 ### BE-testien ajaminen
 
@@ -82,7 +82,7 @@ pip install robotframework-requests
 npm run dev
 
 # Aja API-testit (toisessa terminaalissa)
-robot --outputdir apneapp-login/tests/be_reports apneapp-login/tests/be_api_tests.robot
+robot --outputdir apneapp-login/tests/reports apneapp-login/tests/be_api_tests.robot
 ```
 
 ### Päivitys 7.5.2026
@@ -100,7 +100,7 @@ Huomasin että osaa reiteistä ei oltu testattu, joten lisäsin testejä. Erityi
 | JS yksikkötestit (Ali) | ✅ 33 / 33 läpäisty |
 | Robot Framework – UI (FE) | ✅ 12 / 12 läpäisty |
 | Manuaaliset API-testit (BE) | ✅ 22 / 22 läpäisty |
-| Robot Framework – API (BE) | 18 TC (vaatii käynnissä olevan BE-palvelimen) |
+| Robot Framework – API (BE) | ✅ 14 / 14 läpäisty |
 
 ---
 
