@@ -5,8 +5,11 @@
   <title>Apneapp - Raportti</title>
 
   <link rel="stylesheet" href="src/css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body class="db-body">
@@ -40,13 +43,18 @@
     </button>
   </aside>
 
-  <main class="db-main">
+  <main class="db-main" id="reportContent">
 
     <div class="db-topbar">
       <div>
         <div class="db-title">Uniraportti</div>
         <div class="db-date">Analyysi</div>
       </div>
+
+      <button class="db-risk-btn" onclick="downloadPDF()">
+        <i class="fas fa-download"></i>
+        Lataa PDF
+      </button>
     </div>
 
     <div class="db-risk-banner">
@@ -107,7 +115,8 @@
     <div class="db-session" style="margin-top: 14px;">
       <div class="db-session-row">
         <span>
-          Tämä raportti ei ole lääketieteellinen diagnoosi.
+          <i class="fas fa-stethoscope"></i>
+          Tämä raportti ei ole lääketieteellinen diagnoosi eikä korvaa terveydenhuollon ammattilaisen arviota.
         </span>
       </div>
     </div>
@@ -174,6 +183,32 @@ function renderReport(data) {
 
   document.getElementById("riskLevel").textContent = result.riskLevel;
   document.getElementById("reportMessage").textContent = result.msg;
+}
+
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+
+  const report = document.getElementById("reportContent");
+
+  const canvas = await html2canvas(report, {
+    scale: 2
+  });
+
+  const imgData = canvas.toDataURL("image/png");
+
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+  pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+  pdf.save("uniraportti.pdf");
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  location.href = "index.html";
 }
 
 loadReport();
