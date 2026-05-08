@@ -13,11 +13,6 @@
 </head>
 
 <body class="db-body">
-<script>
-  if (localStorage.getItem("apneapp-theme") === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
 
   <aside class="db-sidebar">
     <div class="db-sidebar-logo">
@@ -36,19 +31,9 @@
         <span>Kaavio</span>
       </a>
 
-      <a href="raportit.html" class="db-nav-item active">
+      <a href="report.html" class="db-nav-item active">
         <i class="fas fa-file-alt"></i>
         <span>Raportti</span>
-      </a>
-
-      <a href="about.html" class="db-nav-item">
-        <i class="fas fa-info-circle"></i>
-        <span>Tietoja</span>
-      </a>
-
-      <a href="asetukset.html" class="db-nav-item">
-        <i class="fas fa-cog"></i>
-        <span>Asetukset</span>
       </a>
     </nav>
 
@@ -139,7 +124,7 @@
   </main>
 
 <script>
-const API_URL = "https://ryhma5-server.swedencentral.cloudapp.azure.com/api/measurements/report";
+const API_URL = "http://127.0.0.1:3000/api/measurements/report";
 
 async function loadReport(days = 365) {
   try {
@@ -157,7 +142,7 @@ async function loadReport(days = 365) {
     renderReport(data);
 
   } catch (err) {
-    console.warn(err);
+    console.error(err);
     document.getElementById("reportMessage").textContent =
       "Raportin lataus epäonnistui.";
   }
